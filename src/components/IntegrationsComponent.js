@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
 export default function IntegrationsComponent({ integrationsFields, integrations }) {
-  console.log('integrations', integrations)
+  console.log('integrationsFields', integrationsFields)
   const { title, subtitle } = integrationsFields
   return (
     <div>
@@ -34,10 +34,10 @@ export default function IntegrationsComponent({ integrationsFields, integrations
         </div>
         <div className="container">
           <div className="integrations-content">
-            {integrations.map(item => {
+            {integrations.map((item, index) => {
               const { title, featuredImage, language } = item
               return (
-                <div className="mix" key={title}>
+                <div className="mix" key={index}>
                   <Img fluid={featuredImage.node.file.image.fluid} />
                   <span className="integration-name">{title}</span>
 

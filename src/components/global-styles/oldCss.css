@@ -14,7 +14,7 @@ body {
     font-weight: 500;
     position: relative;
     /* background: url("../i/content/bg-top.svg") top left no-repeat, url("../i/content/bg-bottom.svg") bottom right no-repeat; */
-    background: url("../i/content/bg.svg") top left no-repeat;
+    /* background: url("../i/content/bg.svg") top left no-repeat; */
     background-size: cover;
     color: #000;
     min-height: 100vh;
@@ -962,7 +962,7 @@ nav {
 }
 
 .clients-slider .swiper-button-next:after {
-    background: url("../i/content/arrow-right.svg") center center no-repeat;
+    /* background: url("../i/content/arrow-right.svg") center center no-repeat; */
     width: 40px;
     height: 30px
 }
@@ -984,7 +984,7 @@ nav {
 }
 
 .clients-slider .swiper-button-prev:after {
-    background: url("../i/content/arrow-left.svg") center center no-repeat;
+    /* background: url("../i/content/arrow-left.svg") center center no-repeat; */
     width: 40px;
     height: 30px
 }

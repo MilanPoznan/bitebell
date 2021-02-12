@@ -7,35 +7,38 @@ import IntegrationsComponent from '../components/IntegrationsComponent'
 
 
 export default function integracije({ data }) {
-  console.log(data)
-  const { wpPage: { language: { locale }, title, integrationsFields, translations },
-    allWpIntegration: { nodes } } = data
+  const { allWpIntegration: { integrations },
+    allWpPage: { nodes } } = data
 
-  const currLangIntegrations = nodes.filter(item => item.language.locale === locale)
+  const { title, integrationsFields, language, translations } = nodes[0]
+
+  const currLangIntegrations = integrations.filter(item => item.language.slug === language.slug)
   return (
-    <Layout language={locale} title={title} translations={translations}>
+    <Layout language={language.slug} title={title} translations={translations}>
       <IntegrationsComponent integrationsFields={integrationsFields} integrations={currLangIntegrations} />
     </Layout>
   )
 }
 
 export const integracijeQuery = graphql`
-  query getAllIntergations {
-    wpPage {
-      title
-      integrationsFields {
+  query getAllIntergations($id: String!) {
+    allWpPage(filter: { id: { eq: $id } }) {
+        nodes {
         title
-        subtitle
-      }
-      language {
-        locale
-      }
-      translations {
-        uri
+        integrationsFields {
+          title
+          subtitle
+        }
+        language {
+          slug
+        }
+        translations {
+          uri
+        }
       }
     }
     allWpIntegration {
-      nodes {
+      integrations: nodes {
         title
         featuredImage {
           node {
@@ -53,7 +56,7 @@ export const integracijeQuery = graphql`
           template
         }
         language {
-          locale
+          slug
         }
         translations {
           uri
