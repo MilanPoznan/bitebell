@@ -3,6 +3,9 @@
  */
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
