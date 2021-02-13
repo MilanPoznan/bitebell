@@ -1,5 +1,6 @@
 import React from "react"
 
+import './global-styles/oldCss.css';
 
 const Layout = ({ children }) => {
 
