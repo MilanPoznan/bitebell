@@ -117,34 +117,54 @@
       &__item {
         margin-left: 30px;
         transition: 0.3s;
+        &-wrapper {
+          position: relative;
+        }
         &:hover {
           font-size: 16px;
           color: $purple;
           font-weight: 600;
           background: none;
           text-decoration: underline;
-          border: none;
+          // border: none;
         }
         &-submenu {
           position: absolute;
-          top: -40%;
+          width: max-content;
+          top: 140px;
+          right: -20px;
           font-size: 15px;
           padding: 20px;
           border-radius: 5px;
           border: none;
-          -webkit-box-shadow: 0px 4px 8px rgb(0 0 0 / 5%);
-          box-shadow: 0px 4px 8px rgb(0 0 0 / 5%);
+          // -webkit-box-shadow: 0px 4px 8px rgb(0 0 0 / 5%);
+          // box-shadow: 0px 4px 8px rgb(0 0 0 / 5%);
+          box-shadow: 5px -2px 27px 1px rgba(0,0,0,0.31);
           text-align: right;
           opacity: 0;
-          overflow: hidden;
-          // transition: 0.5s;
+          overflow: initial;
+          background: $white;
+          transition: 0.5s;
+          pointer-events: none;
+          &:before {
+            content: '';
+            transform: rotate(45deg);
+            width: 10px;
+            height: 10px;
+            display: block;
+            background: #fff;
+            position: absolute;
+            right: 16px;
+            top: -5px;
+          }
           &:hover {
             opacity: 1;
-            top: auto;
-
+            top: 34px;
+            pointer-events: auto;
           }
           a {
             transition: 0.3s;
+            font-weight: 400;
             &:hover {
               color: $purple;
             }
@@ -154,13 +174,26 @@
           }
         }
         &--has-child {
+          padding: 20px 0;
+          &:after {
+            top: 26px;
+          }
           &:hover {
             + .menu__item-submenu {
               opacity: 1;
-              top: auto;
-
+              top: 34px;
+              pointer-events: auto;
             }
           } 
+        }
+      }
+      .cta-menu {
+        margin-left: 15px;
+      }
+      &__lang {
+        margin-left: 15px;
+        a {
+          margin: 20px 00px;
         }
       }
     }

@@ -13,8 +13,7 @@ body {
     font: 16px "Encode Sans", sans-serif;
     font-weight: 500;
     position: relative;
-    /* background: url("../i/content/bg-top.svg") top left no-repeat, url("../i/content/bg-bottom.svg") bottom right no-repeat; */
-    /* background: url("../i/content/bg.svg") top left no-repeat; */
+    background: url("../../img/bg-bottom.svg") top left no-repeat;
     background-size: cover;
     color: #000;
     min-height: 100vh;
@@ -608,7 +607,9 @@ p {
 
 .cta-menu:hover {
     background: #fff;
-    color: #78226F
+    color: #78226F;
+    border: 2px solid #78226F;
+
 }
 
 .partners {
