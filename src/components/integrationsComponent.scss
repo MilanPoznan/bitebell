@@ -1,3 +1,5 @@
+@import './global-styles/colors.scss';
+
 .integrations-content {
   &__image {
     width: 200px;
@@ -14,7 +16,7 @@
     cursor: pointer;
     transition: 0.5;
     &--active {
-      border-bottom: 2px solid #2C4482;
+      border-bottom: 2px solid $blue;
       font-weight: bold;
     }
   }
