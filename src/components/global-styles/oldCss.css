@@ -607,7 +607,9 @@ p {
 
 .cta-menu:hover {
     background: #fff;
-    color: #78226F
+    color: #78226F;
+    border: 2px solid #78226F;
+
 }
 
 .partners {
