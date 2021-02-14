@@ -1,0 +1,59 @@
+
+/*********************
+* Media query mixins *
+*********************/
+
+@mixin phone-portrait() {
+  @media screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin phone-landscape() {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin phone-lg() {
+  @media screen and (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait() {
+  @media screen and (min-width: 600px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape() {
+  @media screen and (min-width: 600px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+
+@mixin desktop-lowres() {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media screen and (min-width: 1320px) {
+    @content;
+  }
+}
+
+@mixin desktop-lg() {
+  @media screen and (min-width: 1920px) {
+    @content;
+  }
+}
