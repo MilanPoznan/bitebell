@@ -1,0 +1,21 @@
+.integrations-content {
+  &__image {
+    width: 200px;
+    height: 50px;
+    background-size: contain !important;
+  }
+}
+.integrations-tabs {
+  &__link {
+    background: none;
+    padding: 10px 15px;
+    font-size: 13px;
+    color: #2C4482;
+    cursor: pointer;
+    transition: 0.5;
+    &--active {
+      border-bottom: 2px solid #2C4482;
+      font-weight: bold;
+    }
+  }
+}

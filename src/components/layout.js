@@ -2,12 +2,14 @@ import React from "react"
 
 import './global-styles/oldCss.css';
 
-const Layout = ({ children }) => {
+import Header from './Header'
+
+const Layout = ({ currLangMenu, children, logo }) => {
 
   return (
     <div className="global-wrapper">
       <header>
-        Header
+        <Header currLangMenu={currLangMenu} logo={logo} />
       </header>
       <main>{children}</main>
       <footer>
