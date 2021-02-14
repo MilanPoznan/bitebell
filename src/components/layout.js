@@ -1,6 +1,7 @@
 import React from "react"
 
 import './global-styles/oldCss.css';
+import './global-styles/_normalize.scss';
 
 import Header from './Header'
 
