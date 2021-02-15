@@ -1,3 +1,4 @@
+@import './_media-mixins.scss';
 body {
   min-height: 100vh;
   font: 16px "Encode Sans", sans-serif;
@@ -10,4 +11,10 @@ body {
 }
 .main {
   padding-top: 100px;
+}
+
+@include desktop-lowres() {
+  .main {
+    padding-top: 190px;
+  }
 }

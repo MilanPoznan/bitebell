@@ -1,6 +1,5 @@
 @import './global-styles/colors.scss';
 @import './global-styles/_media-mixins.scss';
-
 .contact {
   &__info {
     margin-bottom: 30px;
@@ -11,5 +10,67 @@
   }
   form {
     background-color: $white;
+  }
+  &__api {
+    margin-top: 20px;
+    text-align: center;
+    &-logos {
+      margin-top: 30px;
+      padding: 0 25px;
+      display: flex;
+      flex-wrap: wrap;
+      div {
+        width: 90px;
+        height: 44px;
+        margin: 0 auto 35px;
+        padding: 0 15px;
+        &:before,
+        &:after {
+          width: 90px !important;
+          height: 44px !important;
+          background-size: contain !important;
+        }
+      }
+      
+    }
+    
+    h5 {
+      margin-bottom: 10px;
+    }
+    img {
+      width: 90px !important;
+      height: 54px !important;
+      object-fit: contain !important;
+    }
+  }
+}
+
+@include desktop-lowres() {
+  .contact {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    // grid-template-rows: auto;
+    grid-template-areas:
+    "contentX form"
+    "api form";
+    &__info {
+      grid-area: contentX;
+      h2 {
+        text-align: left;
+      }
+      .content-wys {
+        text-align: left;
+      }
+
+    }
+    &__api {
+      grid-area: api;
+      &-text {
+        text-align: left;
+      }
+    }
+    &__form {
+      grid-area: form;
+    }
   }
 }

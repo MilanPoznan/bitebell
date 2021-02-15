@@ -2,23 +2,28 @@
 @import './global-styles/_media-mixins.scss';
 
 .partnership-form {
+  display: grid;
   padding: 40px 30px;
   border: 1px solid red;
   h2 {
-    color: $blue;
     margin-bottom: 30px;
+    color: $blue;
+    text-align: center;
   }
   &__input-wrap {
     position: relative;
     margin: 0 0 40px;
   }
   input {
-    padding: 10px 10px 10px 5px;
+    padding: 10px 0px 10px 5px;
     display: block;
     width: 100%;
     border: none;
     border-bottom: 2px solid #E4E4E4;
     background: none;
+    &.filled {
+      border-bottom: 2px solid $purple;
+    }
     &:focus {
       border-bottom: 2px solid $purple;
 
@@ -40,6 +45,11 @@
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
+    &.fulfilled {
+      top: -20px;
+      font-size: 14px;
+      color: $purple;
+    }
   }
   .highlight {
     position: absolute;
@@ -49,5 +59,60 @@
     left: 0;
     pointer-events: none;
     opacity: 0.5;
+  }
+  .country-select {
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #E4E4E4;
+    background: none;
+    position: relative;
+    margin: 0 0 40px;
+  }
+  &__select {
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #E4E4E4;
+    background: none;
+  }
+  &__submit-btn {
+    padding: 15px 70px;
+    margin: 0 auto;
+    border-radius: .5px;
+    transition: all 0.2s ease;
+    border: 2px solid $blue;
+    color: $blue;
+    background: none;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 600;
+    &:hover {
+      background: $blue;
+      color: $white;
+  }
+  }
+}
+
+
+@include tablet() {
+  .partnership-form {
+    border: none;
+    box-shadow: 0 0 48px rgb(0 0 0 / 10%);
+    h2 {
+      text-align: left;
+    }
+    &__fields-wrap {
+      display: flex;
+      justify-content: space-between;
+      div {
+        width: 48%;
+      }
+      .country-select {
+        width: 48%;
+      }
+    }
   }
 }

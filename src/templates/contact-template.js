@@ -13,10 +13,11 @@ export default function contactTemplate({ data }) {
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
 
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
+  const currLangIntegrationType = types.filter(type => type.language.slug === language.slug)
 
   return (
     <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} >
-      <ContactPageLayout data={nodes[0]} language={language.slug} />
+      <ContactPageLayout selectTypes={currLangIntegrationType} data={nodes[0]} language={language.slug} />
     </Layout>
   )
 }
