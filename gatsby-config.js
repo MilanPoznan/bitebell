@@ -17,6 +17,17 @@ module.exports = {
       },
     },
 
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Encode Sans\:300,400,400i,700,800`, // you can also specify font weights and styles
+          `sans-serif`
+        ],
+        display: 'swap'
+      }
+    },
+
     /**
      * We need this plugin so that it adds the "File.publicURL" to our site
      * It will allow us to access static url's for assets like PDF's

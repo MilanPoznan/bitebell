@@ -1,0 +1,25 @@
+@import './global-styles/colors';
+@import './global-styles/media-mixins';
+
+.hero {
+  h1 {
+    line-height: 1.2;
+  }
+  div {
+    p {
+      font-size: 18px;
+      color: $grey-dark;
+      line-height: 1.2;
+    }
+  }
+}
+
+@include tablet() {
+  .hero {
+    div {
+      p {
+        font-size: 24px;
+      }
+    }
+  }
+}
