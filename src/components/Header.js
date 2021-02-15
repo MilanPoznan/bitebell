@@ -22,7 +22,7 @@ export default function Header({ currLangMenu, logo, currentLang, translations }
 
       <div className="main-header__left">
         <div className="main-header__logo">
-          <Link className={currentLang === 'sr' && 'active'} to='/'>
+          <Link className={currentLang === 'sr' ? 'active' : ''} to='/'>
             <Img fluid={fluid} />
           </Link>
         </div>

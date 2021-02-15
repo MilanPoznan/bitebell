@@ -13,7 +13,7 @@ body {
     font: 16px "Encode Sans", sans-serif;
     font-weight: 500;
     position: relative;
-    background: url("../../img/bg-bottom.svg") top left no-repeat;
+    background: url("../../img/bitbell-bg.png") top left no-repeat;
     background-size: cover;
     color: #000;
     min-height: 100vh;

@@ -42,6 +42,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         })
         break;
+      case 'Partnerships':
+      case 'Partnerstva':
+        createPage({
+          path: page.uri,
+          component: path.resolve('./src/templates/contact-template.js'),
+          context: {
+            id: page.id
+          }
+        })
+        break;
       default:
         createPage({
           path: page.uri,

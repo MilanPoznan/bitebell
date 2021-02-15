@@ -32,7 +32,6 @@ export default function IntegrationsComponent({ integrationsFields, integrations
   //Set active class to tabs
   const setActiveClassToTab = (activeRef, name) => {
     if (name === 'all') {
-      // console.log('allRef', otherTabsRef.current)
       activeRef.current.classList.add('integrations-tabs__link--active')
       removeClassListFromRef()
     } else {

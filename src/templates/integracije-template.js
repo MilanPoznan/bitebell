@@ -21,6 +21,7 @@ export default function integracije({ data }) {
 
   //Filter by language 
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
+
   const currLangIntegrations = integrations.filter(item => item.language.slug === language.slug)
   const currLangIntegrationType = types.filter(type => type.language.slug === language.slug)
 
