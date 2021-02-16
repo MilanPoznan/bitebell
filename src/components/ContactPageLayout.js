@@ -4,8 +4,8 @@ import BackgroundImage from 'gatsby-background-image'
 
 import './ContactPage.scss'
 
-export default function ContactPageLayout({ data, language, selectTypes }) {
-  const { partners: { title, content, apiContent, logos, becomePartnerCf } } = data
+export default function ContactPageLayout({ title, content, apiContent, partnerLogo, language, selectTypes }) {
+  console.log('partnerLogo', partnerLogo)
   return (
     <div className="contact container">
       <section className="contact__info">
@@ -14,15 +14,19 @@ export default function ContactPageLayout({ data, language, selectTypes }) {
       </section>
 
       <section className="contact__form">
-        <PartnershipForm data={becomePartnerCf} language={language} selectTypes={selectTypes} />
+        {/* <PartnershipForm data={data.becomePartnerCf} language={language} selectTypes={selectTypes} /> */}
       </section>
 
       <section className="contact__api">
         <div className="contact__api-text" dangerouslySetInnerHTML={{ __html: apiContent }}></div>
         <div className="contact__api-logos">
-          {logos.map((item, index) =>
-            <div className={`${index % 2 === 0 ? 'top' : 'bottom'} `}>
-              <BackgroundImage key={index} fluid={item.logoImage.file.image.fluid} />
+          {partnerLogo.map((item, index) =>
+            <div key={index} className={`${index % 2 === 0 ? 'top' : 'bottom'} `}>
+              {item.logo
+                ? <BackgroundImage fluid={item.logo.file.image.fluid} />
+                : <BackgroundImage fluid={item.logoImage.file.image.fluid} />
+              }
+
             </div>
           )}
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import Hero from '../components/Hero'
 
-export default function page({data}) {
-  
-  const {allWpPage : {nodes}} = data;
-  const {homepage_sections: {aboutSection, demoSection, heroSection, mapSection, posSection, sponsorsSection}} = nodes[0];
+export default function page({ data }) {
+
+  const { allWpPage: { nodes } } = data;
+  const { homepage_sections: { aboutSection, demoSection, heroSection, mapSection, posSection, sponsorsSection } } = nodes[0];
 
   return (
     <div>

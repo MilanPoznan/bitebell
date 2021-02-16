@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
-import './PartnershipForm.scss'
+//Components 
 import CountrySelect from './CountrySelect'
+//Hooks
+import { fetchWithTimeout } from '../utils/utils'
+//Styles
+import './PartnershipForm.scss'
+//Recatcha
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+
+
 export default function PartnershipForm({ data, language, selectTypes }) {
-  console.log(selectTypes)
 
   const { nameField: { name, nameEn, showNameField, isNameRequired },
     emailField: { email, emailEn, showEmailField, isEmailRequired },
@@ -12,7 +19,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
     selectCompanyField: { selectCompany, selectCompanyEn, isCompanySelectRequired, showCompanySelect } } = data
 
   const isLangEn = language === 'en';
-
+  //Fields
   const [nameField, setNameField] = useState('')
   const [emailField, setEmailField] = useState('');
   const [phoneField, setPhoneField] = useState('');
@@ -20,7 +27,47 @@ export default function PartnershipForm({ data, language, selectTypes }) {
   const [companySelect, setCompanySelect] = useState('');
   const [notesField, setNotesField] = useState('');
 
-  const onSubmit = () => console.log('ss')
+  const [submited, setSubmited] = useState(false)
+
+  const validateEmail = (email) => {
+    let regularExpression = /^(([^.\s@]+(\.[^.\s@]+)*))@(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})$/;
+
+    if (regularExpression.test(email)) {
+      return true;
+    }
+    return false;
+  }
+
+  const checkIsFieldValid = (isRequired, fieldValue) => isRequired ? !!fieldValue : true
+
+  const backendUrl = '';
+
+  const sendFormData = data => fetch(`${backendUrl}/wp-json/student/v1/forms`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }
+  )
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setSubmited(true)
+
+    if (checkIsFieldValid(isPhoneRequired, phoneField),
+      validateEmail(emailField),
+      checkIsFieldValid(isPhoneRequired, phoneField),
+      checkIsFieldValid(isCompanyRequired, companyField),
+      checkIsFieldValid(isCompanySelectRequired, companySelect),
+      checkIsFieldValid(isNotesRequired, notesField)
+    ) {
+      fetchWithTimeout(
+        sendFormData,
+        {
+
+        }
+      )
+    }
+  }
 
   return (
     <form className="partnership-form" id="demoPartnership">
@@ -94,7 +141,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
               setCompanySelect(e.target.value);
               console.log('companySelect', companySelect)
             }} className="partnership-form__select" required={isCompanySelectRequired ? true : false} name="nameDemo" >
-              <option hidden value="">Select Company Type</option>
+              <option hidden value="">{isLangEn ? selectCompanyEn : selectCompany}</option>
               {selectTypes.map((type, index) => <option key={index} value={type.name}>{type.name}</option>)}
               <option value={'other'}>Other</option>
             </select>
@@ -112,10 +159,9 @@ export default function PartnershipForm({ data, language, selectTypes }) {
             />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label>{isLangEn ? notesEn : notes}{isNotesRequired ? '*' : ''}</label>
+            <label className={`${!!notesField ? 'fulfilled' : ''}`}>{isLangEn ? notesEn : notes}{isNotesRequired ? '*' : ''}</label>
           </div>
         }
-
         <button
           onClick={onSubmit}
           className="partnership-form__submit-btn"

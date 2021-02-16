@@ -1,9 +1,20 @@
 @import './global-styles/colors.scss';
 @import './global-styles/_media-mixins.scss';
-
-.main-header {
+.main-header-wrapper {
   position: fixed;
   width: 100%;
+  &__scrolled {
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
+    transition: all 0.3s ease;
+    z-index: 9999;
+    -webkit-box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
+    -webkit-transition: all 0.3s ease;
+  }
+}
+
+.main-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;

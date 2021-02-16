@@ -16,7 +16,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const pages = await getPages(graphql, reporter)
 
   posts.edges.forEach(singlePost => {
-    console.log(singlePost)
     return createPage({
       path: singlePost.post.uri,
       component: path.resolve(`./src/templates/single-template.js`),
@@ -31,9 +30,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   )
 
   pages.nodes.forEach(page => {
-    switch (page.title) {
-      case 'Integrations':
-      case 'Integracije':
+    switch (page.slug) {
+      case 'integrations':
+      case 'integracije':
         createPage({
           path: page.uri,
           component: path.resolve('./src/templates/integracije-template.js'),
@@ -42,16 +41,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         })
         break;
-      case 'Partnerships':
-      case 'Partnerstva':
+      case 'partnerships':
+      case 'partnerstva':
         createPage({
           path: page.uri,
           component: path.resolve('./src/templates/contact-template.js'),
           context: {
-            id: page.id
+            id: page.id,
+            slug: page.slug
           }
         })
         break;
+      case 'schedule-a-demo':
+      case 'zakazi-demo':
+        createPage({
+          path: page.uri,
+          component: path.resolve('./src/templates/request-demo-template.js'),
+          context: {
+            id: page.id,
+            slug: page.slug
+          }
+        })
+        break;
+
       default:
         createPage({
           path: page.uri,
@@ -145,7 +157,6 @@ async function getPages(graphql, reporter) {
     )
     return
   }
-  console.log('pagesResult', pagesResult)
   return pagesResult.data.allWpPage
 }
 

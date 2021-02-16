@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from '../components/Layout'
 import ContactPageLayout from '../components/ContactPageLayout'
 
-export default function contactTemplate({ data, pageContext }) {
+export default function requestDemoTemplate({ data, pageContext }) {
   const {
     allWpPage: { nodes },
     allWpIntegrationType: { types },
@@ -18,10 +18,10 @@ export default function contactTemplate({ data, pageContext }) {
   return (
     <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} >
       <ContactPageLayout
-        title={nodes[0].partners.title}
-        content={nodes[0].partners.content}
-        apiContent={nodes[0].partners.apiContent}
-        partnerLogo={nodes[0].partners.logos}
+        title={nodes[0].demoCf.title}
+        content={nodes[0].demoCf.content}
+        apiContent={nodes[0].demoCf.apiContent}
+        partnerLogo={nodes[0].demoCf.partnerLogo}
         slug={pageContext.slug}
         selectTypes={currLangIntegrationType}
         language={language.slug}
@@ -32,7 +32,7 @@ export default function contactTemplate({ data, pageContext }) {
 
 
 export const contactQuery = graphql`
-  query getContactPageData($id: String!) {
+  query getDemoRequestPageData($id: String!) {
     wp {
       optionsPage {
         options: optionsPage {
@@ -54,12 +54,12 @@ export const contactQuery = graphql`
     allWpPage(filter: { id: { eq: $id } }) {
       nodes {
         title
-        partners {
-          title
-          content
+        demoCf {
           apiContent
-          logos {
-            logoImage {
+          content
+          title
+            partnerLogo {
+              logo {
               file: localFile {
                 image: childImageSharp {
                   fluid(maxWidth: 200) {
@@ -68,60 +68,38 @@ export const contactQuery = graphql`
                 }
               }
             }
-          }
-          partnerLogo {
-            logo {
-              file: localFile {
-                image: childImageSharp {
-                  fluid(maxWidth: 200) {
-                      ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
             }
-          }
-          becomePartnerCf {
-            companyField {
-              company
-              companyEn
-              isCompanyRequired
-              showCompanyFileld
-              fieldGroupName
-            }
-            emailField {
-              emailEn
+          requestDemoCf {
+            emailGroup {
               email
-              isEmailRequired
-              showEmailField
-              fieldGroupName
+              emailRequired
+              showEmail
             }
-            nameField {
-              isNameRequired
-              name
-              nameEn
-              showNameField
-              fieldGroupName
+            imeGrupa {
+              ime
+              imeObavezno
+              showIme
             }
-            notesField {
+            locationGroup {
               fieldGroupName
-              isNotesRequired
-              notes
-              notesEn
-              showNotesField
+              isLocationRequired
+              locationText
+              showLocation
             }
-            phoneField {
+            phoneGroup {
               isPhoneRequired
-              phoneEn
-              phone
+              phoneText
               showPhoneField
-              fieldGroupName
             }
-            selectCompanyField {
-              fieldGroupName
-              selectCompany
-              selectCompanyEn
-              isCompanySelectRequired
-              showCompanySelect
+            posFieldGroup {
+              isPosRequired
+              posFieldText
+              showPosField
+            }
+            restaurant {
+              restaurantName
+              restaurantNameRequired
+              restaurantNameShow
             }
           }
         }
