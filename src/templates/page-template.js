@@ -105,15 +105,6 @@ export const query = graphql`
               price
               status
             }
-            tableIcon {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
-            }
           }
           sponsorsSection {
             fieldGroupName

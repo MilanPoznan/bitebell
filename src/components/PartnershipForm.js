@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 //Components 
 import CountrySelect from './CountrySelect'
 //Hooks
@@ -23,6 +23,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
   const [nameField, setNameField] = useState('')
   const [emailField, setEmailField] = useState('');
   const [phoneField, setPhoneField] = useState('');
+  const [phoneSelect, setPhoneSelect] = useState('+381');
   const [companyField, setCompanyField] = useState('');
   const [companySelect, setCompanySelect] = useState('');
   const [notesField, setNotesField] = useState('');
@@ -40,7 +41,6 @@ export default function PartnershipForm({ data, language, selectTypes }) {
 
   const checkIsFieldValid = (isRequired, fieldValue) => isRequired ? !!fieldValue : true
 
-  const backendUrl = '';
 
   const sendFormData = data => fetch(`https://dev.bitebell.com/wp-json/bitebell/v1/forms`, {
     method: "POST",
@@ -49,61 +49,58 @@ export default function PartnershipForm({ data, language, selectTypes }) {
   }
   )
 
+
+  useEffect(() => {
+    console.log('submit', submited)
+    console.log('nameField', nameField)
+  }, [phoneSelect])
+
   const onSubmit = (e) => {
     e.preventDefault();
+
     setSubmited(true)
-
-
-    const testObj = {
-      full_name: nameField,
-      email: emailField,
-      phone: phoneField,
-      company: companyField,
-      company_type: companySelect,
-      notes: notesField,
-      form_type: 'partnership'
-    }
-    console.log(testObj)
-    if (checkIsFieldValid(isPhoneRequired, phoneField),
+    console.log('nameF', !!nameField)
+    if (checkIsFieldValid(isPhoneRequired, phoneField) &&
       validateEmail(emailField),
       checkIsFieldValid(isPhoneRequired, phoneField),
       checkIsFieldValid(isCompanyRequired, companyField),
       checkIsFieldValid(isCompanySelectRequired, companySelect),
       checkIsFieldValid(isNotesRequired, notesField)
     ) {
-      fetchWithTimeout(
-        sendFormData,
-        {
-          full_name: nameField,
-          email: emailField,
-          phone: phoneField,
-          company: companyField,
-          company_type: companySelect,
-          notes: notesField,
-          form_type: 'partnership'
-        },
-        10000
-      )
-        .then(response => {
-          console.log('response', response)
-          if (!response.ok) {
-            throw new Error(`${response.statusText}`)
-          }
-        })
-        .catch(e => {
-          console.error(e)
-        })
+      // fetchWithTimeout(
+      //   sendFormData,
+      //   {
+      //     full_name: nameField,
+      //     email: emailField,
+      //     phone: phoneField,
+      //     phone_select: phoneSelect,
+      //     company: companyField,
+      //     company_type: companySelect,
+      //     notes: notesField,
+      //     form_type: 'partnership'
+      //   },
+      //   10000
+      // )
+      //   .then(response => {
+      //     console.log('response', response)
+      //     if (!response.ok) {
+      //       throw new Error(`${response.statusText}`)
+      //     }
+      //   })
+      //   .catch(e => {
+      //     console.error(e)
+      //   })
     }
   }
 
   return (
     <form className="partnership-form" id="demoPartnership">
-      <h2>Become a partner</h2>
+      <h2>{isLangEn ? "Become a partner" : 'Postanite partner'}</h2>
       <div className="row">
         <div className="partnership-form__fields-wrap">
 
           {showNameField &&
-            <div className="partnership-form__input-wrap">
+            <div className={submited && nameField === '' ? "partnership-form__input-wrap error" : "partnership-form__input-wrap"}>
               <input
                 value={nameField}
                 onChange={(e) => setNameField(e.target.value)}
@@ -114,6 +111,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
               <span className="highlight"></span>
               <span className="bar"></span>
               <label className={`${!!nameField ? 'fulfilled' : ''}`}>{name}{isNameRequired ? '*' : ''}</label>
+              {submited && isNameRequired && nameField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
             </div>
           }
 
@@ -129,12 +127,14 @@ export default function PartnershipForm({ data, language, selectTypes }) {
               <span className="highlight"></span>
               <span className="bar"></span>
               <label className={`${!!emailField ? 'fulfilled' : ''}`}>{email}{isEmailRequired ? '*' : ''}</label>
+              {submited && emailField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
             </div>
           }
         </div>
 
         <div className="partnership-form__fields-wrap country-wrapp">
-          <CountrySelect />
+          <CountrySelect setPhoneSelect={setPhoneSelect} phoneSelect={phoneSelect} />
           {showPhoneField &&
             <div className="partnership-form__input-wrap">
               <input
