@@ -1,11 +1,12 @@
 import React from 'react'
 import PartnershipForm from './PartnershipForm'
+import DemoForm from './DemoForm'
+
 import BackgroundImage from 'gatsby-background-image'
 
 import './ContactPage.scss'
 
-export default function ContactPageLayout({ title, content, apiContent, partnerLogo, language, selectTypes }) {
-  console.log('partnerLogo', partnerLogo)
+export default function ContactPageLayout({ title, content, apiContent, partnerLogo, language, selectTypes, cfData, slug }) {
   return (
     <div className="contact container">
       <section className="contact__info">
@@ -14,7 +15,10 @@ export default function ContactPageLayout({ title, content, apiContent, partnerL
       </section>
 
       <section className="contact__form">
-        {/* <PartnershipForm data={data.becomePartnerCf} language={language} selectTypes={selectTypes} /> */}
+        {slug === 'partnerships'
+          ? <PartnershipForm data={cfData} language={language} selectTypes={selectTypes} />
+          : <DemoForm data={cfData} language={language} />
+        }
       </section>
 
       <section className="contact__api">

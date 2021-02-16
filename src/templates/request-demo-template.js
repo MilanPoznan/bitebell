@@ -22,6 +22,7 @@ export default function requestDemoTemplate({ data, pageContext }) {
         content={nodes[0].demoCf.content}
         apiContent={nodes[0].demoCf.apiContent}
         partnerLogo={nodes[0].demoCf.partnerLogo}
+        cfData={nodes[0].demoCf.requestDemoCf}
         slug={pageContext.slug}
         selectTypes={currLangIntegrationType}
         language={language.slug}

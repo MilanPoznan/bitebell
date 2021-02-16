@@ -11,12 +11,12 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 export default function PartnershipForm({ data, language, selectTypes }) {
 
-  const { nameField: { name, nameEn, showNameField, isNameRequired },
-    emailField: { email, emailEn, showEmailField, isEmailRequired },
-    phoneField: { phone, phoneEn, showPhoneField, isPhoneRequired },
-    companyField: { company, companyEn, showCompanyFileld, isCompanyRequired },
-    notesField: { notes, notesEn, showNotesField, isNotesRequired },
-    selectCompanyField: { selectCompany, selectCompanyEn, isCompanySelectRequired, showCompanySelect } } = data
+  const { nameField: { name, showNameField, isNameRequired },
+    emailField: { email, showEmailField, isEmailRequired },
+    phoneField: { phone, showPhoneField, isPhoneRequired },
+    companyField: { company, showCompanyFileld, isCompanyRequired },
+    notesField: { notes, showNotesField, isNotesRequired },
+    selectCompanyField: { selectCompany, isCompanySelectRequired, showCompanySelect } } = data
 
   const isLangEn = language === 'en';
   //Fields
@@ -86,7 +86,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
               />
               <span className="highlight"></span>
               <span className="bar"></span>
-              <label className={`${!!nameField ? 'fulfilled' : ''}`}>{isLangEn ? nameEn : name}{isNameRequired ? '*' : ''}</label>
+              <label className={`${!!nameField ? 'fulfilled' : ''}`}>{name}{isNameRequired ? '*' : ''}</label>
             </div>
           }
 
@@ -101,7 +101,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
               />
               <span className="highlight"></span>
               <span className="bar"></span>
-              <label className={`${!!emailField ? 'fulfilled' : ''}`}>{isLangEn ? emailEn : email}{isEmailRequired ? '*' : ''}</label>
+              <label className={`${!!emailField ? 'fulfilled' : ''}`}>{email}{isEmailRequired ? '*' : ''}</label>
             </div>
           }
         </div>
@@ -118,7 +118,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
                 name="phone" />
               <span className="highlight"></span>
               <span className="bar"></span>
-              <label className={`${!!phoneField ? 'fulfilled' : ''}`}>{isLangEn ? phoneEn : phone}{isPhoneRequired ? '*' : ''}</label>
+              <label className={`${!!phoneField ? 'fulfilled' : ''}`}>{phone}{isPhoneRequired ? '*' : ''}</label>
             </div>
           }
         </div>
@@ -132,7 +132,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
               name="company" />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label className={`${!!companyField ? 'fulfilled' : ''}`}>{isLangEn ? companyEn : company}{isCompanyRequired ? '*' : ''}</label>
+            <label className={`${!!companyField ? 'fulfilled' : ''}`}>{company}{isCompanyRequired ? '*' : ''}</label>
           </div>
         }
         {showCompanySelect &&
@@ -141,7 +141,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
               setCompanySelect(e.target.value);
               console.log('companySelect', companySelect)
             }} className="partnership-form__select" required={isCompanySelectRequired ? true : false} name="nameDemo" >
-              <option hidden value="">{isLangEn ? selectCompanyEn : selectCompany}</option>
+              <option hidden value="">{selectCompany}</option>
               {selectTypes.map((type, index) => <option key={index} value={type.name}>{type.name}</option>)}
               <option value={'other'}>Other</option>
             </select>
@@ -159,7 +159,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
             />
             <span className="highlight"></span>
             <span className="bar"></span>
-            <label className={`${!!notesField ? 'fulfilled' : ''}`}>{isLangEn ? notesEn : notes}{isNotesRequired ? '*' : ''}</label>
+            <label className={`${!!notesField ? 'fulfilled' : ''}`}>{notes}{isNotesRequired ? '*' : ''}</label>
           </div>
         }
         <button

@@ -14,7 +14,6 @@ export default function contactTemplate({ data, pageContext }) {
 
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
   const currLangIntegrationType = types.filter(type => type.language.slug === language.slug)
-
   return (
     <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} >
       <ContactPageLayout
@@ -22,6 +21,7 @@ export default function contactTemplate({ data, pageContext }) {
         content={nodes[0].partners.content}
         apiContent={nodes[0].partners.apiContent}
         partnerLogo={nodes[0].partners.logos}
+        cfData={nodes[0].partners.becomePartnerCf}
         slug={pageContext.slug}
         selectTypes={currLangIntegrationType}
         language={language.slug}
@@ -83,13 +83,11 @@ export const contactQuery = graphql`
           becomePartnerCf {
             companyField {
               company
-              companyEn
               isCompanyRequired
               showCompanyFileld
               fieldGroupName
             }
             emailField {
-              emailEn
               email
               isEmailRequired
               showEmailField
@@ -98,7 +96,6 @@ export const contactQuery = graphql`
             nameField {
               isNameRequired
               name
-              nameEn
               showNameField
               fieldGroupName
             }
@@ -106,12 +103,10 @@ export const contactQuery = graphql`
               fieldGroupName
               isNotesRequired
               notes
-              notesEn
               showNotesField
             }
             phoneField {
               isPhoneRequired
-              phoneEn
               phone
               showPhoneField
               fieldGroupName
@@ -119,7 +114,6 @@ export const contactQuery = graphql`
             selectCompanyField {
               fieldGroupName
               selectCompany
-              selectCompanyEn
               isCompanySelectRequired
               showCompanySelect
             }
