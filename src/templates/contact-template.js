@@ -69,17 +69,7 @@ export const contactQuery = graphql`
               }
             }
           }
-          partnerLogo {
-            logo {
-              file: localFile {
-                image: childImageSharp {
-                  fluid(maxWidth: 200) {
-                      ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
-            }
-          }
+        
           becomePartnerCf {
             companyField {
               company

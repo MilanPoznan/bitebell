@@ -42,7 +42,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
 
   const backendUrl = '';
 
-  const sendFormData = data => fetch(`${backendUrl}/wp-json/student/v1/forms`, {
+  const sendFormData = data => fetch(`https://dev.bitebell.com/wp-json/bitebell/v1/forms`, {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -53,6 +53,17 @@ export default function PartnershipForm({ data, language, selectTypes }) {
     e.preventDefault();
     setSubmited(true)
 
+
+    const testObj = {
+      full_name: nameField,
+      email: emailField,
+      phone: phoneField,
+      company: companyField,
+      company_type: companySelect,
+      notes: notesField,
+      form_type: 'partnership'
+    }
+    console.log(testObj)
     if (checkIsFieldValid(isPhoneRequired, phoneField),
       validateEmail(emailField),
       checkIsFieldValid(isPhoneRequired, phoneField),
@@ -63,9 +74,25 @@ export default function PartnershipForm({ data, language, selectTypes }) {
       fetchWithTimeout(
         sendFormData,
         {
-
-        }
+          full_name: nameField,
+          email: emailField,
+          phone: phoneField,
+          company: companyField,
+          company_type: companySelect,
+          notes: notesField,
+          form_type: 'partnership'
+        },
+        10000
       )
+        .then(response => {
+          console.log(response)
+          if (!response.ok) {
+            throw new Error(`${response.statusText}`)
+          }
+        })
+        .catch(e => {
+          console.error(e)
+        })
     }
   }
 
@@ -163,7 +190,7 @@ export default function PartnershipForm({ data, language, selectTypes }) {
           </div>
         }
         <button
-          onClick={onSubmit}
+          onClick={(e) => onSubmit(e)}
           className="partnership-form__submit-btn"
         >
           {isLangEn ? 'Submit' : 'Potvrdite'}

@@ -15,7 +15,7 @@ export default function ContactPageLayout({ title, content, apiContent, partnerL
       </section>
 
       <section className="contact__form">
-        {slug === 'partnerships'
+        {slug === 'partnerships' || slug === 'partnerstva'
           ? <PartnershipForm data={cfData} language={language} selectTypes={selectTypes} />
           : <DemoForm data={cfData} language={language} />
         }
