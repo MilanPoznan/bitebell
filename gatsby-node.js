@@ -56,7 +56,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       case 'news':
         createPage({
           path: page.uri,
-          component: path.resolve('./src/templates/contact-template.js'),
+          component: path.resolve('./src/templates/archive-template.js'),
           context: {
             id: page.id,
             slug: page.slug
