@@ -4,15 +4,14 @@ import './Hero.scss'
 
 export default function Hero({heroSection}) {
 
-  console.log(heroSection)
   const {heroTitle, heroSubtitle} = heroSection
 
   return (
     <div className="header">
-    <div className="container hero">
-      <h1>{heroTitle}</h1>
-      <div dangerouslySetInnerHTML={{__html: heroSubtitle}}></div>
-    </div>
+      <div className="container hero">
+        <h1>{heroTitle}</h1>
+        <div dangerouslySetInnerHTML={{__html: heroSubtitle}}></div>
+      </div>
     </div>
   )
 }

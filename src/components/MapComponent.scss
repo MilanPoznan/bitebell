@@ -1,0 +1,17 @@
+.map-component {
+  &__map {
+    &-container {
+      margin: 0 6%;
+      box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+      padding: 5px;
+    }
+  }
+
+  &__check {
+    display: flex;
+    
+    &-map {
+      padding-bottom: 44px;
+    }
+  }
+}

@@ -1,5 +1,9 @@
 import React from 'react'
+
+// import Layout from '../components/layout'
 import Hero from '../components/Hero'
+import PosComponent from '../components/PosComponent'
+import MapComponent from '../components/MapComponent'
 
 export default function page({ data }) {
 
@@ -8,7 +12,9 @@ export default function page({ data }) {
 
   return (
     <div>
-      <Hero heroSection={heroSection} />
+      <Hero heroSection={heroSection}/>
+      <PosComponent posSection={posSection}/>
+      <MapComponent mapSection={mapSection}/>
     </div>
   )
 }
@@ -105,7 +111,7 @@ export const query = graphql`
               price
               status
             }
-            tableIcon {
+            tabelIcon {
               localFile {
                 childImageSharp {
                   fluid {
