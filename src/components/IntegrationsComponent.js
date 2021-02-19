@@ -129,6 +129,6 @@ export default function IntegrationsComponent({ integrationsFields, integrations
       </section>
 
 
-    </div >
+    </div>
   )
 }
