@@ -20,7 +20,16 @@
       padding: 0 25px;
       display: flex;
       flex-wrap: wrap;
+      .top {
+        transform: translate(0px, -40px);
+        opacity: 0;
+      }
+      .bottom {
+        transform: translate(0px, 40px);
+        opacity: 0;
+      }
       div {
+        position: relative;
         width: 90px;
         height: 44px;
         margin: 0 auto 35px;
@@ -34,6 +43,14 @@
       }
       
     }
+    &.shown {
+      .top,
+      .bottom {
+        animation: showTopLogos;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+      }
+    }
     
     h5 {
       margin-bottom: 10px;
@@ -46,6 +63,12 @@
   }
 }
 
+@keyframes showTopLogos {
+  to {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
 @include desktop-lowres() {
   .contact {
     display: grid;

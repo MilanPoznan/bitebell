@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import PartnershipForm from './PartnershipForm'
 import DemoForm from './DemoForm'
 
 import BackgroundImage from 'gatsby-background-image'
 
+import useIntersect from '../hooks/useIntersect'
+
 import './ContactPage.scss'
 
 export default function ContactPageLayout({ title, content, apiContent, partnerLogo, language, selectTypes, cfData, slug }) {
+
+  const [ref, entry] = useIntersect({
+    rootMargin: "0px 0px 0px",
+    threshold: 0
+  })
+
+  const logosRef = useRef(null)
+
+  useEffect(() => {
+    if (entry.isIntersecting) {
+      logosRef.current.classList.add('shown')
+    }
+  }, [entry.isIntersecting])
   return (
     <div className="contact container">
       <section className="contact__info">
@@ -21,14 +36,14 @@ export default function ContactPageLayout({ title, content, apiContent, partnerL
         }
       </section>
 
-      <section className="contact__api">
+      <section className="contact__api" ref={logosRef}>
         <div className="contact__api-text" dangerouslySetInnerHTML={{ __html: apiContent }}></div>
-        <div className="contact__api-logos">
+        <div className="contact__api-logos" ref={ref}>
           {partnerLogo.map((item, index) =>
-            <div key={index} className={`${index % 2 === 0 ? 'top' : 'bottom'} `}>
+            <div key={index} className={`${index % 2 === 0 ? 'logos top' : 'logos bottom'} `}>
               {item.logo
-                ? <BackgroundImage fluid={item.logo.file.image.fluid} />
-                : <BackgroundImage fluid={item.logoImage.file.image.fluid} />
+                ? <BackgroundImage className="logos__bg" fluid={item.logo.file.image.fluid} />
+                : <BackgroundImage bgclassName="logos__bg" fluid={item.logoImage.file.image.fluid} />
               }
 
             </div>
