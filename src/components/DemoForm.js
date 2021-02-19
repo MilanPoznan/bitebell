@@ -6,6 +6,9 @@ import { fetchWithTimeout } from '../utils/utils'
 //Styles
 import './PartnershipForm.scss'
 
+import ReCAPTCHA from 'react-google-recaptcha'
+
+
 export default function DemoForm({ data, language }) {
 
   const {
@@ -49,31 +52,44 @@ export default function DemoForm({ data, language }) {
   const checkIsFieldValid = (isRequired, fieldValue) => isRequired ? !!fieldValue : true
 
   const onSubmit = (e) => {
+
     e.preventDefault();
 
-    fetchWithTimeout(
-      sendFormData,
-      {
-        full_name: nameField,
-        email: emailField,
-        phone: phoneField,
-        phone_select: phoneSelect,
-        location: locationField,
-        restaurant: restaurantField,
-        pos: posSelect,
-        form_type: 'demo'
-      },
-      1000
-    )
-      .then(response => {
-        console.log('response', response)
-        if (!response.ok) {
-          throw new Error(`${response.statusText}`)
-        }
-      })
-      .catch(e => {
-        console.error(e)
-      })
+    setSubmited(true)
+    if (
+      checkIsFieldValid(imeObavezno, nameField) && //Name field
+      validateEmail(emailField) && //Email Field
+      checkIsFieldValid(isPhoneRequired, phoneField) && //Phone field
+      checkIsFieldValid(isLocationRequired, locationField) && //Company field 
+      checkIsFieldValid(isPosRequired, posSelect) && //select Company field
+      checkIsFieldValid(restaurantNameRequired, restaurantField) //Notes field
+    ) {
+      fetchWithTimeout(
+        sendFormData,
+        {
+          full_name: nameField,
+          email: emailField,
+          phone: phoneField,
+          phone_select: phoneSelect,
+          location: locationField,
+          restaurant: restaurantField,
+          pos: posSelect,
+          form_type: 'demo'
+        },
+        1000
+      )
+        .then(response => {
+          console.log('response', response)
+          if (!response.ok) {
+            throw new Error(`${response.statusText}`)
+          }
+        })
+        .catch(e => {
+          console.error(e)
+        })
+    } else {
+      console.log('niis popunio')
+    }
   }
   return (
     <form className="partnership-form" id="demoPartnership">
@@ -93,6 +109,8 @@ export default function DemoForm({ data, language }) {
               <span className="highlight"></span>
               <span className="bar"></span>
               <label className={`${!!nameField ? 'fulfilled' : ''}`}>{ime}{imeObavezno ? '*' : ''}</label>
+              {submited && imeObavezno && nameField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
             </div>
           }
 
@@ -108,6 +126,8 @@ export default function DemoForm({ data, language }) {
               <span className="highlight"></span>
               <span className="bar"></span>
               <label className={`${!!emailField ? 'fulfilled' : ''}`}>{email}{emailRequired ? '*' : ''}</label>
+              {submited && emailRequired && emailField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
             </div>
           }
         </div>
@@ -125,6 +145,8 @@ export default function DemoForm({ data, language }) {
               <span className="highlight"></span>
               <span className="bar"></span>
               <label className={`${!!phoneField ? 'fulfilled' : ''}`}>{phoneText}{isPhoneRequired ? '*' : ''}</label>
+              {submited && isPhoneRequired && phoneField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
             </div>
           }
         </div>
@@ -144,6 +166,8 @@ export default function DemoForm({ data, language }) {
             <span className="highlight"></span>
             <span className="bar"></span>
             <label className={`${!!restaurantField ? 'fulfilled' : ''}`}>{restaurantName}{restaurantNameRequired ? '*' : ''}</label>
+            {submited && restaurantNameRequired && restaurantField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
           </div>
         }
 
@@ -158,6 +182,8 @@ export default function DemoForm({ data, language }) {
             <span className="highlight"></span>
             <span className="bar"></span>
             <label className={`${!!locationField ? 'fulfilled' : ''}`}>{locationText}{isLocationRequired ? '*' : ''}</label>
+            {submited && isLocationRequired && locationField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
           </div>
         }
 
@@ -172,6 +198,8 @@ export default function DemoForm({ data, language }) {
             <span className="highlight"></span>
             <span className="bar"></span>
             <label className={`${!!posSelect ? 'fulfilled' : ''}`}>{posFieldText}{isPosRequired ? '*' : ''}</label>
+            {submited && isPosRequired && posSelect === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
           </div>
         }
         <button

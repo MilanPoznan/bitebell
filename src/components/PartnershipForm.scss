@@ -4,7 +4,7 @@
 .partnership-form {
   display: grid;
   padding: 40px 30px;
-  border: 1px solid red;
+  box-shadow: 5px 5px 15px 5px rgba(137,137,137,0.58);
   h2 {
     margin-bottom: 30px;
     color: $blue;
@@ -113,6 +113,7 @@
     h2 {
       text-align: left;
     }
+    
     &__fields-wrap {
       display: flex;
       justify-content: space-between;
@@ -122,6 +123,9 @@
       .country-select {
         width: 48%;
       }
+    }
+    &__input-label-error {
+      width: 100% !important;
     }
   }
 }

@@ -25,9 +25,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         previous: singlePost.previous
       }
     })
-  }
-
-  )
+  })
 
   pages.nodes.forEach(page => {
     switch (page.slug) {
@@ -89,9 +87,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   })
 
-  await createArchivePage(posts, graphql, createPage)
 
 }
+
 
 
 //Get all pages
