@@ -52,6 +52,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         })
         break;
+      case 'blog':
+      case 'news':
+        createPage({
+          path: page.uri,
+          component: path.resolve('./src/templates/archive-template.js'),
+          context: {
+            id: page.id,
+            slug: page.slug
+          }
+        })
+        break;
+
       case 'schedule-a-demo':
       case 'zakazi-demo':
         createPage({
@@ -81,59 +93,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 }
 
-
-//Create posts archive
-async function createArchivePage(posts, graphql, createPage) {
-
-  const graphqlResult = await graphql(`
-  {
-    wp {
-      readingSettings {
-        postsPerPage
-      }
-    }
-  }
-  `)
-
-  const { postsPerPage } = graphqlResult.data.wp.readingSettings
-  //Loadsh.chunk() function is used to break the array in to small chunks. Each chunk is an array of size as given.
-  //params (array, size)
-  const postsChunkedIntoArchivePages = chunk(posts.edges, postsPerPage)
-  const totalPages = postsChunkedIntoArchivePages.length
-
-  return Promise.all(
-    postsChunkedIntoArchivePages.map(async (_posts, index) => {
-      const pageNumber = index + 1
-
-      const getPagePath = page => {
-        if (page > 0 && page <= totalPages) {
-          // Since our homepage is our blog page
-          // we want the first page to be "/" and any additional pages
-          // to be numbered.
-          return page === 1 ? `blog/` : `/blog/${page}`
-        }
-        return null
-      }
-
-      await createPage({
-        path: getPagePath(pageNumber),
-        component: path.resolve('./src/templates/post-archive.js'),
-        context: {
-          // the index of our loop is the offset of which posts we want to display
-          // so for page 1, 0 * 10 = 0 offset, for page 2, 1 * 10 = 10 posts offset,
-          // etc
-          offset: index * postsPerPage,
-
-          // We need to tell the template how many posts to display too
-          postsPerPage,
-
-          nextPagePath: getPagePath(pageNumber + 1),
-          previousPagePath: getPagePath(pageNumber - 1),
-        },
-      })
-    })
-  )
-}
 
 //Get all pages
 async function getPages(graphql, reporter) {

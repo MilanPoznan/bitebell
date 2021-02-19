@@ -22,6 +22,8 @@ export default function DemoForm({ data, language }) {
   const [nameField, setNameField] = useState('')
   const [emailField, setEmailField] = useState('');
   const [phoneField, setPhoneField] = useState('');
+  const [phoneSelect, setPhoneSelect] = useState('+381');
+
   const [locationField, setLocationField] = useState('');
   const [posSelect, setPosSelect] = useState('');
   const [restaurantField, setRestaurantField] = useState('');
@@ -37,11 +39,45 @@ export default function DemoForm({ data, language }) {
     return false;
   }
 
+  const sendFormData = data => fetch(`https://dev.bitebell.com/wp-json/bitebell/v1/forms`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }
+  )
+
   const checkIsFieldValid = (isRequired, fieldValue) => isRequired ? !!fieldValue : true
-  const onSubmit = () => console.log('asd')
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    fetchWithTimeout(
+      sendFormData,
+      {
+        full_name: nameField,
+        email: emailField,
+        phone: phoneField,
+        phone_select: phoneSelect,
+        location: locationField,
+        restaurant: restaurantField,
+        pos: posSelect,
+        form_type: 'demo'
+      },
+      1000
+    )
+      .then(response => {
+        console.log('response', response)
+        if (!response.ok) {
+          throw new Error(`${response.statusText}`)
+        }
+      })
+      .catch(e => {
+        console.error(e)
+      })
+  }
   return (
     <form className="partnership-form" id="demoPartnership">
-      <h2>Become a partner</h2>
+      <h2>{isLangEn ? "Schedule a free demo" : "Zakažite besplatnu demonstraciju"}</h2>
       <div className="row">
         <div className="partnership-form__fields-wrap">
 
@@ -77,7 +113,7 @@ export default function DemoForm({ data, language }) {
         </div>
 
         <div className="partnership-form__fields-wrap country-wrapp">
-          <CountrySelect />
+          <CountrySelect setPhoneSelect={setPhoneSelect} phoneSelect={phoneSelect} />
           {showPhoneField &&
             <div className="partnership-form__input-wrap">
               <input
@@ -93,10 +129,28 @@ export default function DemoForm({ data, language }) {
           }
         </div>
 
+
+
+        {restaurantNameShow &&
+          <div className="partnership-form__input-wrap">
+
+            <input
+              type="text"
+              value={restaurantField}
+              onChange={(e) => setRestaurantField(e.target.value)}
+              required={restaurantNameRequired ? true : false}
+              name="notes"
+            />
+            <span className="highlight"></span>
+            <span className="bar"></span>
+            <label className={`${!!restaurantField ? 'fulfilled' : ''}`}>{restaurantName}{restaurantNameRequired ? '*' : ''}</label>
+          </div>
+        }
+
         {showLocation &&
           <div className="partnership-form__input-wrap">
             <input
-              type="text"
+              type="number"
               value={locationField}
               onChange={(e) => setLocationField(e.target.value)}
               required={isLocationRequired ? true : false}
@@ -120,23 +174,8 @@ export default function DemoForm({ data, language }) {
             <label className={`${!!posSelect ? 'fulfilled' : ''}`}>{posFieldText}{isPosRequired ? '*' : ''}</label>
           </div>
         }
-        {restaurantNameShow &&
-          <div className="partnership-form__input-wrap">
-
-            <input
-              type="text"
-              value={restaurantField}
-              onChange={(e) => setRestaurantField(e.target.value)}
-              required={restaurantNameRequired ? true : false}
-              name="notes"
-            />
-            <span className="highlight"></span>
-            <span className="bar"></span>
-            <label className={`${!!restaurantField ? 'fulfilled' : ''}`}>{restaurantName}{restaurantNameRequired ? '*' : ''}</label>
-          </div>
-        }
         <button
-          onClick={onSubmit}
+          onClick={(e) => onSubmit(e)}
           className="partnership-form__submit-btn"
         >
           {isLangEn ? 'Submit' : 'Potvrdite'}

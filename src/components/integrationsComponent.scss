@@ -1,5 +1,13 @@
 @import './global-styles/colors.scss';
+@import './global-styles/media-mixins';
 
+.integrations-header {
+  text-align: center;
+  padding: 40px 0 20px;
+  p {
+    font-weight: 500;
+  }
+}
 .integrations-content {
   &__image {
     width: 200px;
@@ -20,4 +28,15 @@
       font-weight: bold;
     }
   }
+}
+
+@include tablet() {
+
+.integrations-header {
+  text-align: center;
+  p {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
 }

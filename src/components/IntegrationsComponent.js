@@ -46,14 +46,14 @@ export default function IntegrationsComponent({ integrationsFields, integrations
 
     <div>
       {/* Integrations header */}
-      <header className="header integrations-header">
+      <section className="integrations-header">
         <div className="container">
           <div className="text-box">
             <h2>{title}</h2>
-            <p><span className="hidden-first-mobile">{subtitle}</span></p>
+            <p>{subtitle}</p>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* Integrations compoennt */}
       <section className="integrations">

@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 
-export default function CountrySelect() {
-  const selectStyle = {
+export default function CountrySelect({ setPhoneSelect, phoneSelect }) {
 
-  }
   return (
-    <select className="country-select" id="callingCodesDemo" name="callingCodesDemo" defaultValue={{ label: "Serbia (+381)", value: 381 }} style={selectStyle}>
+    <select
+      className="country-select"
+      id="callingCodesDemo"
+      name="selectCountry"
+      value={phoneSelect}
+      onChange={e => setPhoneSelect(e.target.value)}
+    >
+      <option datacountrycode="CS" value="381" >Serbia (+381)</option>
       <option datacountrycode="DZ" value="213">Algeria (+213)</option>
       <option datacountrycode="AD" value="376">Andorra (+376)</option>
       <option datacountrycode="AO" value="244">Angola (+244)</option>
@@ -220,6 +225,6 @@ export default function CountrySelect() {
       <option datacountrycode="YE" value="967">Yemen (South)(+967)</option>
       <option datacountrycode="ZM" value="260">Zambia (+260)</option>
       <option datacountrycode="ZW" value="263">Zimbabwe (+263)</option>
-    </select>
+    </select >
   )
 }
