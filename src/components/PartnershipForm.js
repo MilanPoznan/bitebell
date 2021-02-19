@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 //Components 
 import CountrySelect from './CountrySelect'
 //Hooks
@@ -6,7 +6,8 @@ import { fetchWithTimeout } from '../utils/utils'
 //Styles
 import './PartnershipForm.scss'
 //Recatcha
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import ReCAPTCHA from 'react-google-recaptcha'
+
 
 
 export default function PartnershipForm({ data, language, selectTypes }) {
@@ -30,6 +31,9 @@ export default function PartnershipForm({ data, language, selectTypes }) {
 
   const [submited, setSubmited] = useState(false)
 
+  const recaptchaRef = useRef(null)
+
+
   const validateEmail = (email) => {
     let regularExpression = /^(([^.\s@]+(\.[^.\s@]+)*))@(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})$/;
 
@@ -39,9 +43,18 @@ export default function PartnershipForm({ data, language, selectTypes }) {
     return false;
   }
 
+  /**
+   * 
+   * @param {boolean} isRequired getting data from backend from true/false field 
+   * @param {string} fieldValue state field value 
+   * 
+   * If field is required it will return fieldValue value in bool type
+   * If field is not required it will return true automatically and if statement will pass 
+   */
   const checkIsFieldValid = (isRequired, fieldValue) => isRequired ? !!fieldValue : true
 
 
+  //Send form data in json format
   const sendFormData = data => fetch(`https://dev.bitebell.com/wp-json/bitebell/v1/forms`, {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
@@ -50,153 +63,182 @@ export default function PartnershipForm({ data, language, selectTypes }) {
   )
 
 
-  useEffect(() => {
-    console.log('submit', submited)
-    console.log('nameField', nameField)
-  }, [phoneSelect])
-
-  const onSubmit = (e) => {
+  /**
+   * 
+   * @param {object} e 
+   * Wheen user submit the form
+   */
+  const onSubmit = async (e) => {
     e.preventDefault();
+    // recaptchaRef.current.execute();
+    // const recaptchaValue = recaptchaRef.current.getValue();
+
+    const token = recaptchaRef.current && await recaptchaRef.current.executeAsync()
+    recaptchaRef.current && recaptchaRef.current.reset()
+
+    console.log('token', token)
+    // recaptchaRef.current && recaptchaRef.current.reset()
 
     setSubmited(true)
-    console.log('nameF', !!nameField)
-    if (checkIsFieldValid(isPhoneRequired, phoneField) &&
-      validateEmail(emailField),
-      checkIsFieldValid(isPhoneRequired, phoneField),
-      checkIsFieldValid(isCompanyRequired, companyField),
-      checkIsFieldValid(isCompanySelectRequired, companySelect),
-      checkIsFieldValid(isNotesRequired, notesField)
+
+    if (checkIsFieldValid(isNameRequired, nameField) && //Name field
+      validateEmail(emailField) && //Email Field
+      checkIsFieldValid(isPhoneRequired, phoneField) && //Phone field
+      checkIsFieldValid(isCompanyRequired, companyField) && //Company field 
+      checkIsFieldValid(isCompanySelectRequired, companySelect) && //select Company field
+      checkIsFieldValid(isNotesRequired, notesField) //Notes field
     ) {
-      // fetchWithTimeout(
-      //   sendFormData,
-      //   {
-      //     full_name: nameField,
-      //     email: emailField,
-      //     phone: phoneField,
-      //     phone_select: phoneSelect,
-      //     company: companyField,
-      //     company_type: companySelect,
-      //     notes: notesField,
-      //     form_type: 'partnership'
-      //   },
-      //   10000
-      // )
-      //   .then(response => {
-      //     console.log('response', response)
-      //     if (!response.ok) {
-      //       throw new Error(`${response.statusText}`)
-      //     }
-      //   })
-      //   .catch(e => {
-      //     console.error(e)
-      //   })
+      fetchWithTimeout(
+        sendFormData,
+        {
+          full_name: nameField,
+          email: emailField,
+          phone: phoneField,
+          phone_select: phoneSelect,
+          company: companyField,
+          company_type: companySelect,
+          notes: notesField,
+          form_type: 'partnership',
+          token: token
+        },
+        10000
+      )
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`${response.statusText}`)
+          }
+          return response.json()
+        })
+        .then(response => { console.log(response) })
+        .catch(e => {
+          console.error(e)
+        })
+    }
+    else {
+      console.log('niis popunio')
+
     }
   }
 
   return (
-    <form className="partnership-form" id="demoPartnership">
-      <h2>{isLangEn ? "Become a partner" : 'Postanite partner'}</h2>
-      <div className="row">
-        <div className="partnership-form__fields-wrap">
+    <>
+      <form className="partnership-form" id="demoPartnership">
+        <h2>{isLangEn ? "Become a partner" : 'Postanite partner'}</h2>
+        <div className="row">
+          <div className="partnership-form__fields-wrap">
 
-          {showNameField &&
-            <div className={submited && nameField === '' ? "partnership-form__input-wrap error" : "partnership-form__input-wrap"}>
+            {showNameField &&
+              <div className={submited && nameField === '' ? "partnership-form__input-wrap error" : "partnership-form__input-wrap"}>
+                <input
+                  value={nameField}
+                  onChange={(e) => setNameField(e.target.value)}
+                  type="text"
+                  required={isNameRequired ? true : false}
+                  name="name"
+                />
+                <span className="highlight"></span>
+                <span className="bar"></span>
+                <label className={`${!!nameField ? 'fulfilled' : ''}`}>{name}{isNameRequired ? '*' : ''}</label>
+                {submited && isNameRequired && nameField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+              </div>
+            }
+
+            {showEmailField &&
+              <div className="partnership-form__input-wrap">
+                <input
+                  type="email"
+                  value={emailField}
+                  onChange={(e) => setEmailField(e.target.value)}
+                  required={isEmailRequired ? true : false}
+                  name="email"
+                />
+                <span className="highlight"></span>
+                <span className="bar"></span>
+                <label className={`${!!emailField ? 'fulfilled' : ''}`}>{email}{isEmailRequired ? '*' : ''}</label>
+                {submited && isEmailRequired && emailField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
+              </div>
+            }
+          </div>
+
+          <div className="partnership-form__fields-wrap country-wrapp">
+            <CountrySelect setPhoneSelect={setPhoneSelect} phoneSelect={phoneSelect} />
+            {showPhoneField &&
+              <div className="partnership-form__input-wrap">
+                <input
+                  type="number"
+                  value={phoneField}
+                  onChange={(e) => setPhoneField(e.target.value)}
+                  required={isPhoneRequired ? true : false}
+                  name="phone" />
+                <span className="highlight"></span>
+                <span className="bar"></span>
+                <label className={`${!!phoneField ? 'fulfilled' : ''}`}>{phone}{isPhoneRequired ? '*' : ''}</label>
+                {submited && isPhoneRequired && phoneField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
+              </div>
+            }
+          </div>
+          {showCompanyFileld &&
+            <div className="partnership-form__input-wrap">
               <input
-                value={nameField}
-                onChange={(e) => setNameField(e.target.value)}
                 type="text"
-                required={isNameRequired ? true : false}
-                name="name"
+                value={companyField}
+                onChange={(e) => setCompanyField(e.target.value)}
+                required={isCompanyRequired ? true : false}
+                name="company" />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label className={`${!!companyField ? 'fulfilled' : ''}`}>{company}{isCompanyRequired ? '*' : ''}</label>
+              {submited && isCompanyRequired && companyField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+
+            </div>
+          }
+          {showCompanySelect &&
+            <div className="partnership-form__input-wrap">
+              <select onChange={(e) => {
+                setCompanySelect(e.target.value);
+              }} className="partnership-form__select" required={isCompanySelectRequired ? true : false} name="nameDemo" >
+                <option hidden value="">{selectCompany}</option>
+                {selectTypes.map((type, index) => <option key={index} value={type.name}>{type.name}</option>)}
+                <option value={'other'}>Other</option>
+              </select>
+              {submited && isCompanySelectRequired && companySelect === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+            </div>
+          }
+          {showNotesField &&
+            <div className="partnership-form__input-wrap">
+
+              <input
+                type="text"
+                value={notesField}
+                onChange={(e) => setNotesField(e.target.value)}
+                required={isNotesRequired ? true : false}
+                name="notes"
               />
               <span className="highlight"></span>
               <span className="bar"></span>
-              <label className={`${!!nameField ? 'fulfilled' : ''}`}>{name}{isNameRequired ? '*' : ''}</label>
-              {submited && isNameRequired && nameField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
-            </div>
-          }
-
-          {showEmailField &&
-            <div className="partnership-form__input-wrap">
-              <input
-                type="email"
-                value={emailField}
-                onChange={(e) => setEmailField(e.target.value)}
-                required={isEmailRequired ? true : false}
-                name="email"
-              />
-              <span className="highlight"></span>
-              <span className="bar"></span>
-              <label className={`${!!emailField ? 'fulfilled' : ''}`}>{email}{isEmailRequired ? '*' : ''}</label>
-              {submited && emailField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
+              <label className={`${!!notesField ? 'fulfilled' : ''}`}>{notes}{isNotesRequired ? '*' : ''}</label>
+              {submited && isNotesRequired && notesField === '' && <div className="partnership-form__input-label-error"> {isLangEn ? 'This field is required.' : 'Ovo polje je obavezno'}</div>}
 
             </div>
           }
+          <button
+            onClick={(e) => onSubmit(e)}
+            className="partnership-form__submit-btn"
+          >
+            {isLangEn ? 'Submit' : 'Potvrdite'}
+          </button>
         </div>
 
-        <div className="partnership-form__fields-wrap country-wrapp">
-          <CountrySelect setPhoneSelect={setPhoneSelect} phoneSelect={phoneSelect} />
-          {showPhoneField &&
-            <div className="partnership-form__input-wrap">
-              <input
-                type="number"
-                value={phoneField}
-                onChange={(e) => setPhoneField(e.target.value)}
-                required={isPhoneRequired ? true : false}
-                name="phone" />
-              <span className="highlight"></span>
-              <span className="bar"></span>
-              <label className={`${!!phoneField ? 'fulfilled' : ''}`}>{phone}{isPhoneRequired ? '*' : ''}</label>
-            </div>
-          }
-        </div>
-        {showCompanyFileld &&
-          <div className="partnership-form__input-wrap">
-            <input
-              type="text"
-              value={companyField}
-              onChange={(e) => setCompanyField(e.target.value)}
-              required={isCompanyRequired ? true : false}
-              name="company" />
-            <span className="highlight"></span>
-            <span className="bar"></span>
-            <label className={`${!!companyField ? 'fulfilled' : ''}`}>{company}{isCompanyRequired ? '*' : ''}</label>
-          </div>
-        }
-        {showCompanySelect &&
-          <div className="partnership-form__input-wrap">
-            <select onChange={(e) => {
-              setCompanySelect(e.target.value);
-              console.log('companySelect', companySelect)
-            }} className="partnership-form__select" required={isCompanySelectRequired ? true : false} name="nameDemo" >
-              <option hidden value="">{selectCompany}</option>
-              {selectTypes.map((type, index) => <option key={index} value={type.name}>{type.name}</option>)}
-              <option value={'other'}>Other</option>
-            </select>
-          </div>
-        }
-        {showNotesField &&
-          <div className="partnership-form__input-wrap">
-
-            <input
-              type="text"
-              value={notesField}
-              onChange={(e) => setNotesField(e.target.value)}
-              required={isNotesRequired ? true : false}
-              name="notes"
-            />
-            <span className="highlight"></span>
-            <span className="bar"></span>
-            <label className={`${!!notesField ? 'fulfilled' : ''}`}>{notes}{isNotesRequired ? '*' : ''}</label>
-          </div>
-        }
-        <button
-          onClick={(e) => onSubmit(e)}
-          className="partnership-form__submit-btn"
-        >
-          {isLangEn ? 'Submit' : 'Potvrdite'}
-        </button>
-      </div>
-
-    </form>
+      </form>
+      <ReCAPTCHA
+        // sitekey='6LeauV0aAAAAAKjI5hfTXTYlnRL6WMEbAhrfiQEx'
+        sitekey="6LdV910aAAAAAM_4ajAwKPMQyzr_z38Hm7NTXrIR"
+        size="invisible"
+        ref={recaptchaRef}
+      // onChange={onChange}
+      />
+    </>
   )
 }
