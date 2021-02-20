@@ -14,15 +14,21 @@ import Layout from '../components/Layout';
 export default function archiveTemplate({ data }) {
 
   const { allWpPost: { nodes },
-    wpPage: { language } } = data;
-  console.log('NODES: ', nodes);
+    wpPage: { language, title, translations },
+    allWpMenu: { menus },
+    wp: { optionsPage: { options: { logo } } }  } = data;
 
+  const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
+  
+  const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
+  
   const currentLangPosts = nodes.filter(item => item.language.locale === language.locale)
+  // console.log('Current Lang Posts: ', currentLangPosts)
 
   return (
-    <>
+    <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo}>
       <NewsPageLayout newsData={currentLangPosts} />
-    </>
+    </Layout>
   )
 }
 
@@ -35,8 +41,26 @@ export const newsQuery = graphql`
       }
       language {
         locale
+        slug
       }
-      slug
+    }
+    wp {
+      optionsPage {
+        options: optionsPage {
+          logo {
+            file: localFile {
+              image: childImageSharp {
+                fluid(maxWidth: 400) {
+                    ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allWpMenu {
+      ...getMenus
     }
     allWpPost(sort: {fields: [date], order:DESC}) {
       nodes {

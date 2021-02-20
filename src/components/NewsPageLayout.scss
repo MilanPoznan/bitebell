@@ -18,3 +18,31 @@
     gap: 18px 30px;
   }
 }
+
+@include tablet() {
+  .archive-news {
+
+    &__inner-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px 60px;
+    }
+  }
+}
+
+@include desktop-lowres() {
+  .archive-news {
+
+    &__inner-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+    }
+  }
+}
+@include desktop() {
+  .archive-news {
+
+    &__outer-wrapper {
+      max-width: 1280px;
+    }
+  }
+}
