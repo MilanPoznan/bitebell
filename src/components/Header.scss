@@ -157,6 +157,9 @@
       overflow: inherit;
       background: transparent;
       min-height: auto;
+      &.hidden {
+        right: 0%;
+      }
       &__wrapper {
         display: flex;
       }
