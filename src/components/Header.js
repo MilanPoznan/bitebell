@@ -15,7 +15,7 @@ export default function Header({ currLangMenu, logo, currentLang, translations }
 
   const parentMenuItems = nodes.filter(menuItem => menuItem.parentId === null)
   const windowWidth = useCurrentWidth()
-  const body = document ? document.body : null
+  const body = typeof document !== 'undefined' && document.body
 
   useEffect(() => {
     isHamburgerOpen ? body.classList.add('no-scroll') : body.classList.remove('no-scroll')
