@@ -10,16 +10,14 @@ import './SocialsShareComponent.scss'
 /**
  * SocialsShareComponent component
  *
- * @param {object} language
  * 
  * @returns {JSX Element}
  */
 export default function SocialsShareComponent({ title, language, postSlugTranslationName, slug }) {
 
-  console.log('Slug from share: ', slug)
-
   // URL from live site
-  const url = 'https://mystifying-wiles-cc7118.netlify.app/';
+  // const url = 'https://mystifying-wiles-cc7118.netlify.app/';
+  const url = process.env.GATSBY_SHARE_URL;
   const shareUrl = `${url}/${postSlugTranslationName}${slug}`
   
   return (
@@ -60,6 +58,3 @@ export default function SocialsShareComponent({ title, language, postSlugTransla
   )
 }
 
-SocialsShareComponent.propTypes = {
-  language: PropTypes.object
-}

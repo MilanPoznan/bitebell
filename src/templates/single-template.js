@@ -10,12 +10,10 @@ export default function singlePostTemplate({ data }) {
     allWpMenu: { menus },
     wp: { optionsPage: { options: { logo } } } } = data
 
-  const postBlogImage = nodes[0].featuredImage.node.file.blogImage
-
-  const { title, language, translations } = nodes[0]
-
-  // console.log('Language: ', language);
-  // console.log('Translations: ', translations);
+    
+  const { title, content, slug, language, translations, author_section, featuredImage } = nodes[0]
+    
+  const postBlogImage = featuredImage.node && featuredImage.node.file.blogImage.fluid
 
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
 
@@ -25,11 +23,14 @@ export default function singlePostTemplate({ data }) {
     <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo}>
       <SinglePostLayout 
         featuredPostArticleImage={postBlogImage}
-        postTitle={nodes[0].title}
-        postContent={nodes[0].content}
-        slug={nodes[0].slug}
-        postSlugTranslationName={nodes[0].slug}
-        language={language.locale}
+        postTitle={title}
+        postContent={content}
+        slug={slug}
+        postSlugTranslationName={slug}
+        language={language.slug}
+        authorName={author_section.authorName}
+        authorImage={author_section.authorImage && author_section.authorImage.file.image.fluid}
+        authorDescription={author_section.authorDescription}
       />
     </Layout>
   )
@@ -61,19 +62,24 @@ export const singlePostQuery = graphql`
         content
         slug
         title
-        author {
-          node {
-            avatar {
-              url
-            }
-            firstName
-          }
-        }
         featuredImage {
           node {
             file: localFile {
               blogImage: childImageSharp {
                 fluid {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+        author_section {
+          authorName
+          authorDescription
+          authorImage {
+            file: localFile {
+              image: childImageSharp {
+                fluid(maxWidth: 80) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

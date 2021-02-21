@@ -12,14 +12,17 @@ export default function NewsPageLayout({ newsData }) {
           {
             newsData.map((item, index) => {
               const { title, featuredImage, categories, slug, language } = item
-              {/* console.log('Link from newsData: ', slug)
-              console.log('Language from newsData: ', language) */}
+
               return (
                 <NewsPreview 
                   key={index}
+                  firstOfTheIndex={index}
                   image={featuredImage}
-                  link={language.locale === 'sr_RS' ? `blog/${slug}` : `en/news/${slug}`}
+                  link={language.slug === 'sr' ? `blog/${slug}` : `en/news/${slug}`}
                   title={title}
+                  language={language}
+                  authorAvatar={newsData[0].author_section.authorImage.file.image.fluid}
+                  authorName={newsData[0].author_section.authorName}
                   category={categories.nodes}
                 />
               )

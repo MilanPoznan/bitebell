@@ -7,7 +7,6 @@ import Layout from '../components/Layout';
  * Archive Template for blog/news page
  * 
  * @param {object} data
- * @param {object} pageContext
  *
  * @returns {JSX Element}
  */
@@ -23,7 +22,6 @@ export default function archiveTemplate({ data }) {
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
   
   const currentLangPosts = nodes.filter(item => item.language.locale === language.locale)
-  // console.log('Current Lang Posts: ', currentLangPosts)
 
   return (
     <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo}>
@@ -81,6 +79,19 @@ export const newsQuery = graphql`
             file: localFile {
               blogImage: childImageSharp {
                 fluid(maxWidth: 400) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+        author_section {
+          authorName
+          authorDescription
+          authorImage {
+            file: localFile {
+              image: childImageSharp {
+                fluid {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

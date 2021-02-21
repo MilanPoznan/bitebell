@@ -2,6 +2,42 @@
 @import './global-styles/_media-mixins.scss';
 
 .news-preview {
+
+  &__first {
+    padding-bottom: 50px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid $grey-light;
+
+    &-header {
+      display: flex;
+      flex-direction: column;
+    }
+    &-title {
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+      margin: 20px 0px;
+    }
+    &-author {
+      display: flex;
+    }
+    &-author-name {
+      font-size: 12px;
+      letter-spacing: -0.005em;
+      line-height: 18px;
+      color: $dark-blue;
+    }
+    &-author-img {
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      height: 36px;
+      width: 36px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  }
   
   h3 {
     font-size: 18px;
@@ -39,6 +75,21 @@
 @include tablet() {
   .news-preview {
     
+    &__first-link {
+      grid-column: 1 / -1;
+    }
+    &__first {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+
+      &-header {
+        justify-content: center;
+      }
+      &-author {
+        align-items: center;
+      }
+    }
   }
 }
 
