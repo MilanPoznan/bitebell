@@ -4,6 +4,11 @@ import Img from 'gatsby-image'
 import SocialsShareComponent from './SocialsShareComponent'
 import './SinglePostLayout.scss'
 
+/**
+ * SinglePostLayout component
+ * 
+ * @returns {JSX Element}
+ */
 export default function SinglePostLayout({
   postTitle,
   postContent,

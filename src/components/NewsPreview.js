@@ -4,6 +4,11 @@ import { Link } from 'gatsby'
 
 import './NewsPreview.scss'
 
+/**
+ * NewsPreview component
+ * 
+ * @returns {JSX Element}
+ */
 export default function NewsPreview({ title, image, language, category, link, firstOfTheIndex, authorAvatar, authorName  }) {
 
   return (

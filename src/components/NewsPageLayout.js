@@ -3,6 +3,11 @@ import React from 'react'
 import NewsPreview from './NewsPreview'
 import './NewsPageLayout.scss'
 
+/**
+ * NewsPageLayout component
+ * 
+ * @returns {JSX Element}
+ */
 export default function NewsPageLayout({ newsData }) {
 
   return (

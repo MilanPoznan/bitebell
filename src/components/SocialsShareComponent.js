@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import FbIcon from '../svg-images/facebook.svg'
 import TwIcon from '../svg-images/twitter.svg'
@@ -13,7 +12,7 @@ import './SocialsShareComponent.scss'
  * 
  * @returns {JSX Element}
  */
-export default function SocialsShareComponent({ title, language, postSlugTranslationName, slug }) {
+export default function SocialsShareComponent({ title, postSlugTranslationName, slug }) {
 
   // URL from live site
   const url = 'https://mystifying-wiles-cc7118.netlify.app/'

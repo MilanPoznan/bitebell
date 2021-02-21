@@ -3,6 +3,11 @@ import React from 'react'
 import Layout from '../components/Layout'
 import SinglePostLayout from '../components/SinglePostLayout';
 
+/**
+ * singlePostTemplate component
+ * 
+ * @returns {JSX Element}
+ */
 export default function singlePostTemplate({ data }) {
 
   const {
