@@ -10,7 +10,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 
 
-export default function PartnershipForm({ data, language, selectTypes }) {
+export default function PartnershipForm({ data, language, selectTypes, setIsFormSuccessfullySubmited }) {
 
   const { nameField: { name, showNameField, isNameRequired },
     emailField: { email, showEmailField, isEmailRequired },
@@ -32,7 +32,6 @@ export default function PartnershipForm({ data, language, selectTypes }) {
   const [submited, setSubmited] = useState(false)
 
   const recaptchaRef = useRef(null)
-
 
   const validateEmail = (email) => {
     let regularExpression = /^(([^.\s@]+(\.[^.\s@]+)*))@(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})$/;
@@ -70,8 +69,6 @@ export default function PartnershipForm({ data, language, selectTypes }) {
    */
   const onSubmit = async (e) => {
     e.preventDefault();
-    // recaptchaRef.current.execute();
-    // const recaptchaValue = recaptchaRef.current.getValue();
 
     const token = recaptchaRef.current && await recaptchaRef.current.executeAsync()
     recaptchaRef.current && recaptchaRef.current.reset()
@@ -106,6 +103,8 @@ export default function PartnershipForm({ data, language, selectTypes }) {
         .then(response => {
           if (!response.ok) {
             throw new Error(`${response.statusText}`)
+          } else {
+            setIsFormSuccessfullySubmited(true)
           }
           return response.json()
         })
@@ -233,11 +232,9 @@ export default function PartnershipForm({ data, language, selectTypes }) {
 
       </form>
       <ReCAPTCHA
-        // sitekey='6LeauV0aAAAAAKjI5hfTXTYlnRL6WMEbAhrfiQEx'
         sitekey="6LdV910aAAAAAM_4ajAwKPMQyzr_z38Hm7NTXrIR"
         size="invisible"
         ref={recaptchaRef}
-      // onChange={onChange}
       />
     </>
   )
