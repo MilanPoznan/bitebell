@@ -20,7 +20,6 @@ export default function Header({ currLangMenu, logo, currentLang, translations }
   useEffect(() => {
     isHamburgerOpen ? body.classList.add('no-scroll') : body.classList.remove('no-scroll')
   }, [isHamburgerOpen])
-
   return (
     <div className="main-header">
 
@@ -62,8 +61,8 @@ export default function Header({ currLangMenu, logo, currentLang, translations }
 
         </div>
         <div className="menu__lang">
-          <Link className={currentLang === 'en' ? 'active' : 'inactive'} to={translations[0].uri} >EN</Link>
-          <Link className={currentLang === 'sr' ? 'active' : 'inactive'} to={translations[0].uri} >SR</Link>
+          <Link className={currentLang === 'en' ? 'active' : 'inactive'} to={translations.length === 0 ? '/en' : translations[0].uri} >EN</Link>
+          <Link className={currentLang === 'sr' ? 'active' : 'inactive'} to={translations.length === 0 ? '/' : translations[0].uri} >SR</Link>
         </div>
       </nav>
     </div>
