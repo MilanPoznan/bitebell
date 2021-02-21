@@ -16,8 +16,7 @@ import './SocialsShareComponent.scss'
 export default function SocialsShareComponent({ title, language, postSlugTranslationName, slug }) {
 
   // URL from live site
-  // const url = 'https://mystifying-wiles-cc7118.netlify.app/';
-  const url = process.env.GATSBY_SHARE_URL;
+  const url = 'https://mystifying-wiles-cc7118.netlify.app/'
   const shareUrl = `${url}/${postSlugTranslationName}${slug}`
   
   return (
