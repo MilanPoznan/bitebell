@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 const isBrowser = typeof window !== `undefined`
 
 //Get window width

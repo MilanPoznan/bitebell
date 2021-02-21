@@ -14,6 +14,9 @@ body {
 .main {
   padding-top: 100px;
 }
+.no-scroll {
+  overflow: hidden;
+}
 
 // class for a page content site-wide for the purpose of WYSIWYG editor
 .content {

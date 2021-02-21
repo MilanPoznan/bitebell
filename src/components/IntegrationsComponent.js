@@ -87,7 +87,7 @@ export default function IntegrationsComponent({ integrationsFields, integrations
                     {type.name}
                   </div>)}
               </div>
-              <Link to="#">{currLang === 'sr' ? 'Postanite naš partner! →' : 'Partner with us!'}</Link>
+              <Link to={`${currLang === 'sr' ? '/partnerstva' : '/en/partnerships'} `}>{currLang === 'sr' ? 'Postanite naš partner! →' : 'Partner with us!'}</Link>
             </div>
           </div>
         </div>

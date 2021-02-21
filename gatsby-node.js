@@ -76,11 +76,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         })
         break;
-
-      default:
+      case 'pocetna':
+      case 'homepage':
         createPage({
           path: page.uri,
           component: path.resolve('./src/templates/page-template.js'),
+          context: {
+            id: page.id
+          }
+        })
+        break;
+      default:
+        createPage({
+          path: page.uri,
+          component: path.resolve('./src/templates/default-page-template.js'),
           context: {
             id: page.id
           }

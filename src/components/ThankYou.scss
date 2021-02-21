@@ -1,0 +1,17 @@
+@import './global-styles/colors.scss';
+@import './global-styles/_media-mixins.scss';
+
+.thank-you {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@include desktop-lowres() {
+  .thank-you {
+    min-height: 40vh;
+  }
+}

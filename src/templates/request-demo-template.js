@@ -15,8 +15,11 @@ export default function requestDemoTemplate({ data, pageContext }) {
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
   const currLangIntegrationType = types.filter(type => type.language.slug === language.slug)
 
+  const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
+  const currLangFooter = menus.filter(menu => menu.locations[0] ===  footerPosition)
+
   return (
-    <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} >
+    <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <ContactPageLayout
         title={nodes[0].demoCf.title}
         content={nodes[0].demoCf.content}
