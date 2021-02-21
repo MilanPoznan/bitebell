@@ -1,0 +1,18 @@
+@import './global-styles/media-mixins';
+
+.sponsors {
+  &__img {
+    width: 76px;
+    &-wrapper {
+      margin-bottom: 35px;
+      padding: 0 10px;
+    }
+  }
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 25px;
+  }
+}

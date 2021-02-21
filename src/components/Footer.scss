@@ -1,0 +1,14 @@
+@import './global-styles/media-mixins';
+
+.footer {
+  padding: 45px 0 30px 0;
+  &__copyright {
+    display: flex;
+    align-items: center;
+    height: 75px;
+    p {
+      margin: 0;
+    }
+  }
+}
+
