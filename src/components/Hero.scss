@@ -2,6 +2,9 @@
 @import './global-styles/media-mixins';
 
 .hero {
+  &__container {
+    padding-top: 0;
+  }
   h1 {
     line-height: 1.2;
   }

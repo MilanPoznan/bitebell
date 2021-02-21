@@ -7,7 +7,6 @@ import './PosComponent.scss'
 export default function PosComponent({posSection}) {
   
   const {link, partnersLogoIcons, partnersRepeater, subtitle, tabelIcon, text, title} = posSection
-  console.log(partnersLogoIcons)
 
   return (
     <div className="container">

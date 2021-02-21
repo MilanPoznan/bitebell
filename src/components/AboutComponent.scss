@@ -1,0 +1,23 @@
+@import './global-styles/media-mixins';
+
+.about {
+  &__img {
+    width: 45px;
+    margin: 0 auto;
+  }
+  &__title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
+
+@include desktop-lowres() {
+  .about {
+    &__container {
+      display: flex;
+    }
+    &__img {
+      margin: 0;
+    }
+  }
+}

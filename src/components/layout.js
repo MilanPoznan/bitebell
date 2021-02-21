@@ -7,6 +7,7 @@ import './global-styles/_global-styles.scss';
 
 
 import Header from './Header'
+import Footer from './Footer'
 import { useScrollPosition, getScrollPosition } from '../hooks/useScrollPosition'
 
 const Layout = ({ currLangMenu, children, logo, language, translations }) => {
@@ -42,7 +43,7 @@ const Layout = ({ currLangMenu, children, logo, language, translations }) => {
       </header>
       <main className="main">{children}</main>
       <footer>
-        Footer
+        <Footer/>
       </footer>
     </div>
   )

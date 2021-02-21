@@ -1,0 +1,46 @@
+@import './global-styles/media-mixins';
+
+.demo {
+  &__wrapper {
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 48px rgb(0 0 0 / 10%);
+    background: #fff;
+  }
+  &__text {
+    margin-bottom: 20px;
+    max-width: 550px;
+    h2 {
+      color: #2C4482;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@include tablet() {
+  .demo {
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  .demo {
+    &__wrapper {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 55px;
+    }
+    &__text {
+      text-align: left;
+      max-width: 720px;
+    }
+    &__link {
+      margin-left: 15px;
+      flex-shrink: 0;
+    }
+  }
+}
