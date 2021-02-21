@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
@@ -7,6 +7,17 @@ import './PosComponent.scss'
 export default function PosComponent({posSection}) {
   
   const {link, partnersLogoIcons, partnersRepeater, subtitle, tabelIcon, text, title} = posSection
+
+  const [listRotation, setListRotation] = useState();
+
+  // useEffect(() => {
+  //   let timer = null;
+
+  //   setTimeout(() => {
+
+  //   }, 3000)
+  //   return ()=> clearTimeout()
+  // })
 
   return (
     <div className="container">
@@ -18,19 +29,19 @@ export default function PosComponent({posSection}) {
           </div>
         </div>
         <Img fluid={partnersLogoIcons.localFile.childImageSharp.fluid} />
-        <div className="swiper-container swiper-table swiper-container-initialized swiper-container-vertical swiper-container-ios">
-          <div className="swiper-wrapper" id="swiper-wrapper-2277adbd582785eb">
+        <div className="pos__swiper-wrapper swiper-container swiper-table swiper-container-initialized swiper-container-vertical swiper-container-ios">
+          <div className="swiper-wrapper pos__swiper" id="swiper-wrapper-2277adbd582785eb">
             {
               partnersRepeater.map((slide, index) => {
                 return (
-                  <div className="swiper-slide" key={index}>
-                    <div className={`col-1 ${slide.color}-color`}>
+                  <div className="swiper-slide pos__slide" key={index}>
+                    <div className={`pos__slide-element pos__slide-element--${slide.color}`}>
                         <span className="color-mark"></span>
                     </div>
-                    <div className={`col-sm-2 col-3 ${slide.color}-color`}>
-                      <p>{slide.name}</p>
+                    <div className="pos__slide-name-wrapper">
+                      <p className={`pos__slide-name--${slide.color}`}>{slide.name}</p>
                     </div>
-                    <div className="col-sm-5 col-4">
+                    <div className="pos__slide-status">
                       <p>{slide.status}</p>
                     </div>
                     <div className="col-2">
@@ -45,7 +56,7 @@ export default function PosComponent({posSection}) {
             }
           </div>
         </div>
-        <Img fluid={tabelIcon.localFile.childImageSharp.fluid} className="table-icons"/>
+        <Img fluid={tabelIcon.localFile.childImageSharp.fluid} className="table-icons pos__table-icon"/>
         <div className="col-lg-6 aos-init aos-animate">
           <div className="text-box">
             <div className="mobile-hide">
