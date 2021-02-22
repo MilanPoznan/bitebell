@@ -13,10 +13,12 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      flex-shrink: 0;
       width: 50px;
       padding: 0 5px;
       border-radius: 10px;
       background-color: #2C4482;
+      margin-right: 10px;
       p {
         text-align: center;
         font-size: 11px;
@@ -105,6 +107,24 @@
     height: 71px;
     margin: 0 auto 40px;
   }
+  &__list-container {
+    transform: translate3d(0,100px,0) scale(.6);
+    opacity: 0;
+  }
+  &__text-container {
+    transform: translate3d(100px,0,0) scale(.6);
+    opacity: 0;
+  }
+}
+.show-bottom {
+  transform: translateZ(0) scale(1);
+  opacity: 1;
+  transition: transform 0.6s ease-out, opacity 0.6s;
+}
+.show-top {
+  transform: translateZ(0) scale(1);
+  opacity: 1;
+  transition: transform 0.6s ease-out, opacity 0.6s;
 }
 
 @include tablet() {
@@ -112,6 +132,7 @@
     &__slide {
       &-name {
         &-wrapper {
+          margin-left: 40px;
           p {
             font-size: 14px;
           }
@@ -132,6 +153,7 @@
         width: 78px;
         display: flex;
         justify-content: center;
+        margin-right: 20px;
         p {
           font-size: 14px;
         }
@@ -145,6 +167,7 @@
     &__slide {
       &-name {
         &-wrapper {
+          margin-left: 45px;
           p {
             font-size: 16px;
           }
