@@ -1,16 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import './PosComponent.scss'
+import useIntersect from '../hooks/useIntersect'
 
 export default function PosComponent({ posSection }) {
-
+  
   const { link, partnersLogoIcons, partnersRepeater, subtitle, tabelIcon, text, title } = posSection
 
   const [rotateIndex, setRotateIndex] = useState(0)
   const [yCalc, setYCalc] = useState(0)
   const [isGoesUp, setIsGoesUp] = useState(false)
+  
+  const sectionListRef = useRef(null)
+  const sectionTextRef = useRef(null)
+
+  const [ref, entry] = useIntersect({
+    rootMargin: "0px 0px 0px",
+    threshold: 0
+  })
+
+
+  useEffect(() => {
+    if (entry.isIntersecting) {
+      sectionListRef.current.classList.add('show-top')
+      sectionTextRef.current.classList.add('show-bottom')
+    }
+  }, [entry.isIntersecting])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,9 +43,9 @@ export default function PosComponent({ posSection }) {
   });
 
   return (
-    <div className="container">
+    <div className="container" ref={ref}>
       <div className="pos__container">
-        <div className="pos__list-container">
+        <div className="pos__list-container" ref={sectionListRef}>
           <div className="text-box">
             <div className="desktop-hide">
               <h2>{title}</h2>
@@ -63,7 +80,7 @@ export default function PosComponent({ posSection }) {
           </div>
           {tabelIcon && <Img fluid={tabelIcon.localFile.childImageSharp.fluid} className="table-icons pos__table-icon" />}
         </div>
-        <div className="pos__text-container">
+        <div className="pos__text-container" ref={sectionTextRef}>
           <div className="text-box">
             <div className="mobile-hide">
               <h2>{title}</h2>

@@ -12,6 +12,13 @@
 
   &__left {
     margin-bottom: 100px;
+    transform: translate3d(0,100px,0) scale(.6);
+    opacity: 0;
+  }
+
+  &__right {
+    transform: translate3d(100px,0,0) scale(.6);
+    opacity: 0;
   }
 
   &__check {
@@ -36,6 +43,17 @@
     flex-direction: column-reverse;
     margin-top: 100px;
   }
+}
+
+.show-bottom {
+  transform: translateZ(0) scale(1);
+  opacity: 1;
+  transition: transform 0.6s ease-out, opacity 0.6s;
+}
+.show-top {
+  transform: translateZ(0) scale(1);
+  opacity: 1;
+  transition: transform 0.6s ease-out, opacity 0.6s;
 }
 
 @include tablet() {
