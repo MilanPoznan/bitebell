@@ -19,7 +19,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const postPath = singlePost.post.language.slug === 'en'
       ? `en/news/${singlePost.post.slug}`
       : `blog/${singlePost.post.slug}`
-    console.log(postPath)
     return createPage({
       path: postPath,
       component: path.resolve(`./src/templates/single-template.js`),
@@ -30,6 +29,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     })
   })
+
 
   pages.nodes.forEach(page => {
     switch (page.slug) {
@@ -78,9 +78,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         })
         break;
       case 'pocetna':
-      case 'homepage':
         createPage({
           path: page.uri,
+          component: path.resolve('./src/templates/page-template.js'),
+          context: {
+            id: page.id
+          }
+        })
+        break;
+      case 'homepage':
+        createPage({
+          path: '/en',
           component: path.resolve('./src/templates/page-template.js'),
           context: {
             id: page.id
