@@ -17,7 +17,6 @@ export default function SinglePostLayout({
   featuredPostArticleImage,
   language,
   authorName,
-  authorImage,
   authorDescription
 }) {
 
@@ -35,19 +34,19 @@ export default function SinglePostLayout({
             <div className="single-post__main-content">
               <h1 className="single-post__title">{postTitle}</h1>
               <div className="single-post__author-header">
-                {authorImage && <Img className="single-post__author-header-img" fluid={authorImage}/>}
+                {/* {authorImage && <Img className="single-post__author-header-img" fluid={authorImage}/>} */}
                 {authorName && <span className="single-post__author-header-name">{language === 'sr' ? `Autor teksta ${authorName}` : `Written by ${authorName}`}</span>}
               </div>
               <div className="single-post__content content" dangerouslySetInnerHTML={{ __html: postContent }} />
               <div className="single-post__author-bottom">
-                {authorImage && <Img className="single-post__author-bottom-img" fluid={authorImage}/>}
+                {/* {authorImage && <Img className="single-post__author-bottom-img" fluid={authorImage} />} */}
                 <div className="single-post__author-bottom-content">
                   {authorName && <h4 className="single-post__author-bottom-name">{authorName}</h4>}
                   {authorDescription && <div className="single-post__author-bottom-description">{authorDescription}</div>}
                 </div>
               </div>
             </div>
-            <SocialsShareComponent 
+            <SocialsShareComponent
               title={postTitle}
               slug={slug}
               postSlugTranslationName={postSlugTranslationName}

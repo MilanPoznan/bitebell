@@ -19,14 +19,14 @@ export default function NewsPageLayout({ newsData }) {
               const { title, featuredImage, categories, slug, language } = item
 
               return (
-                <NewsPreview 
+                <NewsPreview
                   key={index}
                   firstOfTheIndex={index}
                   image={featuredImage}
                   link={language.slug === 'sr' ? `blog/${slug}` : `en/news/${slug}`}
                   title={title}
                   language={language}
-                  authorAvatar={newsData[0].author_section.authorImage.file.image.fluid}
+                  authorAvatar={newsData[0].author_section.authorImage && newsData[0].author_section.authorImage.file.image.fluid}
                   authorName={newsData[0].author_section.authorName}
                   category={categories.nodes}
                 />

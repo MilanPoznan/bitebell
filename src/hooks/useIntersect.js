@@ -30,7 +30,6 @@ const useIntersect = ({ root = null, rootMargin, threshold = 0 }) => {
       // since ref.current can be mutated, create reference to currentObserver inside useEffect 
       // to make sure cleanup is performed on right ref
       const { current: currentObserver } = observer;
-      console.log('currentObserver: ', currentObserver)
       // if node was observed clean up with disconect()
       currentObserver.disconnect();
       // if node exists start observing

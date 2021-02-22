@@ -68,7 +68,6 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
     const token = recaptchaRef.current && await recaptchaRef.current.executeAsync()
     recaptchaRef.current && recaptchaRef.current.reset()
 
-    console.log('token: ', token)
     setSubmited(true)
 
     if (
@@ -106,7 +105,7 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
           console.error(e)
         })
     } else {
-      console.log('niis popunio')
+      console.log('Form empty')
     }
   }
   return (

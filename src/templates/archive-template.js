@@ -15,15 +15,15 @@ export default function archiveTemplate({ data }) {
   const { allWpPost: { nodes },
     wpPage: { language, title, translations },
     allWpMenu: { menus },
-    wp: { optionsPage: { options: { logo } } }  } = data;
+    wp: { optionsPage: { options: { logo } } } } = data;
 
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
-  
+
   const currentLangPosts = nodes.filter(item => item.language.locale === language.locale)
 
   const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
-  const currLangFooter = menus.filter(menu => menu.locations[0] ===  footerPosition)
+  const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
     <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
@@ -90,15 +90,7 @@ export const newsQuery = graphql`
         author_section {
           authorName
           authorDescription
-          authorImage {
-            file: localFile {
-              image: childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
+          
         }
       }
     }
