@@ -8,17 +8,22 @@ export default function PosComponent({ posSection }) {
 
   const { link, partnersLogoIcons, partnersRepeater, subtitle, tabelIcon, text, title } = posSection
 
-  const [listRotation, setListRotation] = useState('');
+  const [rotateIndex, setRotateIndex] = useState(0)
+  const [yCalc, setYCalc] = useState(0)
 
   useEffect(() => {
     let timer = null;
     
     setTimeout(() => {
-      setListRotation('--rotate')
+      console.log('dsfadga')
       partnersRepeater.unshift(partnersRepeater.pop());
-    }, 3000);
+      setRotateIndex( rotateIndex => rotateIndex++)
+      setYCalc(65 * rotateIndex)
+      console.log(yCalc)
+
+    }, 500);
     return () => clearTimeout(timer)
-  }, [listRotation])
+  })
 
   return (
     <div className="container">
@@ -36,7 +41,7 @@ export default function PosComponent({ posSection }) {
               {
                 partnersRepeater.map((slide, index) => {
                   return (
-                    <div className={`pos__slide pos__slide${listRotation} pos-${index}`} key={index}>
+                    <div className={`pos__slide pos__slide pos-${index}`} style={{ transform: `translateY(${yCalc}px)` }} key={index}>
                       <div className={`pos__slide-element pos__slide-element--${slide.color}`}></div>
                       <div className="pos__slide-name-wrapper">
                         <p className={`pos__slide-name--${slide.color}`}>{slide.name}</p>
