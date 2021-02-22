@@ -12,7 +12,7 @@ export default function MapComponent({mapSection}) {
 
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
-    threshold: 0
+    threshold: [0.5]
   })
 
   const sectionMapRef = useRef(null)
