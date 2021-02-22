@@ -98,7 +98,7 @@
   }
 
   &__swiper {
-    margin-top: -130px;
+    // margin-top: -130px;
   }
   &__table-icon {
     width: 183px;
@@ -106,6 +106,8 @@
     margin: 0 auto 40px;
   }
 }
+
+// @keyframes
 
 @include tablet() {
   .pos {
