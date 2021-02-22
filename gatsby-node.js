@@ -16,11 +16,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const pages = await getPages(graphql, reporter)
 
   posts.edges.forEach(singlePost => {
-
-    console.log('SinglePost from GN: ', singlePost);
-
     return createPage({
-      path: singlePost.post.uri,
+      path: singlePost.post.slug,
       component: path.resolve(`./src/templates/single-template.js`),
       context: {
         id: singlePost.post.id,
