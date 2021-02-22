@@ -10,7 +10,7 @@ export default function SponsorsComponents({sponsorsSection}) {
 
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
-    threshold: 0
+    threshold: 1
   })
 
   const logosRef = useRef(null)

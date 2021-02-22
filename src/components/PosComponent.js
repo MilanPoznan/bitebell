@@ -12,7 +12,7 @@ export default function PosComponent({ posSection }) {
   const [rotateIndex, setRotateIndex] = useState(0)
   const [yCalc, setYCalc] = useState(0)
   const [isGoesUp, setIsGoesUp] = useState(false)
-  
+
   const sectionListRef = useRef(null)
   const sectionTextRef = useRef(null)
 
