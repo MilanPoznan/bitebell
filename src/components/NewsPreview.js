@@ -27,7 +27,7 @@ export default function NewsPreview({ title, image, language, category, link, fi
           />
         </div>
       </Link> :
-      <Link to={`/${link}`}>
+      <Link to={`../${link}`}>
         <div className="news-preview">
           {image !== null
             ? <Img

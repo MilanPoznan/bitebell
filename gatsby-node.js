@@ -16,8 +16,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const pages = await getPages(graphql, reporter)
 
   posts.edges.forEach(singlePost => {
+    const postPath = singlePost.post.language.slug === 'en'
+      ? `en/news/${singlePost.post.slug}`
+      : `blog/${singlePost.post.slug}`
+    console.log(postPath)
     return createPage({
-      path: singlePost.post.slug,
+      path: postPath,
       component: path.resolve(`./src/templates/single-template.js`),
       context: {
         id: singlePost.post.id,
@@ -141,6 +145,9 @@ async function getPosts(graphql, reporter) {
           title
           slug
           uri
+          language {
+            slug
+          }
         }
         next {
           id
