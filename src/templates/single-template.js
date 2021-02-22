@@ -22,12 +22,19 @@ export default function singlePostTemplate({ data }) {
 
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
+  const currTranslations = language.slug === 'sr'
+    ? [{ uri: `/en/news/${translations[0].slug}/` }]
+    : [{ uri: `/blog/${translations[0].slug}` }]
 
   const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
+  console.log('tr', translations)
+  console.log('currTR', currTranslations)
+
+
   return (
-    <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <SinglePostLayout
         featuredPostArticleImage={postBlogImage}
         postTitle={title}

@@ -16,8 +16,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const pages = await getPages(graphql, reporter)
 
   posts.edges.forEach(singlePost => {
+    const postPath = singlePost.post.language.slug === 'en'
+      ? `en/news/${singlePost.post.slug}`
+      : `blog/${singlePost.post.slug}`
     return createPage({
-      path: singlePost.post.slug,
+      path: postPath,
       component: path.resolve(`./src/templates/single-template.js`),
       context: {
         id: singlePost.post.id,
@@ -26,6 +29,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     })
   })
+
 
   pages.nodes.forEach(page => {
     switch (page.slug) {
@@ -74,9 +78,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         })
         break;
       case 'pocetna':
-      case 'homepage':
         createPage({
           path: page.uri,
+          component: path.resolve('./src/templates/page-template.js'),
+          context: {
+            id: page.id
+          }
+        })
+        break;
+      case 'homepage':
+        createPage({
+          path: '/en',
           component: path.resolve('./src/templates/page-template.js'),
           context: {
             id: page.id
@@ -141,6 +153,9 @@ async function getPosts(graphql, reporter) {
           title
           slug
           uri
+          language {
+            slug
+          }
         }
         next {
           id

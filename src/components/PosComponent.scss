@@ -98,10 +98,6 @@
     overflow: hidden;
     height: 318px;
   }
-
-  &__swiper {
-    margin-top: -130px;
-  }
   &__table-icon {
     width: 183px;
     height: 71px;
@@ -126,6 +122,8 @@
   opacity: 1;
   transition: transform 0.6s ease-out, opacity 0.6s;
 }
+
+// @keyframes
 
 @include tablet() {
   .pos {

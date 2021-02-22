@@ -19,7 +19,7 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
   // URL from live site
   const url = 'https://mystifying-wiles-cc7118.netlify.app/'
   const shareUrl = `${url}/${postSlugTranslationName}${slug}`
-  
+
   return (
     <div className="socials-share">
       <div className="socials-share__buttons">
@@ -33,25 +33,18 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
             href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
             target="_blank"
             rel="noreferrer"
-            className="fb-xfbml-parse-ignore"
+            className="fb-xfbml-parse-ignore fb-link"
           >
             <FbIcon />
-          </a> 
+          </a>
         </div>
         <a
-          className="twitter-share-button"
+          className="twitter-share-button twitter-link"
           href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${title}`}
           target="_blank"
           rel="noreferrer"
         >
           <TwIcon />
-        </a>
-        <a
-          href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${title}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <LnIcon />
         </a>
         {/* <a
           className="twitter-share-button"
@@ -62,7 +55,7 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
           <ViberIcon />
         </a> */}
         <a
-          className="twitter-share-button"
+          className="twitter-share-button waap-link"
           href={`https://api.whatsapp.com/send?text=${title} + ${shareUrl}`}
           data-action="share/whatsapp/share"
           target="_blank"

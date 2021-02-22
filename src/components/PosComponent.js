@@ -6,19 +6,21 @@ import './PosComponent.scss'
 import useIntersect from '../hooks/useIntersect'
 
 export default function PosComponent({ posSection }) {
-
+  
   const { link, partnersLogoIcons, partnersRepeater, subtitle, tabelIcon, text, title } = posSection
 
-  // const [rotateIndex, setRotateIndex] = useState(0)
-  // const [yCalc, setYCalc] = useState(0)
+  const [rotateIndex, setRotateIndex] = useState(0)
+  const [yCalc, setYCalc] = useState(0)
+  const [isGoesUp, setIsGoesUp] = useState(false)
+  
+  const sectionListRef = useRef(null)
+  const sectionTextRef = useRef(null)
 
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
     threshold: 0
   })
 
-  const sectionListRef = useRef(null)
-  const sectionTextRef = useRef(null)
 
   useEffect(() => {
     if (entry.isIntersecting) {
@@ -27,6 +29,18 @@ export default function PosComponent({ posSection }) {
     }
   }, [entry.isIntersecting])
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Math.abs(rotateIndex) === partnersRepeater.length - 6) {
+        setIsGoesUp(true)
+      } else if (rotateIndex + 1 === 0) {
+        setIsGoesUp(false)
+      }
+      isGoesUp ? setRotateIndex(rotateIndex + 1) : setRotateIndex(rotateIndex - 1)
+      setYCalc(65 * rotateIndex)
+    }, 3000);
+    return () => clearInterval(interval);
+  });
 
   return (
     <div className="container" ref={ref}>
@@ -40,7 +54,7 @@ export default function PosComponent({ posSection }) {
           </div>
           {partnersLogoIcons && <Img fluid={partnersLogoIcons.localFile.childImageSharp.fluid} />}
           <div className="pos__swiper-wrapper swiper-container swiper-table swiper-container-initialized swiper-container-vertical swiper-container-ios">
-            <div className="swiper-wrapper pos__swiper" id="swiper-wrapper-2277adbd582785eb">
+            <div className="swiper-wrapper pos__swiper" id="swiper-wrapper-2277adbd582785eb" style={{ transform: `translateY(${yCalc}px)`, transition: '0.5s' }}>
               {
                 partnersRepeater.map((slide, index) => {
                   return (
@@ -64,7 +78,7 @@ export default function PosComponent({ posSection }) {
               }
             </div>
           </div>
-          {tabelIcon && <Img fluid={tabelIcon.localFile.childImageSharp.fluid} className="table-icons pos__table-icon"/>}
+          {tabelIcon && <Img fluid={tabelIcon.localFile.childImageSharp.fluid} className="table-icons pos__table-icon" />}
         </div>
         <div className="pos__text-container" ref={sectionTextRef}>
           <div className="text-box">
