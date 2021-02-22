@@ -1,0 +1,64 @@
+@import './global-styles/colors.scss';
+@import './global-styles/_media-mixins.scss';
+
+.socials-share {
+  margin: 40px 0;
+  
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      margin-right: 20px;
+      background-color: $grey-light;
+      border-radius: 50%;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+        height: auto;
+
+        path {
+          fill: $dark-blue;
+        }
+      }
+    }
+  }
+}
+@include desktop-lowres() {
+  .socials-share {
+    position: sticky;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: 0 0 0 50px;
+
+    &__buttons {
+      flex-direction: column;
+
+      .fb-share-button {
+        margin-bottom: 20px;
+      }
+      a {
+        margin-right: 0;
+        margin-bottom: 20px;
+        transition: all .5s ease;
+
+        &:hover {
+          box-shadow: 0 8px 32px 0 rgba(98, 155, 249, 0.2);
+          background-color: $white;
+          transition: all .5s ease;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

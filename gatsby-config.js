@@ -16,7 +16,6 @@ module.exports = {
           `https://dev.bitebell.com/graphql`,
       },
     },
-
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -41,7 +40,14 @@ module.exports = {
         path: `${__dirname}/content/assets`,
       },
     },
-
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /svg-images/
+        }
+      }
+    },
     /**
      * The following two plugins are required if you want to use Gatsby image
      * See https://www.gatsbyjs.com/docs/gatsby-image/#setting-up-gatsby-image

@@ -73,9 +73,6 @@ export default function PartnershipForm({ data, language, selectTypes, setIsForm
     const token = recaptchaRef.current && await recaptchaRef.current.executeAsync()
     recaptchaRef.current && recaptchaRef.current.reset()
 
-    console.log('token', token)
-    // recaptchaRef.current && recaptchaRef.current.reset()
-
     setSubmited(true)
 
     if (checkIsFieldValid(isNameRequired, nameField) && //Name field
