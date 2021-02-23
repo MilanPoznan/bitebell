@@ -10,7 +10,7 @@ export default function AboutComponent({aboutSection}) {
 
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
-    threshold: 1
+    threshold: 0.5
   })
 
   const aboutRef = useRef(null)
