@@ -1,0 +1,38 @@
+@import './global-styles/colors.scss';
+@import './global-styles/_media-mixins.scss';
+
+.comments {
+  display: flex;
+  flex-flow: column;
+  max-width: 440px;
+  width: 80%;
+  margin: 0 auto;
+  input, textarea {
+    padding: 10px 0px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #E4E4E4;
+    background: none;
+  } 
+  textarea { 
+    margin: 20px 0 40px;
+  }
+  button {
+    padding: 15px 70px;
+    margin: 0 auto;
+    border-radius: 0.5px;
+    transition: all 0.2s ease;
+    border: 2px solid #2C4482;
+    color: #2C4482;
+    background: none;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      background: $blue;
+      color: $white;
+    }
+  }
+}

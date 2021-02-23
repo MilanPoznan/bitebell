@@ -16,7 +16,7 @@ export default function singlePostTemplate({ data }) {
     wp: { optionsPage: { options: { logo } } } } = data
 
 
-  const { title, content, slug, language, translations, author_section, featuredImage } = nodes[0]
+  const { id, title, content, slug, language, translations, author_section, featuredImage } = nodes[0]
 
   const postBlogImage = featuredImage.node && featuredImage.node.file.blogImage.fluid
 
@@ -36,6 +36,7 @@ export default function singlePostTemplate({ data }) {
   return (
     <Layout language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <SinglePostLayout
+        id={id}
         featuredPostArticleImage={postBlogImage}
         postTitle={title}
         postContent={content}
@@ -72,6 +73,7 @@ export const singlePostQuery = graphql`
     }
     allWpPost(filter: {id: {eq: $id}}) {
       nodes {
+        id
         date
         content
         slug

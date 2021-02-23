@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Img from 'gatsby-image'
+
+import CommentComponent from './CommentComponent'
 
 import SocialsShareComponent from './SocialsShareComponent'
 import './SinglePostLayout.scss'
@@ -10,6 +12,7 @@ import './SinglePostLayout.scss'
  * @returns {JSX Element}
  */
 export default function SinglePostLayout({
+  id,
   postTitle,
   postContent,
   slug,
@@ -19,6 +22,7 @@ export default function SinglePostLayout({
   authorName,
   authorDescription
 }) {
+  const [isCommentPosted, setIsCommentPosted] = useState(false)
 
   return (
     <section className="single-post">
@@ -54,6 +58,12 @@ export default function SinglePostLayout({
           </div>
         </div>
       </div>
+      {
+        isCommentPosted
+          ? <h1>Upsesno ste postavili komentar</h1>
+          : <CommentComponent id={id} setIsCommentPosted={setIsCommentPosted} isSrlanguage={language === 'sr' ? true : false} />
+      }
+
     </section>
   )
 }
