@@ -37,7 +37,7 @@ export default function PosComponent({ posSection }) {
         setIsGoesUp(false)
       }
       isGoesUp ? setRotateIndex(rotateIndex + 1) : setRotateIndex(rotateIndex - 1)
-      setYCalc(65 * rotateIndex)
+      setYCalc(64 * rotateIndex)
     }, 3000);
     return () => clearInterval(interval);
   });
