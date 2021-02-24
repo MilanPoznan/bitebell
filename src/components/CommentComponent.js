@@ -7,14 +7,7 @@ export default function CommentComponent({ isSrlanguage, setIsCommentPosted, id 
 
   const [nameValue, setNameValue] = useState('')
   const [commentVal, setCommentVal] = useState('')
-  const data = JSON.stringify({
-    author_name: 'Milan',
-    author_email: 'poznan.mialn@gmail.com',
-    content: 'content comnentara',
 
-  })
-
-  useEffect((() => console.log(nameValue)))
   const onSubmitComment = (e) => {
     e.preventDefault();
 
@@ -33,9 +26,12 @@ export default function CommentComponent({ isSrlanguage, setIsCommentPosted, id 
         console.log(response)
         if (response.ok === true) {
           setIsCommentPosted(true)
+        } else {
+          throw new Error(`${response.statusText}`)
         }
         return response.json();
       })
+      .then(response => { console.log(response) })
       .catch(error => console.error('Error:', error));
 
   }
