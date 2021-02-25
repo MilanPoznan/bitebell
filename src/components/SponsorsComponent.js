@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import './SponsorsComponent.scss'
 import useIntersect from '../hooks/useIntersect'
 
-export default function SponsorsComponents({sponsorsSection}) {
+export default function SponsorsComponents({ sponsorsSection }) {
 
-  const {sponsorsLogoRepeater, sponsorsTitle} = sponsorsSection
+  const { sponsorsLogoRepeater, sponsorsTitle } = sponsorsSection
 
   const [counter, setCounter] = useState(0)
 
@@ -26,31 +26,36 @@ export default function SponsorsComponents({sponsorsSection}) {
   const slide = () => counter * 156
 
 
+  useEffect(() => {
+    console.log(counter)
+    console.log(slide())
+  }
+  )
   return (
     <section className="partners" ref={logosRef}>
       <div className="container-big partners__container">
         <h4>{sponsorsTitle}</h4>
-        <div className="partners-icon sponsors__wrapper" ref={ref}>
-          {
-            sponsorsLogoRepeater.length > 7 &&
-            <>
-              <span role="button" onClick={() => counter > 0 && setCounter(counter - 1)} 
+        {
+          sponsorsLogoRepeater.length > 7 &&
+          <>
+            <span role="button" onClick={() => counter > 0 && setCounter(counter + 1)}
               style={{
                 borderLeft: `${counter > 0 ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`,
                 borderBottom: `${counter > 0 ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`
-                }}></span>
-              <span role="button" onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter + 1)}
+              }}></span>
+            <span role="button" onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter - 1)}
               style={{
                 borderRight: `${counter < (sponsorsLogoRepeater.length - 7) ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`,
                 borderTop: `${counter < (sponsorsLogoRepeater.length - 7) ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`
-                }}></span>
-            </>
-          }
+              }}></span>
+          </>
+        }
+        <div className="partners-icon sponsors__wrapper" ref={ref}  >
           {
             sponsorsLogoRepeater.map((sponsor, index) => {
               return (
-                <div className={`${index % 2 === 0 ? 'top' : 'bottom'} sponsors__img-wrapper`} style={{transform: `translateX(${slide()}px)`}} key={index}>
-                  <Img className="sponsors__img" fluid={sponsor.logoIcon.localFile.childImageSharp.fluid}/>
+                <div className={`${index % 2 === 0 ? 'top' : 'bottom'} sponsors__img-wrapper`} key={index} style={{ position: 'relative', transition: '0.5s', left: `${slide()}px` }}>
+                  <Img className="sponsors__img" fluid={sponsor.logoIcon.localFile.childImageSharp.fluid} />
                 </div>
               )
             })
