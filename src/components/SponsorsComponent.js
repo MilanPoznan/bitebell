@@ -23,7 +23,7 @@ export default function SponsorsComponents({ sponsorsSection }) {
     }
   }, [entry.isIntersecting])
 
-  const slide = () => counter * 156
+  const slide = () => counter * 146
 
 
   useEffect(() => {
@@ -38,16 +38,9 @@ export default function SponsorsComponents({ sponsorsSection }) {
         {
           sponsorsLogoRepeater.length > 7 &&
           <>
-            <span role="button" onClick={() => counter > 0 && setCounter(counter + 1)}
-              style={{
-                borderLeft: `${counter > 0 ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`,
-                borderBottom: `${counter > 0 ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`
-              }}></span>
-            <span role="button" onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter - 1)}
-              style={{
-                borderRight: `${counter < (sponsorsLogoRepeater.length - 7) ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`,
-                borderTop: `${counter < (sponsorsLogoRepeater.length - 7) ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`
-              }}></span>
+            <span role="button" className={counter === 0 ? "inactive" : "active"}
+              onClick={() => setCounter(counter + 1)} />
+            <span role="button" className={Math.abs(counter) >= sponsorsLogoRepeater.length - 7 ? "inactive" : "active"} onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter - 1)} />
           </>
         }
         <div className="partners-icon sponsors__wrapper" ref={ref}  >

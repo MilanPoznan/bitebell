@@ -9,6 +9,12 @@
     transform: rotate(45deg);
     background-color: transparent;
     z-index: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    &.inactive {
+      opacity: 0.2;
+      pointer-events: none;
+    }
     &:first-of-type {
       left: 6px;
       border-left: 5px solid #2C4482;
