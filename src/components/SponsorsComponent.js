@@ -25,12 +25,6 @@ export default function SponsorsComponents({ sponsorsSection }) {
 
   const slide = () => counter * 146
 
-
-  useEffect(() => {
-    console.log(counter)
-    console.log(slide())
-  }
-  )
   return (
     <section className="partners" ref={logosRef}>
       <div className="container-big partners__container">
