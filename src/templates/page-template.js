@@ -111,6 +111,18 @@ export const query = graphql`
                 }
               }
             }
+            locations {
+              color
+              locationIcon {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
             orderConfirmed {
               text
               icon {

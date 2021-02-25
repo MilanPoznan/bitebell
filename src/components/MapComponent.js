@@ -4,11 +4,14 @@ import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 import './MapComponent.scss'
 
+import { gsap } from 'gsap'
+
+
 import useIntersect from '../hooks/useIntersect'
 
-export default function MapComponent({mapSection}) {
+export default function MapComponent({ mapSection }) {
 
-  const {link, map, orderConfirmed, subtitle, text, title} = mapSection
+  const { link, map, orderConfirmed, subtitle, text, title, locations } = mapSection
 
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
@@ -34,10 +37,10 @@ export default function MapComponent({mapSection}) {
               <h2>{title}</h2>
               <h5>{subtitle}</h5>
             </div>
-            <div dangerouslySetInnerHTML={{__html: text}}></div>
+            <div dangerouslySetInnerHTML={{ __html: text }}></div>
             <Link to={link.url} className="button button-lg dispatch-integrations-en">{link.title}</Link>
           </div>
-          <div className="col-lg-6 order-first-mobile img-center aos-init aos-animate map-component__right" ref={sectionMapRef}>
+          <div className="map-component__right" ref={sectionMapRef}>
             <div className="text-box">
               <div className="desktop-hide">
                 <h2>{title}</h2>
@@ -45,11 +48,29 @@ export default function MapComponent({mapSection}) {
               </div>
             </div>
             <div className="map-component__check">
-              <Img fluid={orderConfirmed.icon.localFile.childImageSharp.fluid} className="map-component__check-map"/>
+              <Img fluid={orderConfirmed.icon.localFile.childImageSharp.fluid} className="map-component__check-map" />
               <p>{orderConfirmed.text}</p>
             </div>
             <div className="map-component__map-container">
-              <Img fluid={map.localFile.childImageSharp.fluid} className="map-component__map"/>
+              <Img fluid={map.localFile.childImageSharp.fluid} className="map-component__map" />
+              {
+                locations.map((location, index) => {
+                  return (
+                    <div className={`map-component__locations map-component__locations--${location.color}`} key={index}>
+                      <div className='map-component__locations-wrapper'>
+                        <span className="top-box"></span>
+                        <span className="right-box"></span>
+                        <span className="bottom-box"></span>
+                        <span className="left-box"></span>
+                        <div className="map-component__locations-img-container">
+                          <Img fluid={location.locationIcon.localFile.childImageSharp.fluid} className="map-component__locations-img" />
+                        </div>
+                        <span className="map-component__locations-pin"></span>
+                      </div>
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
         </div>
