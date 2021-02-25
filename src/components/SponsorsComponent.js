@@ -35,15 +35,15 @@ export default function SponsorsComponents({ sponsorsSection }) {
     <section className="partners" ref={logosRef}>
       <div className="container-big partners__container">
         <h4>{sponsorsTitle}</h4>
-        {
-          sponsorsLogoRepeater.length > 7 &&
-          <>
-            <span role="button" className={counter === 0 ? "inactive" : "active"}
-              onClick={() => setCounter(counter + 1)} />
-            <span role="button" className={Math.abs(counter) >= sponsorsLogoRepeater.length - 7 ? "inactive" : "active"} onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter - 1)} />
-          </>
-        }
         <div className="partners-icon sponsors__wrapper" ref={ref}  >
+          {
+            sponsorsLogoRepeater.length > 7 &&
+            <>
+              <span role="button" className={counter === 0 ? "inactive" : "active"}
+                onClick={() => setCounter(counter + 1)} />
+              <span role="button" className={Math.abs(counter) >= sponsorsLogoRepeater.length - 7 ? "inactive" : "active"} onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter - 1)} />
+            </>
+          }
           {
             sponsorsLogoRepeater.map((sponsor, index) => {
               return (
