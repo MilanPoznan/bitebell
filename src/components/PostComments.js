@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import './PostComments.scss';
+
 export default function PostComments({ dbID }) {
 
   const [allComments, setAllComments] = useState()
@@ -28,10 +30,12 @@ export default function PostComments({ dbID }) {
 
   return (
     <div className="container all-comments">
-      {allComments !== undefined && allComments.map((comment, index) => (<div key={index}>
-        <h3>{comment.comment_author}</h3>
-        <p>{comment.comment_content}</p>
-      </div>))}
+      <h2>Komentari</h2>
+      {allComments !== undefined && allComments.map((comment, index) => (
+        <div className="all-comments__wrapper" key={index}>
+          <h3>{comment.comment_author}</h3>
+          <p>{comment.comment_content}</p>
+        </div>))}
 
     </div>
   )

@@ -50,7 +50,13 @@ export default function CommentComponent({ isSrlanguage, setIsCommentPosted, id 
         value={commentVal}
         onChange={(e) => setCommentVal(e.target.value)}
       />
-      <button onClick={(e) => onSubmitComment(e)}>{isSrlanguage ? 'Posalji Komentar' : 'Send Comment'}</button>
+      <button
+        onClick={(e) => onSubmitComment(e)}
+        className={!!nameValue && !!commentVal ? 'active' : 'inactive'}
+      >
+
+        {isSrlanguage ? 'Posalji Komentar' : 'Send Comment'}
+      </button>
     </div>
   )
 }

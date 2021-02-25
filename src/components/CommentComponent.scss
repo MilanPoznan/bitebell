@@ -30,6 +30,10 @@
     display: block;
     font-weight: 600;
     cursor: pointer;
+    &.inactive {
+      pointer-events: none;
+      opacity: 0.2;
+    }
     &:hover {
       background: $blue;
       color: $white;
