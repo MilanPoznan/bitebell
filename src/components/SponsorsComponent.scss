@@ -32,3 +32,53 @@
     animation-fill-mode: forwards;
   }
 }
+
+@include desktop-lowres () {
+  .sponsors {
+    &__img {
+      min-width: 76px;
+      margin-right: 25px;
+      margin-left: 25px;
+      &-wrapper {
+        margin-bottom: 0;
+      }
+    }
+    &__wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      width: calc(7 * 156px);
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 0 35px;
+      transition: 0.5s;
+      position: relative;
+      span {
+        position: absolute;
+        content: '';
+        width: 30px;
+        height: 30px;
+        transform: rotate(45deg);
+        background-color: transparent;
+        z-index: 1;
+        &:first-of-type {
+          left: 6px;
+          border-left: 5px solid #2C4482;
+          border-bottom: 5px solid #2C4482;
+        }
+        &:last-of-type {
+          right: 6px;
+          border-top: 5px solid #2C4482;
+          border-right: 5px solid #2C4482;
+        }
+        &:active {
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+    &__container {
+    }
+  }
+}

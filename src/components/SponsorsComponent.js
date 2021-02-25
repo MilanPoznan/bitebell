@@ -8,6 +8,8 @@ export default function SponsorsComponents({sponsorsSection}) {
 
   const {sponsorsLogoRepeater, sponsorsTitle} = sponsorsSection
 
+  const [counter, setCounter] = useState(0)
+
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
     threshold: 1
@@ -21,15 +23,33 @@ export default function SponsorsComponents({sponsorsSection}) {
     }
   }, [entry.isIntersecting])
 
+  const slide = () => counter * 156
+
+
   return (
     <section className="partners" ref={logosRef}>
-      <div className="container-big">
+      <div className="container-big partners__container">
         <h4>{sponsorsTitle}</h4>
         <div className="partners-icon sponsors__wrapper" ref={ref}>
           {
+            sponsorsLogoRepeater.length > 7 &&
+            <>
+              <span role="button" onClick={() => counter > 0 && setCounter(counter - 1)} 
+              style={{
+                borderLeft: `${counter > 0 ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`,
+                borderBottom: `${counter > 0 ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`
+                }}></span>
+              <span role="button" onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter + 1)}
+              style={{
+                borderRight: `${counter < (sponsorsLogoRepeater.length - 7) ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`,
+                borderTop: `${counter < (sponsorsLogoRepeater.length - 7) ? 'solid 5px rgba(44, 68, 130, 1)' : 'solid 5px rgba(44, 68, 130, 0.4)'}`
+                }}></span>
+            </>
+          }
+          {
             sponsorsLogoRepeater.map((sponsor, index) => {
               return (
-                <div className={`${index % 2 === 0 ? 'top' : 'bottom'} sponsors__img-wrapper`} key={index}>
+                <div className={`${index % 2 === 0 ? 'top' : 'bottom'} sponsors__img-wrapper`} style={{transform: `translateX(${slide()}px)`}} key={index}>
                   <Img className="sponsors__img" fluid={sponsor.logoIcon.localFile.childImageSharp.fluid}/>
                 </div>
               )

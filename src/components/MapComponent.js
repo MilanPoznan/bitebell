@@ -8,7 +8,7 @@ import useIntersect from '../hooks/useIntersect'
 
 export default function MapComponent({mapSection}) {
 
-  const {link, map, orderConfirmed, subtitle, text, title} = mapSection
+  const {link, map, orderConfirmed, subtitle, text, title, locations} = mapSection
 
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
@@ -24,6 +24,14 @@ export default function MapComponent({mapSection}) {
       sectionTextRef.current.classList.add('show-bottom')
     }
   }, [entry.isIntersecting])
+
+  // useEffect(() => {
+  //   let timer = null;
+
+  //   timer = setTimeout(() => {
+      
+  //   }, timeout);
+  // })
 
   return (
     <div className="container" ref={ref}>
@@ -50,6 +58,24 @@ export default function MapComponent({mapSection}) {
             </div>
             <div className="map-component__map-container">
               <Img fluid={map.localFile.childImageSharp.fluid} className="map-component__map"/>
+              {
+                locations.map((location, index) => {
+                  return (
+                    <div className={`map-component__locations map-component__locations--${location.color}`} key={index}>
+                      <div className='map-component__locations-wrapper'>
+                        <span className="top-box"></span>
+                        <span className="right-box"></span>
+                        <span className="bottom-box"></span>
+                        <span className="left-box"></span>
+                        <div className="map-component__locations-img-container">
+                          <Img fluid={location.locationIcon.localFile.childImageSharp.fluid} className="map-component__locations-img"/>
+                        </div>
+                        <span className="map-component__locations-pin"></span>
+                      </div>
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
         </div>
