@@ -47,8 +47,46 @@
 
   &__locations {
     position: absolute;
-    transition: border-color 0s ease-out 2.75s, width 0.25s ease-out 2.75s, height 0.25s ease-out 3s;
-
+    &-pin {
+      position: absolute;
+      left: calc(50% - 10px);
+      top: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      // opacity: 0.2;
+      border-radius: 50%;
+      animation: dotBreath;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+      // &:last-of-type {
+      //   top: 80%;
+      // }
+      &-inner {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        z-index: 2;
+      }
+    }
+    &-img {
+      width: 70px;
+      &-container {
+        position: absolute;
+        top: 30%;
+        left: calc(50% - 45px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 10px;
+        border-radius: 12px;
+      }
+    }
+    &-wrapper {
+      height: 100%;
+    }
     &:nth-of-type(2) {
       width: 39%;
       height: 49%;
@@ -81,67 +119,50 @@
       height: 0;
       border: 4px solid transparent;
     }
-    &--yellow {
-      border-color: #ffc244;
-    }
-    &--red {
-      border-color: #d61f26;
-    }
-    &--blue {
-      border-color: #2C4482;
-    }
-    &--green {
-      border-color: #3cd5af;
-    }
     &-wrapper {
       position: relative;
-      span {
+      .top-box, .bottom-box, .left-box, .right-box {
         position: absolute;
-        transition: all .4s;
       }
       .top-box {
         top: 0;
-        height: 2px;
+        height: 4px;
         width: 0px;
-        background-color: red;
-        animation: animateTopBox;
-        animation-delay: 0.5s;
-        animation-duration: 1s;
-        animation-fill-mode: forwards;
       }
       .left-box {
         left: 0;
+        width: 4px;
+        height: 0;
+        transform: rotate(180deg);
+        bottom: 0;
       }
       .bottom-box {
         bottom: 0;
-        height: 2px;
+        height: 4px;
         width: 0px;
+        transform: rotate(180deg);
+        right: 0;
       }
       .right-box {
         right: 0;
-        background-color: red;
-        width: 2px;
+        width: 4px;
         height: 0px;
-        animation: animateRightBox;
-        animation-delay: 1.5s;
-        animation-duration: 1s;
       }
     }
   }
 }
 
-@keyframes animateTopBox {
-  100% {width: 100%;}
+@keyframes dotBreath {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
-@keyframes animateRightBox {
-  100% {height: 100%;}
-}
-
-// @keyframes borderYellow {
-//   0% {border: 4px solid transparent;}
-//   100% {border: 4px solid #ffc244;}
-// }
 
 .show-bottom {
   transform: translateZ(0) scale(1);
