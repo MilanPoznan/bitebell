@@ -58,40 +58,36 @@ export default function MapComponent({ mapSection }) {
   }
 
   const animateFirstBox = () => {
-    borderBoxAnimate(borderBox1.current.children[0], 1, { width: '100%' })
-    borderBoxAnimate(borderBox1.current.children[1], 1, { height: '100%', delay: 1 })
-    borderBoxAnimate(borderBox1.current.children[2], 1, { width: '100%', delay: 2 })
-    borderBoxAnimate(borderBox1.current.children[3], 1, { height: '100%', delay: 3 })
+    borderBoxAnimate(borderBox1.current, 1, {opacity: '1'})
+    borderBoxAnimate(borderBox1.current.children[0], 1, { width: '100%', delay: 3 })
+    borderBoxAnimate(borderBox1.current.children[1], 1, { height: '100%', delay: 4 })
+    borderBoxAnimate(borderBox1.current.children[2], 1, { width: '100%', delay: 5 })
+    borderBoxAnimate(borderBox1.current.children[3], 1, { height: '100%', delay: 6 })
     resetAnimation([borderBox1.current.children[0], borderBox1.current.children[2]], 0.2, { width: '0px', })
     resetAnimation([borderBox1.current.children[1], borderBox1.current.children[3]], 0.2, { height: '0px', })
-    // borderBoxAnimate(borderBox1.current, 1, {opacity: '0', delay: 6})
+    borderBoxAnimate(borderBox1.current, 1, {opacity: '0', delay: 9})
   }
 
   const animateSecondBox = () => {
-    borderBoxAnimate(borderBox2.current.children[0], 1, { width: '100%', delay: 6 })
-    borderBoxAnimate(borderBox2.current.children[1], 1, { height: '100%', delay: 7 })
-    borderBoxAnimate(borderBox2.current.children[2], 1, { width: '100%', delay: 8 })
-    borderBoxAnimate(borderBox2.current.children[3], 1, { height: '100%', delay: 9 })
-    resetAnimation([borderBox1.current.children[0], borderBox1.current.children[2]], 0.2, { width: '0px', delay: 10 })
-    resetAnimation([borderBox1.current.children[1], borderBox1.current.children[3]], 0.2, { height: '0px', delay: 10 })
-    // borderBoxAnimate(borderBox2.current, 1, {opacity: '0', delay: 12})
+    borderBoxAnimate(borderBox2.current, 1, {opacity: '1', delay: 7})
+    borderBoxAnimate(borderBox2.current.children[0], 1, { width: '100%', delay: 8 })
+    borderBoxAnimate(borderBox2.current.children[1], 1, { height: '100%', delay: 9 })
+    borderBoxAnimate(borderBox2.current.children[2], 1, { width: '100%', delay: 10 })
+    borderBoxAnimate(borderBox2.current.children[3], 1, { height: '100%', delay: 11 })
+    resetAnimation([borderBox2.current.children[0], borderBox2.current.children[2]], 0.2, { width: '0px' })
+    resetAnimation([borderBox2.current.children[1], borderBox2.current.children[3]], 0.2, { height: '0px' })
+    borderBoxAnimate(borderBox2.current, 1, {opacity: '0', delay: 14})
   }
 
   const animateThirdBox = () => {
-    borderBoxAnimate(borderBox3.current.children[0], 1, { width: '100%', delay: 12 })
-    borderBoxAnimate(borderBox3.current.children[1], 1, { height: '100%', delay: 13 })
-    borderBoxAnimate(borderBox3.current.children[2], 1, { width: '100%', delay: 14 })
-    borderBoxAnimate(borderBox3.current.children[3], 1, { height: '100%', delay: 15 })
-    resetAnimation([borderBox1.current.children[0], borderBox1.current.children[2]], 0.2, { width: '0px', })
-    resetAnimation([borderBox1.current.children[1], borderBox1.current.children[3]], 0.2, { height: '0px', })
-    // borderBoxAnimate(borderBox3.current, 1, {opacity: '0', delay: 18})
-  }
-
-
-  // var masterTimeline = new TimelineMax({ repeat: -1, repeatDelay: 1 });
-
-  const animateDot = () => {
-    borderBoxAnimate(dot.current, { transform: 'scale(1.5)' })
+    borderBoxAnimate(borderBox3.current, 1, {opacity: '1', delay: 12})
+    borderBoxAnimate(borderBox3.current.children[0], 1, { width: '100%', delay: 13 })
+    borderBoxAnimate(borderBox3.current.children[1], 1, { height: '100%', delay: 14 })
+    borderBoxAnimate(borderBox3.current.children[2], 1, { width: '100%', delay: 15 })
+    borderBoxAnimate(borderBox3.current.children[3], 1, { height: '100%', delay: 16 })
+    resetAnimation([borderBox3.current.children[0], borderBox3.current.children[2]], 0.2, { width: '0px', })
+    resetAnimation([borderBox3.current.children[1], borderBox3.current.children[3]], 0.2, { height: '0px', })
+    borderBoxAnimate(borderBox3.current, 1, {opacity: '0', delay: 19})
   }
 
   const animateMap = () => {
@@ -99,10 +95,11 @@ export default function MapComponent({ mapSection }) {
     animateSecondBox();
     animateThirdBox();
   }
+
   useEffect(() => {
     animateMap()
     let interval = null;
-    interval = setInterval(animateMap, 15000)
+    interval = setInterval(animateMap, 21200)
     return () => clearInterval(interval)
   })
 
@@ -147,9 +144,8 @@ export default function MapComponent({ mapSection }) {
                   <div className="map-component__locations-img-container" style={{ backgroundColor: firstBoxColor }}>
                     <Img fluid={locations[0].locationIcon.localFile.childImageSharp.fluid} className="map-component__locations-img" />
                   </div>
-                  <span className="map-component__locations-pin" style={{ backgroundColor: firstBoxColor }} ref={dot}>
-                    <span className="map-component__locations-pin-inner" style={{ backgroundColor: firstBoxColor }}></span>
-                  </span>
+                  <span className="map-component__locations-pin" style={{ backgroundColor: firstBoxColor }} ref={dot}></span>
+                  <span className="map-component__locations-pin-inner" style={{ backgroundColor: firstBoxColor }}></span>
                 </div>
               </div>
               <div className={`map-component__locations`}>
@@ -161,9 +157,8 @@ export default function MapComponent({ mapSection }) {
                   <div className="map-component__locations-img-container" style={{ backgroundColor: secondBoxColor }}>
                     <Img fluid={locations[1].locationIcon.localFile.childImageSharp.fluid} className="map-component__locations-img" />
                   </div>
-                  <div className="map-component__locations-pin" style={{ backgroundColor: secondBoxColor }} ref={dot}>
-                    <span className="map-component__locations-pin-inner" style={{ backgroundColor: secondBoxColor }}></span>
-                  </div>
+                  <span className="map-component__locations-pin" style={{ backgroundColor: secondBoxColor }} ref={dot}></span>
+                  <span className="map-component__locations-pin-inner" style={{ backgroundColor: secondBoxColor }}></span>
                 </div>
               </div>
               <div className={`map-component__locations`}>
@@ -175,9 +170,8 @@ export default function MapComponent({ mapSection }) {
                   <div className="map-component__locations-img-container" style={{ backgroundColor: thirdBoxColor }}>
                     <Img fluid={locations[2].locationIcon.localFile.childImageSharp.fluid} className="map-component__locations-img" />
                   </div>
-                  <span className="map-component__locations-pin" style={{ backgroundColor: thirdBoxColor }} ref={dot}>
-                    <span className="map-component__locations-pin-inner" style={{ backgroundColor: thirdBoxColor }}></span>
-                  </span>
+                  <span className="map-component__locations-pin" style={{ backgroundColor: thirdBoxColor }} ref={dot}></span>
+                  <span className="map-component__locations-pin-inner" style={{ backgroundColor: thirdBoxColor }}></span>
                 </div>
               </div>
             </div>
