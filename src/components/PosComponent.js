@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
@@ -6,7 +6,7 @@ import './PosComponent.scss'
 import useIntersect from '../hooks/useIntersect'
 
 export default function PosComponent({ posSection }) {
-  
+
   const { link, partnersLogoIcons, partnersRepeater, subtitle, tabelIcon, text, title } = posSection
 
   const [rotateIndex, setRotateIndex] = useState(0)
@@ -44,7 +44,7 @@ export default function PosComponent({ posSection }) {
 
   return (
     <div className="container" ref={ref}>
-      <div className="pos__container">
+      <div className="pos__container" id="pos">
         <div className="pos__list-container" ref={sectionListRef}>
           <div className="text-box">
             <div className="desktop-hide">

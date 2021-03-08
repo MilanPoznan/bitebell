@@ -58,36 +58,36 @@ export default function MapComponent({ mapSection }) {
   }
 
   const animateFirstBox = () => {
-    borderBoxAnimate(borderBox1.current, 1, {opacity: '1'})
+    borderBoxAnimate(borderBox1.current, 1, { opacity: '1' })
     borderBoxAnimate(borderBox1.current.children[0], 1, { width: '100%', delay: 3 })
     borderBoxAnimate(borderBox1.current.children[1], 1, { height: '100%', delay: 4 })
     borderBoxAnimate(borderBox1.current.children[2], 1, { width: '100%', delay: 5 })
     borderBoxAnimate(borderBox1.current.children[3], 1, { height: '100%', delay: 6 })
     resetAnimation([borderBox1.current.children[0], borderBox1.current.children[2]], 0.2, { width: '0px', })
     resetAnimation([borderBox1.current.children[1], borderBox1.current.children[3]], 0.2, { height: '0px', })
-    borderBoxAnimate(borderBox1.current, 1, {opacity: '0', delay: 9})
+    borderBoxAnimate(borderBox1.current, 1, { opacity: '0', delay: 9 })
   }
 
   const animateSecondBox = () => {
-    borderBoxAnimate(borderBox2.current, 1, {opacity: '1', delay: 7})
+    borderBoxAnimate(borderBox2.current, 1, { opacity: '1', delay: 7 })
     borderBoxAnimate(borderBox2.current.children[0], 1, { width: '100%', delay: 8 })
     borderBoxAnimate(borderBox2.current.children[1], 1, { height: '100%', delay: 9 })
     borderBoxAnimate(borderBox2.current.children[2], 1, { width: '100%', delay: 10 })
     borderBoxAnimate(borderBox2.current.children[3], 1, { height: '100%', delay: 11 })
     resetAnimation([borderBox2.current.children[0], borderBox2.current.children[2]], 0.2, { width: '0px' })
     resetAnimation([borderBox2.current.children[1], borderBox2.current.children[3]], 0.2, { height: '0px' })
-    borderBoxAnimate(borderBox2.current, 1, {opacity: '0', delay: 14})
+    borderBoxAnimate(borderBox2.current, 1, { opacity: '0', delay: 14 })
   }
 
   const animateThirdBox = () => {
-    borderBoxAnimate(borderBox3.current, 1, {opacity: '1', delay: 12})
+    borderBoxAnimate(borderBox3.current, 1, { opacity: '1', delay: 12 })
     borderBoxAnimate(borderBox3.current.children[0], 1, { width: '100%', delay: 13 })
     borderBoxAnimate(borderBox3.current.children[1], 1, { height: '100%', delay: 14 })
     borderBoxAnimate(borderBox3.current.children[2], 1, { width: '100%', delay: 15 })
     borderBoxAnimate(borderBox3.current.children[3], 1, { height: '100%', delay: 16 })
     resetAnimation([borderBox3.current.children[0], borderBox3.current.children[2]], 0.2, { width: '0px', })
     resetAnimation([borderBox3.current.children[1], borderBox3.current.children[3]], 0.2, { height: '0px', })
-    borderBoxAnimate(borderBox3.current, 1, {opacity: '0', delay: 19})
+    borderBoxAnimate(borderBox3.current, 1, { opacity: '0', delay: 19 })
   }
 
   const animateMap = () => {
@@ -111,7 +111,7 @@ export default function MapComponent({ mapSection }) {
   }, [entry.isIntersecting])
 
   return (
-    <div className="container" ref={ref}>
+    <div className="container" ref={ref} id="map">
       <div className="row">
         <div className="map-component__wrapper">
           <div className="text-box map-component__left" ref={sectionTextRef}>

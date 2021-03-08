@@ -21,10 +21,13 @@ export default function NewsPreview({ title, image, language, category, link, fi
               {authorName && <span className="news-preview__first-author-name">{language.slug === 'sr' ? `Autor teksta ${authorName}` : `Written by ${authorName}`}</span>}
             </div>
           </div>
-          <Img
+          {image ? <Img
             className="news-preview__first-featured-img"
             fluid={image.node.file.blogImage.fluid}
           />
+            :
+            null}
+
         </div>
       </Link> :
       <Link to={`../${link}`}>

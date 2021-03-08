@@ -19,7 +19,7 @@ export default function singlePostTemplate({ data, pageContext }) {
 
   const { comments, databaseId, title, content, slug, uri, language, translations, author_section, featuredImage } = nodes[0]
   console.log(comments)
-  const postBlogImage = featuredImage.node && featuredImage.node.file.blogImage.fluid
+  const postBlogImage = featuredImage && featuredImage.node.file.blogImage.fluid
 
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
