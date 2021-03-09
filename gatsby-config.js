@@ -17,6 +17,18 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-MZWX2X2",
+        // Include GTM in development.
+        includeInDevelopment: false,
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        // Defaults to null
+        defaultDataLayer: { platform: "gatsby" },
+      }
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [

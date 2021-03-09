@@ -27,15 +27,21 @@ export default function PostComments({ dbID }) {
     }
 
   }, [allComments])
+  console.log(allComments)
 
   return (
     <div className="container all-comments">
       <h2>Komentari</h2>
-      {allComments !== undefined && allComments.map((comment, index) => (
-        <div className="all-comments__wrapper" key={index}>
-          <h3>{comment.comment_author}</h3>
-          <p>{comment.comment_content}</p>
-        </div>))}
+      {allComments !== undefined && allComments.map((comment, index) => {
+        //Format date in proper way
+        let formatedDate = comment.comment_date.split(" ").filter(date => date.includes('-'))[0].replaceAll('-', '.')
+        return (
+          <div className="all-comments__wrapper" key={index}>
+            <label>{formatedDate}</label>
+            <h3>{comment.comment_author}</h3>
+            <p>{comment.comment_content}</p>
+          </div>)
+      })}
 
     </div>
   )

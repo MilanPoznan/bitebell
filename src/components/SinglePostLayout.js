@@ -23,7 +23,9 @@ export default function SinglePostLayout({
   featuredPostArticleImage,
   language,
   authorName,
-  authorDescription
+  authorDescription,
+  komentarText,
+  komentarTextEn,
 }) {
   const [isCommentPosted, setIsCommentPosted] = useState(false)
 
@@ -63,9 +65,9 @@ export default function SinglePostLayout({
       </div>
       {
         isCommentPosted
-          ? <h1 style={{ width: "80%", margin: '0 auto', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
-            {language === 'sr' ? "Upsesno ste postavili komentar" : "Comment added successfully"}
-          </h1>
+          ? <h3 style={{ width: "80%", margin: '0 auto', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+            {language === 'sr' ? komentarText : komentarTextEn}
+          </h3>
           : <CommentComponent id={id} setIsCommentPosted={setIsCommentPosted} isSrlanguage={language === 'sr' ? true : false} />
       }
       <PostComments dbID={id} />

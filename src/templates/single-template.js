@@ -14,7 +14,8 @@ export default function singlePostTemplate({ data, pageContext }) {
   const {
     allWpPost: { nodes },
     allWpMenu: { menus },
-    wp: { optionsPage: { options: { logo } } } } = data
+    wp: { optionsPage: { komentarText, komentarTextEn, options: { logo } }
+    } } = data
 
 
   const { seoFields: { metaDescription, pageTitle }, databaseId, title, content, slug, uri, language, translations, author_section, featuredImage } = nodes[0]
@@ -44,6 +45,8 @@ export default function singlePostTemplate({ data, pageContext }) {
         language={language.slug}
         authorName={author_section.authorName}
         authorDescription={author_section.authorDescription}
+        komentarText={komentarText}
+        komentarTextEn={komentarTextEn}
       />
     </Layout>
   )
@@ -54,6 +57,8 @@ export const singlePostQuery = graphql`
     wp {
       optionsPage {
         options: optionsPage {
+          komentarText
+          komentarTextEn
           logo {
             file: localFile {
               image: childImageSharp {
