@@ -11,7 +11,7 @@ import Footer from './Footer'
 import SEO from './seo'
 import { useScrollPosition, getScrollPosition } from '../hooks/useScrollPosition'
 
-const Layout = ({ seoTitle, metaDesc, currLangMenu, children, logo, language, translations, currLangFooter }) => {
+const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, language, translations, currLangFooter }) => {
 
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -39,7 +39,7 @@ const Layout = ({ seoTitle, metaDesc, currLangMenu, children, logo, language, tr
 
   return (
     <div className="global-wrapper">
-      <SEO description={metaDesc} pageTitle={seoTitle} title={seoTitle} />
+      <SEO description={metaDesc} pageTitle={seoTitle} title={seoTitle || title} />
       <header className={`main-header-wrapper ${isScrolled ? 'main-header-wrapper__scrolled' : ''}`}>
         <Header translations={translations} currLangMenu={currLangMenu} currentLang={language} logo={logo} />
       </header>

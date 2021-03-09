@@ -26,7 +26,7 @@ export default function archiveTemplate({ data }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
-    <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <NewsPageLayout newsData={currentLangPosts} />
     </Layout>
   )

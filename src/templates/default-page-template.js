@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import { graphql } from 'gatsby'
 
 export default function defaultPageTemplate({ data }) {
   const {
@@ -17,7 +18,7 @@ export default function defaultPageTemplate({ data }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
-    <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <div className="container def-page">
         <h1 style={{ marginBottom: '30px' }}>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: content }}></div>

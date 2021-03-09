@@ -26,11 +26,11 @@ export default function integracije({ data }) {
   const currLangIntegrationType = types.filter(type => type.language.slug === language.slug)
 
   const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
-  const currLangFooter = menus.filter(menu => menu.locations[0] ===  footerPosition)
+  const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
 
   return (
-    <Layout language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <IntegrationsComponent currLang={language.slug} currLangIntegrationType={currLangIntegrationType} integrationsFields={integrationsFields} integrations={currLangIntegrations} />
     </Layout>
   )

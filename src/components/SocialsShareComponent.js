@@ -18,8 +18,7 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
 
   // URL from live site
   const url = 'https://mystifying-wiles-cc7118.netlify.app/'
-  const shareUrl = `${url}/${postSlugTranslationName}${slug}`
-
+  const shareUrl = `${url}${postSlugTranslationName}${slug}`
   return (
     <div className="socials-share">
       <div className="socials-share__buttons">
