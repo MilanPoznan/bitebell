@@ -17,8 +17,8 @@ export default function singlePostTemplate({ data, pageContext }) {
     wp: { optionsPage: { options: { logo } } } } = data
 
 
-  const { comments, databaseId, title, content, slug, uri, language, translations, author_section, featuredImage } = nodes[0]
-  console.log(comments)
+  const { seoFields: { metaDescription, pageTitle }, databaseId, title, content, slug, uri, language, translations, author_section, featuredImage } = nodes[0]
+
   const postBlogImage = featuredImage && featuredImage.node.file.blogImage.fluid
 
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
@@ -32,7 +32,7 @@ export default function singlePostTemplate({ data, pageContext }) {
 
 
   return (
-    <Layout language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <SinglePostLayout
         id={databaseId}
         uri={uri}
@@ -43,7 +43,6 @@ export default function singlePostTemplate({ data, pageContext }) {
         postSlugTranslationName={slug}
         language={language.slug}
         authorName={author_section.authorName}
-        // authorImage={author_section.authorImage && author_section.authorImage.file.image.fluid}
         authorDescription={author_section.authorDescription}
       />
     </Layout>
@@ -79,6 +78,10 @@ export const singlePostQuery = graphql`
         slug
         uri
         title
+        seoFields {
+          metaDescription
+          pageTitle
+        }
         featuredImage {
           node {
             file: localFile {

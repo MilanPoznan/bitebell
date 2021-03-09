@@ -11,7 +11,9 @@ import DemoComponent from '../components/DemoComponent'
 export default function page({ data }) {
 
   const { allWpPage: { nodes }, allWpMenu: { menus }, wp: { optionsPage: { options: { logo } } } } = data;
-  const { title, language, translations, homepage_sections: { aboutSection, demoSection, heroSection, mapSection, posSection, sponsorsSection } } = nodes[0];
+  const { title, language, translations,
+    homepage_sections: { aboutSection, demoSection, heroSection, mapSection, posSection, sponsorsSection },
+    seoFields: { metaDescription, pageTitle } } = nodes[0];
 
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
@@ -21,7 +23,7 @@ export default function page({ data }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
-    <Layout language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />
       <PosComponent posSection={posSection} />
       <MapComponent mapSection={mapSection} />
@@ -60,6 +62,10 @@ export const query = graphql`
         }
         translations {
           uri
+        }
+        seoFields {
+          metaDescription
+          pageTitle
         }
         homepage_sections {
           aboutSection {

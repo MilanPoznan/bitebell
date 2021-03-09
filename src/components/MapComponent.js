@@ -44,8 +44,6 @@ export default function MapComponent({ mapSection }) {
 
   const dot = useRef(null)
 
-  console.log(borderBox1)
-
   const sectionMapRef = useRef(null)
   const sectionTextRef = useRef(null)
 
