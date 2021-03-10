@@ -9,15 +9,14 @@ import './global-styles/_global-styles.scss';
 import Header from './Header'
 import Footer from './Footer'
 import SEO from './seo'
-import { useScrollPosition, getScrollPosition } from '../hooks/useScrollPosition'
 
-const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, language, translations, currLangFooter }) => {
+const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, language, translations, currLangFooter, image }) => {
 
   const [isScrolled, setIsScrolled] = useState(false)
 
   /**
- * Handle scroll
- */
+   * Handle scroll
+  */
   const handleScroll = () => {
     if (window.pageYOffset > 40) {
       if (!isScrolled) {
@@ -39,7 +38,7 @@ const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, langu
 
   return (
     <div className="global-wrapper">
-      <SEO description={metaDesc} pageTitle={seoTitle} title={seoTitle || title} />
+      <SEO description={metaDesc} pageTitle={seoTitle} title={seoTitle || title} image={image} />
       <header className={`main-header-wrapper ${isScrolled ? 'main-header-wrapper__scrolled' : ''}`}>
         <Header translations={translations} currLangMenu={currLangMenu} currentLang={language} logo={logo} />
       </header>

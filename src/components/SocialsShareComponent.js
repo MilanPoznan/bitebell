@@ -18,7 +18,8 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
 
   // URL from live site
   const url = 'https://mystifying-wiles-cc7118.netlify.app/'
-  const shareUrl = `${url}${postSlugTranslationName}${slug}`
+  const shareUrl = `${url}${postSlugTranslationName}`
+
   return (
     <div className="socials-share">
       <div className="socials-share__buttons">
@@ -55,7 +56,7 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
         </a> */}
         <a
           className="twitter-share-button waap-link"
-          href={`https://api.whatsapp.com/send?text=${title} + ${shareUrl}`}
+          href={`https://web.whatsapp.com/send?text=${shareUrl}`}
           data-action="share/whatsapp/share"
           target="_blank"
           rel="noreferrer"

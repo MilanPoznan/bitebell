@@ -9,7 +9,7 @@ import './NewsPreview.scss'
  * 
  * @returns {JSX Element}
  */
-export default function NewsPreview({ title, image, language, category, link, firstOfTheIndex, authorAvatar, authorName }) {
+export default function NewsPreview({ title, content, image, language, category, link, firstOfTheIndex, authorAvatar, authorName }) {
 
   return (
     firstOfTheIndex === 0 ?
@@ -17,6 +17,7 @@ export default function NewsPreview({ title, image, language, category, link, fi
         <div className="news-preview__first">
           <div className="news-preview__first-header">
             <h1 className="news-preview__first-title">{title}</h1>
+            <p>{content}</p>
             <div className="news-preview__first-author">
               {authorName && <span className="news-preview__first-author-name">{language.slug === 'sr' ? `Autor teksta ${authorName}` : `Written by ${authorName}`}</span>}
             </div>
@@ -45,6 +46,8 @@ export default function NewsPreview({ title, image, language, category, link, fi
             }
           </div>
           <h3>{title}</h3>
+          <div style={{ fontSize: '12px', lineHeight: '20px' }}>{content}</div>
+
         </div>
       </Link>
   )

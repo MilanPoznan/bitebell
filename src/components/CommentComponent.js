@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { fetchWithTimeout } from '../utils/utils'
-
+import React, { useState } from 'react'
 import './CommentComponent.scss'
-
 export default function CommentComponent({ isSrlanguage, setIsCommentPosted, id }) {
 
   const [nameValue, setNameValue] = useState('')

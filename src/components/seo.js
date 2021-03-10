@@ -10,7 +10,9 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title, pageTitle }) => {
+import shareImage from '../img/bitebelllogo.png'
+
+const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
 
   const { wp, wpUser } = useStaticQuery(
     graphql`
@@ -32,8 +34,8 @@ const SEO = ({ description, lang, meta, title, pageTitle }) => {
   const metaDescription = description || wp.generalSettings?.description
   const defaultTitle = wp.generalSettings?.title
   const currPageTitle = pageTitle || title
+  const metaImage = image ? image : shareImage
 
-  console.log('dt', defaultTitle)
   return (
     <Helmet
       htmlAttributes={{
@@ -53,6 +55,10 @@ const SEO = ({ description, lang, meta, title, pageTitle }) => {
         {
           property: `og:description`,
           content: metaDescription,
+        },
+        {
+          property: 'og:image',
+          content: metaImage,
         },
         {
           property: `og:type`,
