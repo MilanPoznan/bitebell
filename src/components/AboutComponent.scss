@@ -39,6 +39,9 @@
     &__container {
       display: flex;
     }
+    &__title {
+      font-size: 40px;
+    }
     &__img {
       margin: 0;
       &-wrapper {

@@ -9,8 +9,11 @@ import './NewsPageLayout.scss'
  * @returns {JSX Element}
  */
 export default function NewsPageLayout({ newsData }) {
+
+  const doc = typeof document !== 'undefined' && document
+
   const createPreviewText = (htmlText) => {
-    let div = document.createElement('div')
+    let div = doc.createElement('div')
     div.innerHTML = htmlText
     let text = div.textContent || div.innerText || ""
     let finalContnetn = text.substring(0, 200)
@@ -23,7 +26,7 @@ export default function NewsPageLayout({ newsData }) {
           {
             newsData.map((item, index) => {
               const { title, featuredImage, categories, slug, language, content } = item
-              let previewContnent = createPreviewText(content)
+              let previewContnent = doc && createPreviewText(content)
               return (
                 <NewsPreview
                   key={index}
