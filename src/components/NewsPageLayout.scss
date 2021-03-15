@@ -17,6 +17,18 @@
     grid-template-columns: repeat(1, 1fr);
     gap: 18px 30px;
   }
+  &__titles {
+    width: 80%;
+    margin: 0px auto 10px;
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    h1 {
+      margin-bottom: 40px;
+    }
+  }
 }
 
 @include tablet() {
@@ -36,6 +48,9 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 60px;
     }
+    &__titles {
+      margin: -40px auto 30px;
+    }
   }
 }
 @include desktop() {
@@ -43,6 +58,9 @@
 
     &__outer-wrapper {
       max-width: 1280px;
+    }
+    &__titles {
+      margin: -50px auto 30px;
     }
   }
 }

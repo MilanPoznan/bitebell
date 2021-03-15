@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+// import CookieConsent, { Cookies } from "react-cookie-consent";
 
 
 import './global-styles/oldCss.css';

@@ -13,7 +13,7 @@ import Layout from '../components/Layout';
 export default function archiveTemplate({ data }) {
 
   const { allWpPost: { nodes },
-    wpPage: { language, title, translations },
+    wpPage: { language, title, translations, blogTitles: { pageSubtitle, pageTitle } },
     allWpMenu: { menus },
     wp: { optionsPage: { options: { logo } } } } = data;
 
@@ -24,10 +24,10 @@ export default function archiveTemplate({ data }) {
 
   const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
-
+  console.log(title)
   return (
     <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
-      <NewsPageLayout newsData={currentLangPosts} />
+      <NewsPageLayout newsData={currentLangPosts} pageSubtitle={pageSubtitle} pageTitle={pageTitle} />
     </Layout>
   )
 }
@@ -38,6 +38,10 @@ export const newsQuery = graphql`
       title
       translations {
         uri
+      }
+      blogTitles {
+        pageSubtitle: subtitle
+        pageTitle: title
       }
       language {
         locale

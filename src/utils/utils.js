@@ -12,6 +12,12 @@ export const fetchWithTimeout = (fetchFunc, data, timeout) => {
   ]);
 }
 
+export const getMinsOfRead = (content) => {
+  let totalWordsPerMin = Math.floor(content.split(' ').length / 200)
+  let totalMins = totalWordsPerMin === 0 ? 1 : totalWordsPerMin
+  return totalMins
+}
+
 /**
  * 
  * @param {boolean} isRequired getting data from backend from true/false field 
