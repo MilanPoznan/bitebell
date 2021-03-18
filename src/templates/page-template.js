@@ -11,11 +11,11 @@ import DemoComponent from '../components/DemoComponent'
 
 export default function page({ data }) {
 
-  const { allWpPage: { nodes }, allWpMenu: { menus }, wp: { optionsPage: { options: { logo } } } } = data;
+  const { allWpPage: { nodes }, allWpMenu: { menus }, wp: { optionsPage: { options: { logo, phoneNumber } } } } = data;
   const { title, language, translations,
     homepage_sections: { aboutSection, demoSection, heroSection, mapSection, posSection, sponsorsSection },
     seoFields: { metaDescription, pageTitle } } = nodes[0];
-
+  console.log('phoneNumber', phoneNumber)
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
   const currTranslations = language.slug === 'sr' ? [{ uri: '/en' }] : translations
@@ -24,7 +24,7 @@ export default function page({ data }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
-    <Layout seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />
       <PosComponent posSection={posSection} />
       <MapComponent mapSection={mapSection} />
@@ -49,6 +49,7 @@ export const query = graphql`
               }
             }
           }
+          phoneNumber
         }
       }
     }

@@ -11,7 +11,7 @@ import Header from './Header'
 import Footer from './Footer'
 import SEO from './seo'
 
-const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, language, translations, currLangFooter, image }) => {
+const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, language, translations, currLangFooter, image, phoneNumber }) => {
 
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -41,7 +41,7 @@ const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, langu
     <div className="global-wrapper">
       <SEO description={metaDesc} pageTitle={seoTitle} title={seoTitle || title} image={image} />
       <header className={`main-header-wrapper ${isScrolled ? 'main-header-wrapper__scrolled' : ''}`}>
-        <Header translations={translations} currLangMenu={currLangMenu} currentLang={language} logo={logo} />
+        <Header phoneNumber={phoneNumber} translations={translations} currLangMenu={currLangMenu} currentLang={language} logo={logo} />
       </header>
       <main className="main">{children}</main>
       <footer>

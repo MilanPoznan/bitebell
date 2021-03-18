@@ -6,7 +6,7 @@ export default function defaultPageTemplate({ data }) {
   const {
     allWpPage: { nodes },
     allWpMenu: { menus },
-    wp: { optionsPage: { options: { logo } } } } = data
+    wp: { optionsPage: { options: { logo, phoneNumber } } } } = data
 
   const { title, content, translations, language } = nodes[0]
 
@@ -18,7 +18,7 @@ export default function defaultPageTemplate({ data }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
-    <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout phoneNumber={phoneNumber} title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <div className="container def-page">
         <h1 style={{ marginBottom: '30px' }}>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: content }}></div>
@@ -43,6 +43,7 @@ export const defPageQuery = graphql`
               }
             }
           }
+          phoneNumber
         }
       }
     }

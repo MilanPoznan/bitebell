@@ -8,7 +8,7 @@ export default function contactTemplate({ data, pageContext }) {
     allWpPage: { nodes },
     allWpIntegrationType: { types },
     allWpMenu: { menus },
-    wp: { optionsPage: { options: { logo } } } } = data
+    wp: { optionsPage: { options: { logo, phoneNumber } } } } = data
 
   const { title, language, translations } = nodes[0]
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
@@ -20,7 +20,7 @@ export default function contactTemplate({ data, pageContext }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
-    <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout phoneNumber={phoneNumber} title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <ContactPageLayout
         title={nodes[0].partners.title}
         content={nodes[0].partners.content}
@@ -50,6 +50,7 @@ export const contactQuery = graphql`
               }
             }
           }
+          phoneNumber
         }
       }
     }

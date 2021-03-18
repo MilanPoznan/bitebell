@@ -14,7 +14,7 @@ export default function singlePostTemplate({ data, pageContext }) {
   const {
     allWpPost: { nodes },
     allWpMenu: { menus },
-    wp: { optionsPage: { options: { komentarText, komentarTextEn, logo } }
+    wp: { optionsPage: { options: { komentarText, komentarTextEn, logo, phoneNumber } }
     } } = data
 
 
@@ -33,7 +33,7 @@ export default function singlePostTemplate({ data, pageContext }) {
 
   console.log(1, komentarText)
   return (
-    <Layout image={postBlogImage} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout phoneNumber={phoneNumber} image={postBlogImage} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <SinglePostLayout
         id={databaseId}
         uri={uri}
@@ -68,6 +68,7 @@ export const singlePostQuery = graphql`
               }
             }
           }
+          phoneNumber
         }
       }
     }

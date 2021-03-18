@@ -15,7 +15,7 @@ export default function archiveTemplate({ data }) {
   const { allWpPost: { nodes },
     wpPage: { language, title, translations, blogTitles: { pageSubtitle, pageTitle } },
     allWpMenu: { menus },
-    wp: { optionsPage: { options: { logo } } } } = data;
+    wp: { optionsPage: { options: { logo, phoneNumber } } } } = data;
 
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
@@ -26,7 +26,7 @@ export default function archiveTemplate({ data }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
   console.log(title)
   return (
-    <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout phoneNumber={phoneNumber} title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <NewsPageLayout newsData={currentLangPosts} pageSubtitle={pageSubtitle} pageTitle={pageTitle} />
     </Layout>
   )
@@ -60,6 +60,7 @@ export const newsQuery = graphql`
               }
             }
           }
+          phoneNumber
         }
       }
     }

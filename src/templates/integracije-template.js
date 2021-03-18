@@ -12,7 +12,7 @@ export default function integracije({ data }) {
     allWpPage: { nodes },
     allWpIntegrationType: { types },
     allWpMenu: { menus },
-    wp: { optionsPage: { options: { logo } } } } = data
+    wp: { optionsPage: { options: { logo, phoneNumber } } } } = data
 
   const { title, integrationsFields, language, translations } = nodes[0]
 
@@ -30,7 +30,7 @@ export default function integracije({ data }) {
 
 
   return (
-    <Layout title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout title={title} language={language.slug} phoneNumber={phoneNumber} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <IntegrationsComponent currLang={language.slug} currLangIntegrationType={currLangIntegrationType} integrationsFields={integrationsFields} integrations={currLangIntegrations} />
     </Layout>
   )
@@ -50,6 +50,7 @@ export const integracijeQuery = graphql`
               }
             }
           }
+          phoneNumber
         }
       }
     }
