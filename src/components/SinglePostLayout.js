@@ -27,8 +27,9 @@ export default function SinglePostLayout({
   komentarText,
   komentarTextEn,
 }) {
+
   const [isCommentPosted, setIsCommentPosted] = useState(false)
-  console.log(komentarText)
+
   return (
     <section className="single-post">
       <div className="single-post__outer-wrapper">

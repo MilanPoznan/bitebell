@@ -25,7 +25,9 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
 
       <div className="main-header__left">
         <div className="main-header__logo">
-          <Link className={`${currentLang === 'sr' ? 'active' : ''} main-header__logo-link`} to='/'>
+          <Link
+            className={`${currentLang === 'sr' ? 'active' : ''} main-header__logo-link`}
+            to={currentLang === 'sr' ? '/' : "/en"}>
             <Img fluid={fluid} loading="eager" />
           </Link>
         </div>
@@ -60,7 +62,7 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
           )}
 
         </div>
-        <a href={`tel:${phoneNumber}`} className="menu__phone cta-menu">
+        <a href={`tel:${phoneNumber}`} className="menu__phone cta-menu cta-menu-round">
           <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" >
             <g id="Designs-v2" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g id="Homepage-2-alternatief" transform="translate(-1015.000000, -45.000000)" fill="#FFFFFF">
@@ -74,7 +76,6 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
               </g>
             </g>
           </svg>
-          {phoneNumber}
         </a>
         <div className="menu__lang">
           <Link className={currentLang === 'en' ? 'active' : 'inactive'} to={translations.length === 0 ? '/en' : translations[0].uri} >EN</Link>

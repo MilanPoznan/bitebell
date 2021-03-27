@@ -45,9 +45,11 @@ export default function NewsPreview({ title, content, image, language, category,
             : ''
           }
           <div className="news-preview__category">
-            {
+            {/* {
               category.map((item, index) => <span key={index}>{item.name}{index < category.length - 1 ? ',' : ''}</span>)
-            }
+            } */}
+            {/* Ovo zameniti samo sa kategorinom kada busdu zeleli */}
+            <span> .</span>
             <span className="news-preview__read-time"> {minsOfread} {language.slug === 'sr' ? 'minuta čitanja' : 'min read'}</span>
           </div>
           <h3>{title}</h3>

@@ -96,6 +96,17 @@
     }
     .cta-menu {
       justify-content: center;
+      &-round {
+        border-radius: 50%;
+        width: 50px;
+        padding: 13px 25px;
+        border: 2px solid #40cdb2;
+        svg {
+          left: -4px;
+          display: block;
+          position: relative;
+        }
+      }
       &:hover {
         text-decoration: none;
       }
@@ -104,6 +115,7 @@
       position: relative;
       width: 90%;
       margin: 0 auto;
+      background: #40cdb2;
       &:after {
         position: absolute;
         top: 16px;
@@ -252,11 +264,21 @@
           a {
             transition: 0.3s;
             font-weight: 400;
-            &:hover {
-              color: $purple;
-            }
             &:before {
               content: '';
+              position: absolute;
+              width: 8px;
+              height: 8px;
+              background: $white;
+              border-radius: 50%;
+              top: 5px;
+              transition: 0.4s;
+            }
+            &:hover {
+              color: $purple;
+              &:before {
+                background: $purple;
+              }
             }
           }
         }
@@ -280,6 +302,8 @@
       }
       .cta-menu {
         height: 50px;
+        padding: 13px 23px;
+
         &:before {
           display: none;
         }
@@ -292,17 +316,17 @@
         svg {
           display: block;
           position: absolute;
-          top: 17px;
-          left: 12px;
+          top: 4px;
+          left: 17px;
           height: 12px;
           width: 12px;
         }
         &:hover {
           svg {
-            g{
-              fill: $purple;
-              stroke: $purple;
-
+            g {
+              transition: 0.5s;
+              fill: $white;
+              stroke: $white;
             }
           }
         }

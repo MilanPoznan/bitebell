@@ -31,7 +31,6 @@ export default function singlePostTemplate({ data, pageContext }) {
   const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
-  console.log(1, komentarText)
   return (
     <Layout phoneNumber={phoneNumber} image={postBlogImage} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <SinglePostLayout

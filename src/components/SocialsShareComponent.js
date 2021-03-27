@@ -2,7 +2,7 @@ import React from 'react'
 
 import FbIcon from '../svg-images/facebook.svg'
 import TwIcon from '../svg-images/twitter.svg'
-import LnIcon from '../svg-images/linked-in.svg'
+import LnIcon from '../svg-images/lnIcon.svg'
 // import ViberIcon from '../svg-images/viber.svg'
 import WhatsAppIcon from '../svg-images/whatsapp.svg'
 
@@ -46,6 +46,7 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
         >
           <TwIcon />
         </a>
+
         {/* <a
           className="twitter-share-button"
           // href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${title}`}
@@ -62,6 +63,14 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
           rel="noreferrer"
         >
           <WhatsAppIcon />
+        </a>
+        <a
+          className="ln-link"
+          href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${title}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <LnIcon />
         </a>
       </div>
     </div>

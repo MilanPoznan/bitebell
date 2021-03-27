@@ -15,7 +15,6 @@ export default function page({ data }) {
   const { title, language, translations,
     homepage_sections: { aboutSection, demoSection, heroSection, mapSection, posSection, sponsorsSection },
     seoFields: { metaDescription, pageTitle } } = nodes[0];
-  console.log('phoneNumber', phoneNumber)
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
   const currTranslations = language.slug === 'sr' ? [{ uri: '/en' }] : translations
