@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import './PostComments.scss';
 
-export default function PostComments({ dbID }) {
+export default function PostComments({ dbID, currLang }) {
 
   const [allComments, setAllComments] = useState()
   const [filteredComments, setFilteredComments] = useState()
@@ -27,11 +27,10 @@ export default function PostComments({ dbID }) {
     }
 
   }, [allComments])
-  console.log(allComments)
 
   return (
     <div className="container all-comments">
-      <h2>Komentari</h2>
+      <h2>{currLang === 'sr' ? 'Komentari' : 'Comments'}</h2>
       {allComments !== undefined && allComments.map((comment, index) => {
         //Format date in proper way
         let formatedDate = comment.comment_date.split(" ").filter(date => date.includes('-'))[0].replaceAll('-', '.')

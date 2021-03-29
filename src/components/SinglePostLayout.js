@@ -23,7 +23,6 @@ export default function SinglePostLayout({
   featuredPostArticleImage,
   language,
   authorName,
-  authorDescription,
   komentarText,
   komentarTextEn,
 }) {
@@ -52,7 +51,7 @@ export default function SinglePostLayout({
                 {/* {authorImage && <Img className="single-post__author-bottom-img" fluid={authorImage} />} */}
                 <div className="single-post__author-bottom-content">
                   {authorName && <h4 className="single-post__author-bottom-name">{authorName}</h4>}
-                  {authorDescription && <div className="single-post__author-bottom-description">{authorDescription}</div>}
+                  {/* {authorDescription && <div className="single-post__author-bottom-description">{authorDescription}</div>} */}
                 </div>
               </div>
             </div>
@@ -71,7 +70,7 @@ export default function SinglePostLayout({
           </h3>
           : <CommentComponent id={id} setIsCommentPosted={setIsCommentPosted} isSrlanguage={language === 'sr' ? true : false} />
       }
-      <PostComments dbID={id} />
+      <PostComments currLang={language} dbID={id} />
 
     </section>
   )

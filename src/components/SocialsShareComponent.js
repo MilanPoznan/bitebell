@@ -19,7 +19,8 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
   // URL from live site
   const url = 'https://mystifying-wiles-cc7118.netlify.app/'
   const shareUrl = `${url}${postSlugTranslationName}`
-
+  console.log('url', shareUrl)
+  console.log('name', postSlugTranslationName)
   return (
     <div className="socials-share">
       <div className="socials-share__buttons">
@@ -66,7 +67,8 @@ export default function SocialsShareComponent({ title, postSlugTranslationName, 
         </a>
         <a
           className="ln-link"
-          href={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${title}`}
+          href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${postSlugTranslationName}`}
+          // href="https://www.linkedin.com/shareArticle?mini=true&url=https://mystifying-wiles-cc7118.netlify.app/blog/znacaj-automatizacije-za-restorane-5-kljucnih-saveta-za-uspeh&title=test"
           target="_blank"
           rel="noreferrer"
         >

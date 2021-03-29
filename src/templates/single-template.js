@@ -43,7 +43,6 @@ export default function singlePostTemplate({ data, pageContext }) {
         postSlugTranslationName={slug}
         language={language.slug}
         authorName={author_section.authorName}
-        authorDescription={author_section.authorDescription}
         komentarText={komentarText}
         komentarTextEn={komentarTextEn}
       />
@@ -100,7 +99,6 @@ export const singlePostQuery = graphql`
         }
         author_section {
           authorName
-          authorDescription
         }
         translations {
           slug
