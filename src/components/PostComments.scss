@@ -19,7 +19,7 @@
     }
     label {
       position: absolute;
-      font-size: 10px;
+      font-size: 12px;
       right: 20px;
       top: 20px;
     }
@@ -35,5 +35,11 @@
     }
     max-width: 60%;
     margin: 0 auto;
+  &__wrapper {
+
+    label {
+  font-size: 14px;      
+    }
+  }
   }
 }

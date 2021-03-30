@@ -99,7 +99,7 @@
       &-round {
         border-radius: 50%;
         width: 50px;
-        padding: 13px 25px;
+        padding: 17px 25px;
         border: 2px solid #40cdb2;
         svg {
           left: -4px;
@@ -325,8 +325,8 @@
           svg {
             g {
               transition: 0.5s;
-              fill: $white;
-              stroke: $white;
+              // fill: $white;
+              // stroke: $white;
             }
           }
         }

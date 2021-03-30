@@ -52,7 +52,7 @@ export default function CommentComponent({ isSrlanguage, setIsCommentPosted, id 
         className={!!nameValue && !!commentVal ? 'active' : 'inactive'}
       >
 
-        {isSrlanguage ? 'Posalji Komentar' : 'Send Comment'}
+        {isSrlanguage ? 'Pošalji Komentar' : 'Send Comment'}
       </button>
     </div>
   )

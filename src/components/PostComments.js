@@ -33,7 +33,13 @@ export default function PostComments({ dbID, currLang }) {
       <h2>{currLang === 'sr' ? 'Komentari' : 'Comments'}</h2>
       {allComments !== undefined && allComments.map((comment, index) => {
         //Format date in proper way
-        let formatedDate = comment.comment_date.split(" ").filter(date => date.includes('-'))[0].replaceAll('-', '.')
+        let formatedDate = comment.comment_date
+          .split(" ")
+          .filter(date => date.includes('-'))[0]
+          .split("-")
+          .reverse()
+          .reduce((acc, curr) => `${acc + curr}.`, "")
+
         return (
           <div className="all-comments__wrapper" key={index}>
             <label>{formatedDate}</label>

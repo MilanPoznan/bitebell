@@ -42,7 +42,7 @@ const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
         lang,
       }}
       title={currPageTitle}
-      titleTemplate={currPageTitle ? `%s | bitebell` : null}
+      titleTemplate={currPageTitle ? `%s | Bitebell` : null}
       meta={[
         {
           name: `description`,

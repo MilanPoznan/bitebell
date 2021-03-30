@@ -56,6 +56,7 @@ export default function SinglePostLayout({
               </div>
             </div>
             <SocialsShareComponent
+              isLangEng={language === 'sr'}
               title={postTitle}
               slug={slug}
               postSlugTranslationName={postSlugTranslationName}
