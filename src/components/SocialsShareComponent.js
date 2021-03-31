@@ -18,9 +18,8 @@ export default function SocialsShareComponent({ isLangEng, title, postSlugTransl
 
   // URL from live site
   const url = 'https://mystifying-wiles-cc7118.netlify.app/'
-  const shareUrl = `${url}${isLangEng ? "blog/" : "en/news/"}${postSlugTranslationName}`
-  console.log('url', shareUrl)
-  console.log('name', postSlugTranslationName)
+  const shareUrl = `${url}${isLangEng ? "blog/" : "en/blog-en/"}${postSlugTranslationName}`
+
   return (
     <div className="socials-share">
       <div className="socials-share__buttons">

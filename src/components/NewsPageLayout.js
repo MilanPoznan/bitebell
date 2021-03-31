@@ -41,7 +41,7 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
                   key={index}
                   firstOfTheIndex={index}
                   image={featuredImage}
-                  link={language.slug === 'sr' ? `blog/${slug}` : `en/news/${slug}`}
+                  link={language.slug === 'sr' ? `blog/${slug}` : `en/blog-en/${slug}`}
                   title={title}
                   language={language}
                   authorAvatar={newsData[0].author_section.authorImage && newsData[0].author_section.authorImage.file.image.fluid}

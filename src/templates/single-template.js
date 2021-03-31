@@ -25,7 +25,7 @@ export default function singlePostTemplate({ data, pageContext }) {
   const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
   const currTranslations = language.slug === 'sr'
-    ? translations[0] === undefined ? '/en/news' : [{ uri: `/en/news/${translations[0].slug}/` }]
+    ? translations[0] === undefined ? '/en/blog-en' : [{ uri: `/en/blog-en/${translations[0].slug}/` }]
     : translations[0] === undefined ? '/blog' : [{ uri: `/blog/${translations[0].slug}` }]
 
   const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";

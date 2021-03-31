@@ -17,7 +17,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   posts.edges.forEach(singlePost => {
     const postPath = singlePost.post.language.slug === 'en'
-      ? `en/news/${singlePost.post.slug}`
+      ? `en/blog-en/${singlePost.post.slug}`
       : `blog/${singlePost.post.slug}`
     return createPage({
       path: postPath,
@@ -55,7 +55,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         })
         break;
       case 'blog':
-      case 'news':
+      case 'blog-en':
         createPage({
           path: page.uri,
           component: path.resolve('./src/templates/archive-template.js'),
