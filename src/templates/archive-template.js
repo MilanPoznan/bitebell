@@ -13,7 +13,7 @@ import Layout from '../components/Layout';
 export default function archiveTemplate({ data }) {
 
   const { allWpPost: { nodes },
-    wpPage: { language, title, translations, blogTitles: { pageSubtitle, pageTitle } },
+    wpPage: { seoFields: { metaDescription, seoTitle }, language, title, translations, blogTitles: { pageSubtitle, pageTitle } },
     allWpMenu: { menus },
     wp: { optionsPage: { options: { logo, phoneNumber } } } } = data;
 
@@ -26,7 +26,7 @@ export default function archiveTemplate({ data }) {
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (
-    <Layout phoneNumber={phoneNumber} title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
+    <Layout seoTitle={seoTitle} metaDesc={metaDescription} phoneNumber={phoneNumber} title={title} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <NewsPageLayout newsData={currentLangPosts} pageSubtitle={pageSubtitle} pageTitle={pageTitle} />
     </Layout>
   )
@@ -43,6 +43,10 @@ export const newsQuery = graphql`
         pageSubtitle: subtitle
         pageTitle: title
       }
+      seoFields {
+          metaDescription
+          seoTitle: pageTitle
+        }
       language {
         locale
         slug
@@ -54,7 +58,7 @@ export const newsQuery = graphql`
           logo {
             file: localFile {
               image: childImageSharp {
-                fluid(maxWidth: 400) {
+                fluid(maxWidth: 400, quality: 90) {
                     ...GatsbyImageSharpFluid_withWebp
                 }
               }
@@ -85,7 +89,7 @@ export const newsQuery = graphql`
           node {
             file: localFile {
               blogImage: childImageSharp {
-                fluid(maxWidth: 400) {
+                fluid(quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

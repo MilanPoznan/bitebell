@@ -43,6 +43,7 @@ export default function singlePostTemplate({ data, pageContext }) {
         postSlugTranslationName={slug}
         language={language.slug}
         authorName={author_section.authorName}
+        authorImage={author_section.authorImage}
         komentarText={komentarText}
         komentarTextEn={komentarTextEn}
       />
@@ -99,6 +100,15 @@ export const singlePostQuery = graphql`
         }
         author_section {
           authorName
+          authorImage {
+            file: localFile {
+              blogImage: childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
         }
         translations {
           slug

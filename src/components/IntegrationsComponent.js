@@ -114,7 +114,6 @@ export default function IntegrationsComponent({ integrationsFields, integrations
                     return array[2]
                 }
               }
-              console.log(title)
               return (
                 <div className="mix" key={index}>
                   <span className={`integration-label ${defineLabel(labelColors)}-label`}>{defineLabel(language.slug == 'sr' ? labelStringsSr : labelStringsEn)}</span>

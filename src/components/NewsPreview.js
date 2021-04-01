@@ -23,7 +23,7 @@ export default function NewsPreview({ title, content, image, language, category,
             </div>
             <p>{content}</p>
             <div className="news-preview__first-author">
-              {authorName && <span className="news-preview__first-author-name">{language.slug === 'sr' ? `Autor teksta ${authorName}` : `Written by ${authorName}`}</span>}
+              {authorName && <span className="news-preview__first-author-name">{language.slug === 'sr' ? `Autor teksta: ${authorName}` : `Written by: ${authorName}`}</span>}
             </div>
           </div>
           {image ? <Img

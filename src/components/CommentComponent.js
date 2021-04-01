@@ -20,7 +20,6 @@ export default function CommentComponent({ isSrlanguage, setIsCommentPosted, id 
       }),
     })
       .then((response) => {
-        console.log(response)
         if (response.ok === true) {
           setIsCommentPosted(true)
         } else {
