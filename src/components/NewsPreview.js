@@ -11,7 +11,7 @@ import './NewsPreview.scss'
  * @returns {JSX Element}
  */
 export default function NewsPreview({ title, content, image, language, category, link, firstOfTheIndex, minsOfread, authorName }) {
-  console.log(link)
+  console.log(image)
   return (
     firstOfTheIndex === 0 ?
       <Link to={`/${link}`} className="news-preview__first-link">
@@ -26,12 +26,13 @@ export default function NewsPreview({ title, content, image, language, category,
               {authorName && <span className="news-preview__first-author-name">{language.slug === 'sr' ? `Autor teksta: ${authorName}` : `Written by: ${authorName}`}</span>}
             </div>
           </div>
-          {image ? <Img
+          {/* {image ? <Img
             className="news-preview__first-featured-img"
             fluid={image.node.file.blogImage.fluid}
           />
             :
-            null}
+            null} */}
+          {image && <img className="news-preview__first-featured-img" src={image.node.sourceUrl} />}
 
         </div>
       </Link> :

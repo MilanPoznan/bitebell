@@ -87,6 +87,7 @@ export const newsQuery = graphql`
         }
         featuredImage {
           node {
+            sourceUrl
             file: localFile {
               blogImage: childImageSharp {
                 fluid(quality: 90) {

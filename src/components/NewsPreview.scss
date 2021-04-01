@@ -11,6 +11,7 @@
     &-header {
       display: flex;
       flex-direction: column;
+      margin-bottom: 20px;
     }
     &-title {
       font-size: 30px;
@@ -21,6 +22,7 @@
     }
     &-author {
       display: flex;
+      margin-top: 12px;
     }
     &-author-name {
       font-size: 12px;
