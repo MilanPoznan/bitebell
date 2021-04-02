@@ -89,9 +89,10 @@ export const singlePostQuery = graphql`
         }
         featuredImage {
           node {
+            sourceUrl
             file: localFile {
               blogImage: childImageSharp {
-                fluid {
+                fluid (quality: 100){
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

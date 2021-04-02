@@ -13,7 +13,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import shareImage from '../img/bitebelllogo.png'
 
 const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
-
+  console.log(image)
   const { wp, wpUser } = useStaticQuery(
     graphql`
       query {
@@ -34,7 +34,7 @@ const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
   const metaDescription = description || wp.generalSettings?.description
   const defaultTitle = wp.generalSettings?.title
   const currPageTitle = pageTitle || title
-  const metaImage = image ? image : shareImage
+  const metaImage = image ? image.src : shareImage
 
   return (
     <Helmet
