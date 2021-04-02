@@ -13,7 +13,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import shareImage from '../img/bitebelllogo.png'
 
 const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
-  console.log(image)
   const { wp, wpUser } = useStaticQuery(
     graphql`
       query {

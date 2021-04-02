@@ -85,13 +85,43 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-
-
+    //Hotjar
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: '2215375',
+        sv: 6,
+      },
+    },
+    //Linkedin
+    {
+      resolve: `gatsby-plugin-linkedin-insight`,
+      options: {
+        partnerId: `2984970`,
+        // Include LinkedIn Insight in development.
+        // Defaults to false meaning LinkedIn Insight will only be loaded in production.
+        includeInDevelopment: false
+      }
+    },
+    //Analytics
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-46011787-23'
+      }
+    },
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
+
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
+        googleAnalytics: {
+          trackingId: 'UA-46011787-23', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-google-analytics', // default
+          anonymize: true, // default
+          allowAdFeatures: false // default
+        },
         googleTagManager: {
           trackingId: 'GTM-MZWX2X2', // leave empty if you want to disable the tracker
           cookieName: 'gatsby-gdpr-google-tagmanager', // default
