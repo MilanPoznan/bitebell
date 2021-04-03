@@ -53,9 +53,9 @@ const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, langu
         buttonClasses="cookie-popup-btn"
         containerClasses="cookie-popup"
         contentClasses="cookie-content"
-        buttonText={language === 'sr' ? "U redu" : "Accept"}
+        buttonText={language === 'sr' ? "Prihvatam" : "Accept"}
         enableDeclineButton={true}
-        declineButtonText="Decline"
+        declineButtonText={language === 'sr' ? "Ne prihvatam" : "Decline"}
         cookieName="gatsby-gdpr-google-analytics"
         onAccept={() => {
           // Cookies.set("gatsby-gdpr-google-tagmanager", true)
