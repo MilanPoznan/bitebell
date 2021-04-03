@@ -102,9 +102,64 @@ html {
     }
   }
 }
+.cookie-popup {
+  position: fixed;
+  width: 80% !important;
+  bottom: 20px !important;
+  left: 10% !important;
+  display: flex;
+  flex-flow: column;
+  padding: 24px 24px 36px;
+  background: $white !important;
+  color: $light-blue !important;
+  border: 1px solid #d8deed;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px 0 rgb(98 155 249 / 20%);
+    z-index: 50;
+    .cookie-content {
+      flex: 1 0 140px !important;
+      width: 80% !important;
+      margin: 0 auto !important;
+      flex-flow: column;
+      text-align: center;
+      align-items: center;
+      svg {
+        margin-bottom: 20px;
+      }
+      
+    }
+    .cookie-popup-btn {
+      background: $purple !important;
+      color: $white !important;
+      padding: 12px 22px !important;
+      border-radius: 8px !important;
+
+    }
+    #rcc-decline-button {
+      background-color: #ed2e2e !important;
+      color: $white;
+      padding: 12px 20px !important;
+      border-radius: 8px !important;
+      margin-right: 20px;
+
+    }
+    div {
+      display: flex !important;
+      justify-content: center !important;
+      width: 80%;
+      margin: 0 auto;
+    }
+}
 
 @include desktop-lowres() {
+
   .main {
     padding-top: 190px;
   }
+.cookie-popup {
+  width: 400px !important;
+  margin: 0 auto;
+  left: calc(50% - 200px) !important;
+}
+
 }
