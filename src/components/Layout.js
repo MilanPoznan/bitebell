@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import CookieConsent, { Cookies } from "react-cookie-consent";
+import CookieConsent from "react-cookie-consent";
 
 
 import './global-styles/oldCss.css';
@@ -12,7 +12,7 @@ import Footer from './Footer'
 import SEO from './seo'
 
 const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, language, translations, currLangFooter, image, phoneNumber }) => {
-  console.log(Cookies)
+
   const [isScrolled, setIsScrolled] = useState(false)
 
   /**
@@ -48,15 +48,18 @@ const Layout = ({ title, seoTitle, metaDesc, currLangMenu, children, logo, langu
         <Footer currLangFooter={currLangFooter} language={language} />
       </footer>
       <CookieConsent
+        // disableStyles={true}
         location="bottom"
+        // buttonClasses="btn-custom-class"
+        // containerClasses="container-custom-class"
+        // contentClasses="content-custom-class"
         buttonText="Accept"
+        enableDeclineButton={true}
         declineButtonText="Decline"
         cookieName="gatsby-gdpr-google-analytics"
-        onAccept={() => {
-          Cookies.set("gatsby-gdpr-google-tagmanager", true)
-          let x = new Cookies
-          console.log(x)
-        }}
+      // onAccept={() => {
+      //   Cookies.set("gatsby-gdpr-google-tagmanager", true)
+      // }}
       >
         This site uses cookies ...
       </CookieConsent>

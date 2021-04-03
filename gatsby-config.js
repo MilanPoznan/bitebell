@@ -17,18 +17,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "GTM-MZWX2X2",
-        // Include GTM in development.
-        includeInDevelopment: false,
-        // datalayer to be set before GTM is loaded
-        // should be an object or a function that is executed in the browser
-        // Defaults to null
-        defaultDataLayer: { platform: "gatsby" },
-      }
-    },
-    {
       resolve: `gatsby-plugin-webfonts`,
       options: {
         fonts: {
@@ -93,23 +81,35 @@ module.exports = {
         sv: 6,
       },
     },
+    // {
+    //   resolve: "gatsby-plugin-google-tagmanager",
+    //   options: {
+    //     id: "GTM-MZWX2X2",
+    //     // Include GTM in development.
+    //     includeInDevelopment: false,
+    //     // datalayer to be set before GTM is loaded
+    //     // should be an object or a function that is executed in the browser
+    //     // Defaults to null
+    //     defaultDataLayer: { platform: "gatsby" },
+    //   }
+    // },
     //Linkedin
-    {
-      resolve: `gatsby-plugin-linkedin-insight`,
-      options: {
-        partnerId: `2984970`,
-        // Include LinkedIn Insight in development.
-        // Defaults to false meaning LinkedIn Insight will only be loaded in production.
-        includeInDevelopment: false
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-linkedin-insight`,
+    //   options: {
+    //     partnerId: `2984970`,
+    //     // Include LinkedIn Insight in development.
+    //     // Defaults to false meaning LinkedIn Insight will only be loaded in production.
+    //     includeInDevelopment: false
+    //   }
+    // },
     //Analytics
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-46011787-23'
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: 'UA-46011787-23'
+    //   }
+    // },
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
 
@@ -119,13 +119,17 @@ module.exports = {
         googleAnalytics: {
           trackingId: 'UA-46011787-23', // leave empty if you want to disable the tracker
           cookieName: 'gatsby-gdpr-google-analytics', // default
-          anonymize: true, // default
+          anonymize: false, // default
           allowAdFeatures: false // default
         },
         googleTagManager: {
           trackingId: 'GTM-MZWX2X2', // leave empty if you want to disable the tracker
           cookieName: 'gatsby-gdpr-google-tagmanager', // default
           dataLayerName: 'dataLayer', // default
+        },
+        facebookPixel: {
+          pixelId: '436276054327463', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-facebook-pixel', // default
         },
         // defines the environments where the tracking should be available  - default is ["production"]
         environments: ['production', 'development']
