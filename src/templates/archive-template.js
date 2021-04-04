@@ -81,8 +81,9 @@ export const newsQuery = graphql`
           locale
           slug
         }
-        FeaturedPost {
+        isPostFeatured: FeaturedPost {
           featuredPost
+          previewText
         }
         categories {
           nodes {

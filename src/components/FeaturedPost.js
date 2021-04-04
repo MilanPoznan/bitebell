@@ -10,7 +10,7 @@ export default function FeaturedPost({ title, minsOfread, content, language, aut
             <h1 className="news-preview__first-title">{title}</h1>
             <span className="news-preview__first-read-time"> {minsOfread} {language.slug === 'sr' ? 'minuta čitanja' : 'min read'}</span>
           </div>
-          <p>{content}</p>
+          <p>{content}...</p>
           <div className="news-preview__first-author">
             {authorName && <span className="news-preview__first-author-name">{language.slug === 'sr' ? `Autor teksta: ${authorName}` : `Written by: ${authorName}`}</span>}
           </div>

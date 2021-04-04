@@ -14,18 +14,10 @@ import { getMinsOfRead } from '../utils/utils'
  */
 export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
 
-  const doc = typeof document !== 'undefined' && document
+  const featuredPost = newsData.filter(post => post.isPostFeatured.featuredPost)[0]
 
-  const createPreviewText = (htmlText) => {
-    let div = doc.createElement('div')
-    div.innerHTML = htmlText
-    let text = div.textContent || div.innerText || ""
-    let finalContnetn = text.substring(0, 200)
-    return finalContnetn
-  }
-  const featuredPreviewContent = doc && createPreviewText(featuredPost.content) + '...'
-  const featuredPost = newsData.filter(post => post.FeaturedPost.featuredPost)[0]
   const postsWithoutFeatured = newsData.filter(post => post.title !== featuredPost.title)
+
   return (
     <section className="archive-news">
       <div className="archive-news__outer-wrapper">
@@ -42,14 +34,13 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
             authorName={featuredPost.author_section.authorName}
             image={featuredPost.featuredImage}
             minsOfread={getMinsOfRead(featuredPost.content)}
-            content={featuredPreviewContent}
+            content={featuredPost.isPostFeatured.featuredPost.previewText}
 
 
           />
           {
             postsWithoutFeatured.map((item, index) => {
-              const { title, featuredImage, categories, slug, language, content } = item
-              let previewContnent = doc && createPreviewText(content) + '...'
+              const { title, previewText, featuredImage, categories, slug, language, content } = item
               return (
                 <NewsPreview
                   key={index}
@@ -59,7 +50,7 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
                   title={title}
                   language={language}
                   category={categories.nodes}
-                  content={previewContnent}
+                  content={previewText}
                   minsOfread={getMinsOfRead(content)}
                 />
               )
