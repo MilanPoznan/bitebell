@@ -50,7 +50,7 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
                     {menuItem.label}
                   </Link>
                   <div className="menu__item-submenu">
-                    {childItems.nodes.map((subMenuItem, index) => <Link key={index} to={subMenuItem.path}>{subMenuItem.label}</Link>)}
+                    {childItems.nodes.map((subMenuItem, index) => <Link onClick={() => setIsHamburgerOpen(!isHamburgerOpen)} key={index} to={subMenuItem.path}>{subMenuItem.label}</Link>)}
                   </div>
                 </div>
                 :
