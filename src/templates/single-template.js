@@ -18,7 +18,11 @@ export default function singlePostTemplate({ data, pageContext }) {
     } } = data
 
 
-  const { seoFields: { metaDescription, pageTitle }, databaseId, title, content, slug, uri, language, translations, author_section, featuredImage } = nodes[0]
+  const { seoFields: { metaDescription, pageTitle },
+    databaseId, title, content, slug, uri, language, translations,
+    author_section,
+    relatedPosts: { relatedPost1, relatedPost2 },
+    featuredImage } = nodes[0]
 
   const postBlogImage = featuredImage && featuredImage.node.file.blogImage.fluid
 
@@ -30,7 +34,6 @@ export default function singlePostTemplate({ data, pageContext }) {
 
   const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
-
   return (
     <Layout phoneNumber={phoneNumber} image={postBlogImage} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <SinglePostLayout
@@ -46,6 +49,8 @@ export default function singlePostTemplate({ data, pageContext }) {
         authorImage={author_section.authorImage}
         komentarText={komentarText}
         komentarTextEn={komentarTextEn}
+        firstRelatedPost={relatedPost1}
+        secondRelatedPost={relatedPost2}
       />
     </Layout>
   )
@@ -108,6 +113,32 @@ export const singlePostQuery = graphql`
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }
+            }
+          }
+        }
+        relatedPosts {
+          relatedPost1 {
+            ... on WpPost {
+              id
+              title
+              slug
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+            }
+          }
+          relatedPost2 {
+            ... on WpPost {
+              id
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+              title
+              slug
             }
           }
         }

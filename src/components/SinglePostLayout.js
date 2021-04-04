@@ -5,6 +5,7 @@ import CommentComponent from './CommentComponent'
 
 import SocialsShareComponent from './SocialsShareComponent'
 import PostComments from './PostComments'
+import RelatedPosts from './RelatedPosts'
 
 import './SinglePostLayout.scss'
 
@@ -26,9 +27,12 @@ export default function SinglePostLayout({
   authorImage,
   komentarText,
   komentarTextEn,
+  firstRelatedPost,
+  secondRelatedPost
 }) {
 
   const [isCommentPosted, setIsCommentPosted] = useState(false)
+
 
   return (
     <section className="single-post">
@@ -74,6 +78,10 @@ export default function SinglePostLayout({
           : <CommentComponent id={id} setIsCommentPosted={setIsCommentPosted} isSrlanguage={language === 'sr' ? true : false} />
       }
       <PostComments currLang={language} dbID={id} />
+      <RelatedPosts
+        relatedPosts={[firstRelatedPost, secondRelatedPost]}
+        language={language}
+      />
 
     </section>
   )

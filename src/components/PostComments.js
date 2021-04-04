@@ -4,7 +4,7 @@ import './PostComments.scss';
 
 export default function PostComments({ dbID, currLang }) {
 
-  const [allComments, setAllComments] = useState()
+  const [allComments, setAllComments] = useState([])
   const [filteredComments, setFilteredComments] = useState()
 
   const getDataOnLoad = () => fetch('https://dev.bitebell.com/wp-json/bitebell/v1/getcomments')
@@ -27,10 +27,10 @@ export default function PostComments({ dbID, currLang }) {
     }
 
   }, [allComments])
-
+  console.log('all ', allComments)
   return (
     <div className="container all-comments">
-      <h2>{currLang === 'sr' ? 'Komentari' : 'Comments'}</h2>
+      {allComments.length !== 0 && <h2>{currLang === 'sr' ? 'Komentari' : 'Comments'}</h2>}
       {allComments !== undefined && allComments.map((comment, index) => {
         //Format date in proper way
         let formatedDate = comment.comment_date
