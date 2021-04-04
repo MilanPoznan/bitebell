@@ -23,10 +23,9 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
     let finalContnetn = text.substring(0, 200)
     return finalContnetn
   }
-  console.log('all', newsData)
+  const featuredPreviewContent = doc && createPreviewText(featuredPost.content) + '...'
   const featuredPost = newsData.filter(post => post.FeaturedPost.featuredPost)[0]
   const postsWithoutFeatured = newsData.filter(post => post.title !== featuredPost.title)
-  console.log('note fetured', postsWithoutFeatured)
   return (
     <section className="archive-news">
       <div className="archive-news__outer-wrapper">
@@ -43,7 +42,7 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
             authorName={featuredPost.author_section.authorName}
             image={featuredPost.featuredImage}
             minsOfread={getMinsOfRead(featuredPost.content)}
-            content={createPreviewText(featuredPost.content) + '...'}
+            content={featuredPreviewContent}
 
 
           />
