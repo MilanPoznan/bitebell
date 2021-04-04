@@ -75,10 +75,14 @@ export const newsQuery = graphql`
       nodes {
         title
         slug
+        date
         content
         language {
           locale
           slug
+        }
+        FeaturedPost {
+          featuredPost
         }
         categories {
           nodes {

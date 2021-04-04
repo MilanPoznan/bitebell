@@ -11,7 +11,7 @@ export default function RelatedPosts({ relatedPosts, language }) {
     <section className="container related-posts-section">
       <h2>{language === 'sr' ? 'Povezane vesti' : 'Related posts'}</h2>
       <div className="related-posts">
-        {relatedPosts.map(post => {
+        {relatedPosts && relatedPosts.map(post => {
           const permalink = () => language === 'sr'
             ? `blog/${slug}`
             : `en/blog-en/${slug}`

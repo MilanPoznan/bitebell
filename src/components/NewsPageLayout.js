@@ -1,6 +1,8 @@
 import React from 'react'
 
 import NewsPreview from './NewsPreview'
+import FeaturedPost from './FeaturedPost'
+
 import './NewsPageLayout.scss'
 
 import { getMinsOfRead } from '../utils/utils'
@@ -21,7 +23,10 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
     let finalContnetn = text.substring(0, 200)
     return finalContnetn
   }
-
+  console.log('all', newsData)
+  const featuredPost = newsData.filter(post => post.FeaturedPost.featuredPost)[0]
+  const postsWithoutFeatured = newsData.filter(post => post.title !== featuredPost.title)
+  console.log('note fetured', postsWithoutFeatured)
   return (
     <section className="archive-news">
       <div className="archive-news__outer-wrapper">
@@ -31,11 +36,21 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
 
         </div>
         <div className="archive-news__inner-wrapper">
+          <FeaturedPost
+            title={featuredPost.title}
+            language={featuredPost.language}
+            link={featuredPost.language.slug === 'sr' ? `blog/${featuredPost.slug}` : `en/blog-en/${featuredPost.slug}`}
+            authorName={featuredPost.author_section.authorName}
+            image={featuredPost.featuredImage}
+            minsOfread={getMinsOfRead(featuredPost.content)}
+            content={createPreviewText(featuredPost.content) + '...'}
+
+
+          />
           {
-            newsData.map((item, index) => {
+            postsWithoutFeatured.map((item, index) => {
               const { title, featuredImage, categories, slug, language, content } = item
               let previewContnent = doc && createPreviewText(content) + '...'
-
               return (
                 <NewsPreview
                   key={index}
@@ -44,8 +59,6 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
                   link={language.slug === 'sr' ? `blog/${slug}` : `en/blog-en/${slug}`}
                   title={title}
                   language={language}
-                  authorAvatar={newsData[0].author_section.authorImage && newsData[0].author_section.authorImage.file.image.fluid}
-                  authorName={newsData[0].author_section.authorName}
                   category={categories.nodes}
                   content={previewContnent}
                   minsOfread={getMinsOfRead(content)}

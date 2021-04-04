@@ -49,8 +49,8 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
                   <Link to={menuItem.path} className={`menu__item menu__item--has-child ${menuItem.cssClasses.map(item => item)}`} key={index}>
                     {menuItem.label}
                   </Link>
-                  <div className="menu__item-submenu">
-                    {childItems.nodes.map((subMenuItem, index) => <Link onClick={() => setIsHamburgerOpen(!isHamburgerOpen)} key={index} to={subMenuItem.path}>{subMenuItem.label}</Link>)}
+                  <div className="menu__item-submenu" onClick={() => setIsHamburgerOpen(false)}>
+                    {childItems.nodes.map((subMenuItem, index) => <Link key={index} to={subMenuItem.path}>{subMenuItem.label}</Link>)}
                   </div>
                 </div>
                 :
@@ -82,6 +82,6 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
           <Link className={currentLang === 'sr' ? 'active' : 'inactive'} to={translations.length === 0 ? '/' : translations[0].uri} >SR</Link>
         </div>
       </nav>
-    </div>
+    </div >
   )
 }
