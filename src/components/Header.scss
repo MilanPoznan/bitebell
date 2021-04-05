@@ -83,11 +83,6 @@
           position: relative;
           margin-bottom: 16px;
           font-weight: 600;
-          &:before {
-            content: "-";
-            position: absolute;
-            left: -10px;
-          }
           &:last-child {
             margin-bottom: 4px;
           }
@@ -263,22 +258,9 @@
           }
           a {
             transition: 0.3s;
-            font-weight: 400;
-            &:before {
-              content: '';
-              position: absolute;
-              width: 8px;
-              height: 8px;
-              background: $white;
-              border-radius: 50%;
-              top: 5px;
-              transition: 0.4s;
-            }
+            // font-weight: 400;
             &:hover {
               color: $purple;
-              &:before {
-                background: $purple;
-              }
             }
           }
         }

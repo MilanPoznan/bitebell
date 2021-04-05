@@ -27,7 +27,7 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
         <div className="main-header__logo">
           <Link
             className={`${currentLang === 'sr' ? 'active' : ''} main-header__logo-link`}
-            to={currentLang === 'sr' ? '/' : "/en"}>
+            to={currentLang === 'sr' ? '/sr' : "/"}>
             <Img fluid={fluid} loading="eager" />
           </Link>
         </div>
