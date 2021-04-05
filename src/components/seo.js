@@ -80,7 +80,10 @@ const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/91c713b5df64d2d6c3f6139abe632eaa.js"></script>
+
+    </Helmet>
   )
 }
 
