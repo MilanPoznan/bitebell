@@ -17,7 +17,8 @@ export default function integracije({ data }) {
   const { title, integrationsFields, language, translations } = nodes[0]
 
   //Pick from 2 menus 
-  const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
+  const menuPosition = language.slug === 'en' ? "MENU_1" : "MENU_1___SR";
+
 
   //Filter by language 
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
@@ -25,7 +26,8 @@ export default function integracije({ data }) {
   const currLangIntegrations = integrations.filter(item => item.language.slug === language.slug)
   const currLangIntegrationType = types.filter(type => type.language.slug === language.slug)
 
-  const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
+  const footerPosition = language.slug === 'en' ? "FOOTER_MENU" : "FOOTER_MENU___SR";
+
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
 

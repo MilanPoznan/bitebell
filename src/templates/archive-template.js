@@ -17,12 +17,14 @@ export default function archiveTemplate({ data }) {
     allWpMenu: { menus },
     wp: { optionsPage: { options: { logo, phoneNumber } } } } = data;
 
-  const menuPosition = language.slug === 'sr' ? "MENU_1" : "MENU_1___EN";
+  const menuPosition = language.slug === 'en' ? "MENU_1" : "MENU_1___SR";
+
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
 
   const currentLangPosts = nodes.filter(item => item.language.locale === language.locale)
 
-  const footerPosition = language.slug === 'sr' ? "FOOTER_MENU" : "FOOTER_MENU___EN";
+  const footerPosition = language.slug === 'en' ? "FOOTER_MENU" : "FOOTER_MENU___SR";
+
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
   return (

@@ -80,7 +80,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         break;
       case 'pocetna':
         createPage({
-          path: page.uri,
+          path: '/sr',
           component: path.resolve('./src/templates/page-template.js'),
           context: {
             id: page.id
@@ -89,7 +89,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         break;
       case 'homepage':
         createPage({
-          path: '/en',
+          path: '/',
           component: path.resolve('./src/templates/page-template.js'),
           context: {
             id: page.id
