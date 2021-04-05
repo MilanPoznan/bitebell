@@ -68,6 +68,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       case 'schedule-a-demo':
       case 'zakazite-demo':
+      case 'request_demo':
         createPage({
           path: page.uri,
           component: path.resolve('./src/templates/request-demo-template.js'),
