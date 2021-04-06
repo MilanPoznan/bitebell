@@ -13,7 +13,6 @@ export default function MapComponent({ mapSection, language }) {
 
   const { link, map, orderConfirmed, subtitle, text, title, locations } = mapSection
 
-  console.log('lang', language)
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
     threshold: 0.5

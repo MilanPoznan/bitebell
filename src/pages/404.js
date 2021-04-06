@@ -12,7 +12,6 @@ const NotFoundPage = ({ data, location }) => {
 
 
   const currLangMenu = menus.filter(menu => menu.locations[0] === "MENU_1")
-  console.log('currLangMenu', currLangMenu)
   // const currTranslations = language.slug === 'en' ? [{ uri: '/sr' }] : translations
   const translations = [{ uri: '/sr' }]
 

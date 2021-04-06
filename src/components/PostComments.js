@@ -27,7 +27,6 @@ export default function PostComments({ dbID, currLang }) {
     }
 
   }, [allComments])
-  console.log('all ', allComments)
   return (
     <div className="container all-comments">
       {allComments.length !== 0 && <h2>{currLang === 'sr' ? 'Komentari' : 'Comments'}</h2>}

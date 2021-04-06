@@ -8,7 +8,6 @@ import './Hamburger.scss'
 import { useCurrentWidth } from '../hooks/uzeResize'
 
 export default function Header({ currLangMenu, logo, currentLang, translations, phoneNumber }) {
-  console.log(currLangMenu)
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
   const { menuItems: { nodes } } = currLangMenu
   const { file: { image: { fluid } } } = logo
