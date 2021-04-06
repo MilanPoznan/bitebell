@@ -92,6 +92,17 @@
           background-color: inherit;
         }
       }
+      &--small {
+        max-width: 70px;
+        max-height: 34px !important;
+        img {
+          width: 50px !important;
+          height: 25px !important;
+          left: 15% !important;
+          top: 15% !important;
+
+        }
+      }
     }
     &-wrapper {
       height: 100%;

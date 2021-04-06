@@ -114,9 +114,10 @@ export const query = graphql`
               url
             }
             map {
+              sourceUrl
               localFile {
                 childImageSharp {
-                  fluid {
+                  fluid(quality: 100) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
