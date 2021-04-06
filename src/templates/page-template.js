@@ -30,7 +30,7 @@ export default function page({ data }) {
     <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />
       <PosComponent posSection={posSection} />
-      <MapComponent mapSection={mapSection} />
+      <MapComponent mapSection={mapSection} language={language.slug} />
       <AboutComponent aboutSection={aboutSection} />
       <SponsorsComponent sponsorsSection={sponsorsSection} />
       <DemoComponent demoSection={demoSection} />

@@ -9,10 +9,11 @@ import { gsap, TweenMax, TimelineMax } from 'gsap'
 
 import useIntersect from '../hooks/useIntersect'
 
-export default function MapComponent({ mapSection }) {
+export default function MapComponent({ mapSection, language }) {
 
   const { link, map, orderConfirmed, subtitle, text, title, locations } = mapSection
 
+  console.log('lang', language)
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
     threshold: 0.5
@@ -153,7 +154,7 @@ export default function MapComponent({ mapSection }) {
                   <span className="bottom-box" style={{ backgroundColor: secondBoxColor }}></span>
                   <span className="left-box" style={{ backgroundColor: secondBoxColor }}></span>
                   <div className="map-component__locations-img-container" style={{ backgroundColor: secondBoxColor }}>
-                    <Img fluid={locations[1].locationIcon.localFile.childImageSharp.fluid} className="map-component__locations-img" />
+                    <Img fluid={locations[1].locationIcon.localFile.childImageSharp.fluid} className={language === 'en' ? "map-component__locations-img map-component__locations-img--small" : 'map-component__locations-img'} />
                   </div>
                   <span className="map-component__locations-pin" style={{ backgroundColor: secondBoxColor }} ref={dot}></span>
                   <span className="map-component__locations-pin-inner" style={{ backgroundColor: secondBoxColor }}></span>
