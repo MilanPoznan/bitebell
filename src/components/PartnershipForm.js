@@ -228,11 +228,11 @@ export default function PartnershipForm({ data, language, selectTypes, setIsForm
         </div>
 
       </form>
-      <ReCAPTCHA
+      {/* <ReCAPTCHA
         sitekey="6LdV910aAAAAAM_4ajAwKPMQyzr_z38Hm7NTXrIR"
         size="invisible"
         ref={recaptchaRef}
-      />
+      /> */}
     </>
   )
 }
