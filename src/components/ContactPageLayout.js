@@ -26,9 +26,10 @@ export default function ContactPageLayout({ title, content, apiContent, partnerL
     }
   }, [entry.isIntersecting])
 
+
   return (
     isFormSuccessfullySubmited
-      ? <ThankYou />
+      ? <ThankYou language={language} />
       : <div className="contact container">
         <section className="contact__info">
           <h2 className="purple">{title}</h2>

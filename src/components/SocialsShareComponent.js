@@ -17,7 +17,7 @@ import './SocialsShareComponent.scss'
 export default function SocialsShareComponent({ isLangEng, title, postSlugTranslationName, slug }) {
 
   // URL from live site
-  const url = 'https://mystifying-wiles-cc7118.netlify.app/'
+  const url = 'https://bitebell.com/'
   const shareUrl = `${url}${isLangEng ? "blog/" : "en/blog-en/"}${postSlugTranslationName}`
 
   return (

@@ -71,8 +71,6 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
     setSubmited(true)
 
     if (
-      checkIsFieldValid(imeObavezno, nameField) && //Name field
-      validateEmail(emailField) && //Email Field
       checkIsFieldValid(isPhoneRequired, phoneField) && //Phone field
       checkIsFieldValid(isLocationRequired, locationField) && //Location field 
       checkIsFieldValid(isPosRequired, posSelect) && //POS field
@@ -81,15 +79,13 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
       fetchWithTimeout(
         sendFormData,
         {
-          full_name: nameField,
           email: emailField,
           phone: phoneField,
           phone_select: phoneSelect,
           location: locationField,
           restaurant: restaurantField,
           pos: posSelect,
-          form_type: 'demo',
-          token: token
+          form_type: 'demo'
         },
         1000
       )
@@ -229,11 +225,11 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
         </div>
 
       </form>
-      {/* <ReCAPTCHA
+      <ReCAPTCHA
         sitekey="6LdV910aAAAAAM_4ajAwKPMQyzr_z38Hm7NTXrIR"
         size="invisible"
         ref={recaptchaRef}
-      /> */}
+      />
     </>
   )
 }

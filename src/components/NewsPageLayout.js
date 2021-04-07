@@ -17,7 +17,6 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
   const featuredPost = newsData.filter(post => post.isPostFeatured.featuredPost)[0]
 
   const postsWithoutFeatured = newsData.filter(post => post.title !== featuredPost.title)
-
   return (
     <section className="archive-news">
       <div className="archive-news__outer-wrapper">
@@ -34,7 +33,7 @@ export default function NewsPageLayout({ newsData, pageTitle, pageSubtitle }) {
             authorName={featuredPost.author_section.authorName}
             image={featuredPost.featuredImage}
             minsOfread={getMinsOfRead(featuredPost.content)}
-            content={featuredPost.isPostFeatured.featuredPost.previewText}
+            content={featuredPost.isPostFeatured.previewText}
 
 
           />
