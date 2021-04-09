@@ -4,6 +4,7 @@
   padding: 45px 0 30px 0;
   &__copyright {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     height: 75px;
     p {
@@ -12,3 +13,18 @@
   }
 }
 
+
+@include tablet() {
+  .footer {
+    &__copyright {
+      height: auto;
+      &-wrapper {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

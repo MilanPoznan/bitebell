@@ -36,14 +36,15 @@ export default function Footer({ currLangFooter, language }) {
           }
         </div>
         <div className="footer-inner footer__copyright-wrapper">
-          <p>{footerText.copyright} {(new Date().getFullYear())} Bitebell Technologies.</p>
+          <p style={{ width: '100%' }}>{footerText.copyright} {(new Date().getFullYear())} Bitebell Technologies.</p>
+          <p>{footerText.imgCopy}</p>
+
           <div className="footer__copyright">
             <p>{footerText.build} </p>
             <img src={HeartIcon} />
             <p> {footerText.city}</p>
           </div>
         </div>
-        <p>{footerText.imgCopy}</p>
       </div>
     </div>
   )
