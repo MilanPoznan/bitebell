@@ -1,6 +1,8 @@
 @import './global-styles/media-mixins';
 
 .map-component {
+  padding-top: 80px;
+  margin-top: -80px;
   &__map {
     &-container {
       position: relative;

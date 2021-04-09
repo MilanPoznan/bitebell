@@ -25,7 +25,7 @@ export default function AboutComponent({ aboutSection }) {
   }, [entry.isIntersecting])
 
   return (
-    <div className="container" ref={ref} id="about">
+    <div className="container about" ref={ref} id="about">
       <h2 className="about__title">{title}</h2>
       <div className="short-about about__container" ref={aboutRef}>
         {

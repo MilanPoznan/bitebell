@@ -1,6 +1,8 @@
 @import './global-styles/media-mixins';
 
 .about {
+  padding-top: 80px;
+  margin-top: -80px;
   &__img {
     width: 45px;
     margin: 0 auto;

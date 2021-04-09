@@ -93,6 +93,8 @@
   &__container {
     display: flex;
     flex-direction: column;
+    padding-top: 80px;
+    margin-top: -80px;
   }
   &__swiper-wrapper {
     overflow: hidden;
