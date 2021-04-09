@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
+import {useCurrentWidth} from '../hooks/uzeResize'
 import './MapComponent.scss'
 
 import { gsap, TweenMax, TimelineMax } from 'gsap'
@@ -13,9 +14,11 @@ export default function MapComponent({ mapSection, language }) {
 
   const { link, map, orderConfirmed, subtitle, text, title, locations } = mapSection
 
+  const windowWidth = useCurrentWidth();
+
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
-    threshold: 0.5
+    threshold: windowWidth < 1023 ? 0.2 : 0.5
   })
 
   const colorSelector = (item) => {
