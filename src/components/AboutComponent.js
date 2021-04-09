@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import Img from 'gatsby-image'
+import {useCurrentWidth} from '../hooks/uzeResize'
 import './AboutComponent.scss'
 import PropTypes from 'prop-types'
 import useIntersect from '../hooks/useIntersect'
@@ -8,9 +9,11 @@ export default function AboutComponent({ aboutSection }) {
 
   const { aboutRepeater, title } = aboutSection
 
+  const windowWidth = useCurrentWidth();
+
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
-    threshold: 0.5
+    threshold: windowWidth < 1023 ? 0.2 : 0.5
   })
 
   const aboutRef = useRef(null)

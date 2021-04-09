@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import {useCurrentWidth} from '../hooks/uzeResize'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import './SponsorsComponent.scss'
@@ -8,11 +9,13 @@ export default function SponsorsComponents({ sponsorsSection }) {
 
   const { sponsorsLogoRepeater, sponsorsTitle } = sponsorsSection
 
+  const windowWidth = useCurrentWidth()
+
   const [counter, setCounter] = useState(0)
 
   const [ref, entry] = useIntersect({
     rootMargin: "0px 0px 0px",
-    threshold: 1
+    threshold: windowWidth < 1023 ? 0.5 : 1
   })
 
   const logosRef = useRef(null)
