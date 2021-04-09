@@ -3,7 +3,7 @@ import FooterMenuItems from './FooterMenuItems'
 import HeartIcon from '../img/heart-icon.svg'
 import './Footer.scss'
 
-export default function Footer({currLangFooter, language}) {
+export default function Footer({ currLangFooter, language }) {
 
   const { menuItems: { nodes } } = currLangFooter;
 
@@ -12,11 +12,13 @@ export default function Footer({currLangFooter, language}) {
   const footerText = {
     copyright: isEn ? '© Copyright' : '© Sva prava zadržana',
     build: isEn ? 'Built with ' : 'Napravljeno s ljubavlju ',
-    city: isEn ? ' in Belgrade' : ' u Beogradu'
+    city: isEn ? ' in Belgrade' : ' u Beogradu',
+    imgCopy: isEn ? 'All logos are trademarks of their respective owners' : 'Svi logotipi su svojina njihovih vlasnika'
+
   }
 
-  const  menuItemParent = nodes.filter(node => node.parentDatabaseId === 0)
-  
+  const menuItemParent = nodes.filter(node => node.parentDatabaseId === 0)
+
   return (
     <div className="footer">
       <div className="container">
@@ -27,7 +29,7 @@ export default function Footer({currLangFooter, language}) {
               return (
                 <div className="footer-nav-list footer__container" key={index}>
                   <p>{node.label}</p>
-                  <FooterMenuItems childItems={node}/>
+                  <FooterMenuItems childItems={node} />
                 </div>
               )
             })
@@ -37,10 +39,11 @@ export default function Footer({currLangFooter, language}) {
           <p>{footerText.copyright} {(new Date().getFullYear())} Bitebell Technologies.</p>
           <div className="footer__copyright">
             <p>{footerText.build} </p>
-            <img src={HeartIcon}/>
+            <img src={HeartIcon} />
             <p> {footerText.city}</p>
           </div>
         </div>
+        <p>{footerText.imgCopy}</p>
       </div>
     </div>
   )

@@ -42,6 +42,8 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
         <div className="menu__wrapper">
           {parentMenuItems.map((menuItem, index) => {
             const { childItems } = menuItem
+
+
             return (
               childItems.nodes.length !== 0 ?
                 <div className="menu__item-wrapper" key={index}>
@@ -49,7 +51,11 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
                     {menuItem.label}
                   </Link>
                   <div className="menu__item-submenu" onClick={() => setIsHamburgerOpen(false)}>
-                    {childItems.nodes.map((subMenuItem, index) => <Link key={index} to={subMenuItem.path}>{subMenuItem.label}</Link>)}
+                    {childItems.nodes.map((subMenuItem, index) => {
+                      let submenuPath = subMenuItem.url
+                      let anchorTagsubmenu = submenuPath.split('/').slice(-1)[0]
+                      return <Link key={index} to={anchorTagsubmenu}>{subMenuItem.label}</Link>
+                    })}
                   </div>
                 </div>
                 :

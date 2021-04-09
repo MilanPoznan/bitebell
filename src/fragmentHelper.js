@@ -21,6 +21,7 @@ export const menuFragments = graphql`
               cssClasses
               label
               path
+              url
               order
               parentId
               childItems {

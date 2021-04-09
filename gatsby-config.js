@@ -103,25 +103,19 @@ module.exports = {
     //     includeInDevelopment: false
     //   }
     // },
-    //Analytics
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: 'UA-46011787-23'
-    //   }
-    // },
+    // Analytics
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-46011787-23'
+      }
+    },
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
 
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
-        googleAnalytics: {
-          trackingId: 'UA-46011787-23', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-google-analytics', // default
-          anonymize: false, // default
-          allowAdFeatures: false // default
-        },
         googleTagManager: {
           trackingId: 'GTM-MZWX2X2', // leave empty if you want to disable the tracker
           cookieName: 'gatsby-gdpr-google-tagmanager', // default
