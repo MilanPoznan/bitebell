@@ -69,7 +69,6 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
     recaptchaRef.current && recaptchaRef.current.reset()
 
     setSubmited(true)
-
     if (
       checkIsFieldValid(isPhoneRequired, phoneField) && //Phone field
       checkIsFieldValid(isLocationRequired, locationField) && //Location field 
@@ -87,7 +86,7 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
           pos: posSelect,
           form_type: 'demo'
         },
-        1000
+        10000
       )
         .then(response => {
           console.log('response', response)
