@@ -112,7 +112,7 @@ export default function MapComponent({ mapSection, language }) {
   }, [entry.isIntersecting])
 
   return (
-    <div className="container" ref={ref} id="map">
+    <div className="container map-component" ref={ref} id="map">
       <div className="row">
         <div className="map-component__wrapper">
           <div className="text-box map-component__left" ref={sectionTextRef}>
