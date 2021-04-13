@@ -43,11 +43,11 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
           {parentMenuItems.map((menuItem, index) => {
             const { childItems } = menuItem
 
-
+            console.log(menuItem.cssClasses)
             return (
               childItems.nodes.length !== 0 ?
                 <div className="menu__item-wrapper" key={index}>
-                  <Link to={menuItem.path} className={`menu__item menu__item--has-child ${menuItem.cssClasses.map(item => item)}`} key={index}>
+                  <Link to={menuItem.path} className={`menu__item menu__item--has-child ${menuItem.cssClasses.map(item => `${item}`)}`} key={index}>
                     {menuItem.label}
                   </Link>
                   <div className="menu__item-submenu" onClick={() => setIsHamburgerOpen(false)}>
@@ -59,7 +59,7 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
                   </div>
                 </div>
                 :
-                <Link to={menuItem.path} className={`menu__item ${menuItem.cssClasses.map(item => item)}`} key={index}>
+                <Link to={menuItem.path} className={`menu__item ${menuItem.cssClasses.map(item => ` ${item} `)}`} key={index}>
                   {menuItem.label}
                 </Link>
             )
