@@ -96,6 +96,9 @@
         width: 50px;
         padding: 17px 25px;
         border: 2px solid #40cdb2;
+        &:hover {
+          background: #40cdb2;
+        }
         svg {
           left: -4px;
           display: block;

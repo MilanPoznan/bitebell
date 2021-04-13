@@ -29,11 +29,11 @@ export default function page({ data }) {
   return (
     <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />
-      <PosComponent posSection={posSection} />
+      <PosComponent posSection={posSection} language={language.slug} />
       <MapComponent mapSection={mapSection} language={language.slug} />
       <AboutComponent aboutSection={aboutSection} />
       <SponsorsComponent sponsorsSection={sponsorsSection} />
-      <DemoComponent demoSection={demoSection} />
+      <DemoComponent demoSection={demoSection} language={language.slug} />
     </Layout>
   )
 }

@@ -67,7 +67,7 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
           )}
 
         </div>
-        <a href={`tel:${phoneNumber}`} className="menu__phone cta-menu cta-menu-round">
+        <a href={`tel:${phoneNumber}`} className={`${currentLang === 'sr' ? 'demo-call-rs' : 'demo-call-en'} menu__phone cta-menu cta-menu-round`}>
           <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" >
             <g id="Designs-v2" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g id="Homepage-2-alternatief" transform="translate(-1015.000000, -45.000000)" fill="#FFFFFF">

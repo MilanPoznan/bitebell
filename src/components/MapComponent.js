@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
-import {useCurrentWidth} from '../hooks/uzeResize'
+import { useCurrentWidth } from '../hooks/uzeResize'
 import './MapComponent.scss'
 
 import { gsap, TweenMax, TimelineMax } from 'gsap'
@@ -121,7 +121,7 @@ export default function MapComponent({ mapSection, language }) {
               <h5>{subtitle}</h5>
             </div>
             <div dangerouslySetInnerHTML={{ __html: text }}></div>
-            <Link to={link.url} className="button button-lg dispatch-integrations-en">{link.title}</Link>
+            <Link to={link.url} className={`${language === 'sr' ? 'dispatch-integrations-rs' : 'dispatch-integrations-en'} button button-lg`}>{link.title}</Link>
           </div>
           <div className="map-component__right" ref={sectionMapRef}>
             <div className="text-box">

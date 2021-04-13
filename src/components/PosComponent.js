@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import './PosComponent.scss'
 import useIntersect from '../hooks/useIntersect'
 
-export default function PosComponent({ posSection }) {
+export default function PosComponent({ posSection, language }) {
 
   const { link, partnersLogoIcons, partnersRepeater, subtitle, tabelIcon, text, title } = posSection
 
@@ -41,7 +41,7 @@ export default function PosComponent({ posSection }) {
     }, 3000);
     return () => clearInterval(interval);
   });
-
+  console.log('object', language)
   return (
     <div className="container" ref={ref}>
       <div className="pos__container" id="pos">
@@ -87,7 +87,7 @@ export default function PosComponent({ posSection }) {
               <h5>{subtitle}</h5>
             </div>
             <div dangerouslySetInnerHTML={{ __html: text }}></div>
-            <Link to={link.url} className="button button-lg connect-integrations-en">{link.title}</Link>
+            <Link to={link.url} className={`${language === 'sr' ? 'connect-integrations-rs ' : 'connect-integrations-en '}button button-lg`}>{link.title}</Link>
           </div>
         </div>
       </div>

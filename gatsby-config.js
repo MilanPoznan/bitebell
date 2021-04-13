@@ -93,21 +93,20 @@ module.exports = {
     //     defaultDataLayer: { platform: "gatsby" },
     //   }
     // },
-    //Linkedin
-    // {
-    //   resolve: `gatsby-plugin-linkedin-insight`,
-    //   options: {
-    //     partnerId: `2984970`,
-    //     // Include LinkedIn Insight in development.
-    //     // Defaults to false meaning LinkedIn Insight will only be loaded in production.
-    //     includeInDevelopment: false
-    //   }
-    // },
+    // Linkedin
+    {
+      resolve: `gatsby-plugin-linkedin-insight`,
+      options: {
+        partnerId: `2984970`,
+        includeInDevelopment: false
+      }
+    },
     // Analytics
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-46011787-23'
+        trackingId: 'UA-46011787-23',
+        head: true
       }
     },
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
