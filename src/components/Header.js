@@ -54,7 +54,9 @@ export default function Header({ currLangMenu, logo, currentLang, translations, 
                     {childItems.nodes.map((subMenuItem, index) => {
                       let submenuPath = subMenuItem.url
                       let anchorTagsubmenu = submenuPath.split('/').slice(-1)[0]
-                      return <Link key={index} to={`/${anchorTagsubmenu}`}>{subMenuItem.label}</Link>
+                      let finalAnchor = currentLang === 'sr' ? `sr/${anchorTagsubmenu}` : anchorTagsubmenu
+                      console.log(anchorTagsubmenu)
+                      return <Link key={index} to={`/${finalAnchor}`}>{subMenuItem.label}</Link>
                     })}
                   </div>
                 </div>
