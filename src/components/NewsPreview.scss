@@ -73,6 +73,9 @@
     color: $blue;
     margin: 0px;
   }
+  &__image-wrap {
+    max-height: 174px;
+  }
   &__read-time {
     position: absolute;
     top: 0;

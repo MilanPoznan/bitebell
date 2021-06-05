@@ -22,6 +22,7 @@
   &__main {
     padding: 0px 15px;
     flex: 0 0 100%;
+    // width: 100%;
   }
   &__main {
     display: flex;
@@ -30,6 +31,7 @@
   &__main-content {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
   }
   &__image-wrapper {
     margin-top: 40px;
@@ -42,7 +44,8 @@
     margin-bottom: 30px;
     font-weight: 600;
     line-height: 1.2;
-    letter-spacing: -0.01em;
+    // letter-spacing: -0.01em
+    // width: 100%;
   } 
   &__author-header {
     display: flex;
@@ -73,6 +76,9 @@
         margin-bottom: 0;
       }
     }
+  }
+  table {
+    width: 100%;
   }
   &__author-bottom {
     display: flex;
