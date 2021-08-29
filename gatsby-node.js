@@ -33,6 +33,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   pages.nodes.forEach(page => {
     switch (page.slug) {
+      case 'faq':
+      case 'najcesce-postavljana-pitanja':
+        createPage({
+          path: page.uri,
+          component: path.resolve('./src/templates/faq-template.js'),
+          context: {
+            id: page.id
+          }
+        })
+        break;
       case 'integrations':
       case 'integracije':
         createPage({
