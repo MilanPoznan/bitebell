@@ -124,7 +124,7 @@ export const AccordionWrapper = styled.div`
   flex-flow: column;
   padding: 16px;
   @media only screen and (min-width: 1024px) {
-    width: 80%;
+    width: 70%;
   } 
 `
 
@@ -133,7 +133,7 @@ export const DesktopWrapper = styled.div`
   display: flex;
   @media only screen and (min-width: 1024px) {
     width: 80%;
-    margin: 0 auto;
+    margin: 40px auto;
   } 
 `
 
@@ -155,5 +155,13 @@ export const SingleOption = styled.p`
   color: ${({ isActive }) => isActive ? 'rgb(0, 119, 204)' : 'rgb(49, 67, 81)'};
   &:hover {
     color: #2C4482;
+  }
+`
+
+export const CategoryMobileTitle = styled.p`
+  font-size: 20px;
+  margin-bottom: 14px;
+  @media only screen and (min-width: 1024px) {
+    display: none;
   }
 `
