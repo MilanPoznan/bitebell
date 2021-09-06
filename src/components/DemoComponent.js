@@ -5,7 +5,7 @@ import './DemoComponent.scss'
 export default function DemoComponent({ demoSection, language }) {
 
   const { text, title, link } = demoSection;
-
+  console.log(link)
   return (
     <section className="demo">
       <div className="container">
@@ -15,7 +15,7 @@ export default function DemoComponent({ demoSection, language }) {
             <div dangerouslySetInnerHTML={{ __html: text }}></div>
           </div>
           <div className="demo__link">
-            <Link to={link.url} className={`${language === 'sr' ? 'demo-footer-sr' : 'demo-footer-en'} button button-lg demo-footer demo__link`}>{link.title}</Link>
+            {link && <Link to={link.url} className={`${language === 'sr' ? 'demo-footer-sr' : 'demo-footer-en'} button button-lg demo-footer demo__link`}>{link.title}</Link>}
           </div>
         </div>
       </div>
