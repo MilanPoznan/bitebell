@@ -8,12 +8,13 @@ import MapComponent from '../components/MapComponent'
 import AboutComponent from '../components/AboutComponent'
 import SponsorsComponent from '../components/SponsorsComponent'
 import DemoComponent from '../components/DemoComponent'
+import InfiniteSlider from '../components/InfiniteSlider'
 
 export default function page({ data }) {
 
   const { allWpPage: { nodes }, allWpMenu: { menus }, wp: { optionsPage: { options: { logo, phoneNumber } } } } = data;
   const { title, language, translations,
-    homepage_sections: { aboutSection, demoSection, heroSection, mapSection, posSection, sponsorsSection },
+    homepage_sections: { aboutSection, demoSection, testimonials, heroSection, mapSection, posSection, sponsorsSection },
     seoFields: { metaDescription, pageTitle } } = nodes[0];
 
   const menuPosition = language.slug === 'en' ? "MENU_1" : "MENU_1___SR";
@@ -26,6 +27,7 @@ export default function page({ data }) {
 
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
+
   return (
     <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />
@@ -34,6 +36,7 @@ export default function page({ data }) {
       <AboutComponent aboutSection={aboutSection} />
       <SponsorsComponent sponsorsSection={sponsorsSection} />
       <DemoComponent demoSection={demoSection} language={language.slug} />
+      <InfiniteSlider testimonials={testimonials} />
     </Layout>
   )
 }
@@ -73,6 +76,23 @@ export const query = graphql`
           pageTitle
         }
         homepage_sections {
+          testimonials {
+            testemonialsRepeater {
+              content
+              name
+              role
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+            testemonialsTitle
+          }
           aboutSection {
             fieldGroupName
             title
@@ -148,6 +168,7 @@ export const query = graphql`
               }
             }
           }
+         
           posSection {
             fieldGroupName
             subtitle
