@@ -3,7 +3,7 @@ import SingleFaqAccordion from './SingleFaqAccordion'
 import { CategoryMobileTitle, SelectWrapper, SingleOption, FilterWrapper, DesktopWrapper, SelectFilter, AccordionWrapper, FaqSearch, FaqInput, FaqHeader, Title, Subtitle, FaqContainer } from './Faq.styled'
 import DemoComponent from './DemoComponent'
 
-export default function FaqTemplate({ title, subtitle, accordionArray, demoSection, language }) {
+export default function FaqTemplate({ title, subtitle, accordionArray, demoSectionFaq, language }) {
   console.log(language)
   const [inputVal, setinputVal] = useState('')
   const [accordionState, setaAcordionState] = useState([])
@@ -103,7 +103,7 @@ export default function FaqTemplate({ title, subtitle, accordionArray, demoSecti
 
       </FaqContainer>
       <div style={{ marginBottom: '30px' }}></div>
-      <DemoComponent demoSection={demoSection} language={language} />
+      <DemoComponent demoSection={demoSectionFaq} language={language} />
     </>
   )
 }

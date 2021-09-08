@@ -10,7 +10,7 @@ export default function faqTemplate({ data }) {
     wp: { optionsPage: { options: { logo, phoneNumber } } }
   } = data
 
-  const { language, translations, faq_acf: { title, subtitle, accordion, demoSection } } = nodes[0]
+  const { language, translations, faq_acf: { title, subtitle, accordion, demoSectionFaq } } = nodes[0]
 
   const menuPosition = language.slug === 'en' ? "MENU_1" : "MENU_1___SR";
   const footerPosition = language.slug === 'en' ? "FOOTER_MENU" : "FOOTER_MENU___SR";
@@ -20,7 +20,7 @@ export default function faqTemplate({ data }) {
 
   return (
     <Layout title={title} language={language.slug} phoneNumber={phoneNumber} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
-      <FaqTemplate title={title} subtitle={subtitle} accordionArray={accordion} demoSection={demoSection} language={language.slug} />
+      <FaqTemplate title={title} subtitle={subtitle} accordionArray={accordion} demoSectionFaq={demoSectionFaq} language={language.slug} />
     </Layout>
   )
 }
@@ -57,7 +57,7 @@ export const faqQuery = graphql`
               acordionTitle
               category
             }
-            demoSection {
+            demoSectionFaq {
               link {
                 target
                 title
