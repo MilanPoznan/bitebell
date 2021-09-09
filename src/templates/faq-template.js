@@ -50,13 +50,6 @@ export const faqQuery = graphql`
     allWpPage(filter: { id: { eq: $id } }) {
         nodes {
           faq_acf {
-            title
-            subtitle
-            accordion {
-              accordionContent
-              acordionTitle
-              category
-            }
             demoSectionFaq {
               link {
                 target
@@ -66,6 +59,14 @@ export const faqQuery = graphql`
               text
               title
             }
+            title
+            subtitle
+            accordion {
+              accordionContent
+              acordionTitle
+              category
+            }
+           
           }
           language {
             slug

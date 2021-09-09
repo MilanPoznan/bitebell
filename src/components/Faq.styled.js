@@ -165,3 +165,10 @@ export const CategoryMobileTitle = styled.p`
     display: none;
   }
 `
+
+export const FaqWrapper = styled.div`
+ @media only screen and (min-width: 1680px) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+`

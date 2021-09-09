@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import SingleFaqAccordion from './SingleFaqAccordion'
-import { CategoryMobileTitle, SelectWrapper, SingleOption, FilterWrapper, DesktopWrapper, SelectFilter, AccordionWrapper, FaqSearch, FaqInput, FaqHeader, Title, Subtitle, FaqContainer } from './Faq.styled'
+import { FaqWrapper, CategoryMobileTitle, SelectWrapper, SingleOption, FilterWrapper, DesktopWrapper, SelectFilter, AccordionWrapper, FaqSearch, FaqInput, FaqHeader, Title, Subtitle, FaqContainer } from './Faq.styled'
 import DemoComponent from './DemoComponent'
 
 export default function FaqTemplate({ title, subtitle, accordionArray, demoSectionFaq, language }) {
-  console.log(language)
   const [inputVal, setinputVal] = useState('')
   const [accordionState, setaAcordionState] = useState([])
   const [options, setOptions] = useState()
@@ -53,7 +52,7 @@ export default function FaqTemplate({ title, subtitle, accordionArray, demoSecti
   }, [currCategory])
 
   return (
-    <>
+    <FaqWrapper>
       <FaqContainer>
         <FaqHeader>
           <Title>{title}</Title>
@@ -104,6 +103,6 @@ export default function FaqTemplate({ title, subtitle, accordionArray, demoSecti
       </FaqContainer>
       <div style={{ marginBottom: '30px' }}></div>
       <DemoComponent demoSection={demoSectionFaq} language={language} />
-    </>
+    </FaqWrapper>
   )
 }
