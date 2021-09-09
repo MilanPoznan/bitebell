@@ -4,7 +4,6 @@ import './DemoComponent.scss'
 
 export default function DemoComponent({ demoSection, language }) {
 
-  console.log('demo', demoSection)
   const { text, title, link } = demoSection;
   return (
     <section className="demo">
