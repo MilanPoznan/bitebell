@@ -4,6 +4,7 @@ import { FaqWrapper, CategoryMobileTitle, SelectWrapper, SingleOption, FilterWra
 import DemoComponent from './DemoComponent'
 
 export default function FaqTemplate({ title, subtitle, accordionArray, demoSectionFaq, language }) {
+
   const [inputVal, setinputVal] = useState('')
   const [accordionState, setaAcordionState] = useState([])
   const [options, setOptions] = useState()

@@ -3,11 +3,6 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import PosComponent from '../components/PosComponent'
-import MapComponent from '../components/MapComponent'
-import AboutComponent from '../components/AboutComponent'
-import SponsorsComponent from '../components/SponsorsComponent'
-import DemoComponent from '../components/DemoComponent'
 import InfiniteSlider from '../components/InfiniteSlider'
 
 export default function page({ data }) {
@@ -31,11 +26,7 @@ export default function page({ data }) {
   return (
     <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />
-      <PosComponent posSection={posSection} language={language.slug} />
-      <MapComponent mapSection={mapSection} language={language.slug} />
-      <AboutComponent aboutSection={aboutSection} />
-      <SponsorsComponent sponsorsSection={sponsorsSection} />
-      <DemoComponent demoSection={demoSection} language={language.slug} />
+      <InfiniteSlider testimonials={testimonials} />
     </Layout>
   )
 }

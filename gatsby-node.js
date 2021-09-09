@@ -88,6 +88,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         })
         break;
+      case 'test-slider':
+        createPage({
+          path: '/test-slider',
+          component: path.resolve('./src/templates/test-page-template.js'),
+          context: {
+            id: page.id
+          }
+        })
+        break;
       case 'pocetna':
         createPage({
           path: '/sr',

@@ -117,8 +117,6 @@ export const SelectFilter = styled.select`
   }
 `
 
-
-
 export const AccordionWrapper = styled.div`
   display: flex;
   flex-flow: column;
@@ -127,7 +125,6 @@ export const AccordionWrapper = styled.div`
     width: 70%;
   } 
 `
-
 
 export const DesktopWrapper = styled.div`
   display: flex;
