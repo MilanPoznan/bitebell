@@ -54,6 +54,7 @@ export const ActiveSingleSlide = styled.div`
     top: calc(50% - 13px);
     cursor: pointer;
     z-index: 100;
+
   }
   .arr-left {
     left: -60px;
