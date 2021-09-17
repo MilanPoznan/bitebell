@@ -54,12 +54,13 @@ export const ActiveSingleSlide = styled.div`
     top: calc(50% - 13px);
     cursor: pointer;
     z-index: 100;
+
   }
   .arr-left {
-    left: -60px;
+    /* left: -60px; */
   }
   .arr-right {
-    right: -60px;
+    /* right: -60px; */
   }
 
   @media only screen and (min-width: 1200px) {
