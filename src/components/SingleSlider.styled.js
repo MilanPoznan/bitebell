@@ -1,5 +1,8 @@
 import styled from "styled-components"
 
+export const MainSliderWrapper = styled.div`
+  position: relative;
+`
 export const SliderBox = styled.div`
   position: relative;
   h2 {
@@ -49,8 +52,8 @@ export const SingleSliderBox = styled.div`
   height: 100%;
   background: #FFFFFF;
   box-shadow: 0px 0px 48px rgba(0, 0, 0, 0.1);
-  transform: ${({ left }) => `translateX(${left * 125}%)`};
-  transition: 0.4s;
+  transform: ${({ left }) => `translateX(${-left * 125}%)`};
+  transition: ${({ hasTransition }) => hasTransition ? '0.4s' : 'none'};
   .gatsby-image-wrapper {
     width: 88px;
     min-height: 88px;
@@ -67,7 +70,8 @@ export const SingleSliderBox = styled.div`
   @media only screen and (min-width: 1200px) {
     max-width: 374px;
     min-width: 374px;
-    margin: 0 20px;
+    height: 458px;
+    margin: 0 20px 40px;
   }
 `
 
