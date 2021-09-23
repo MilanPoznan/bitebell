@@ -33,12 +33,10 @@ export const SliderBox = styled.div`
     opacity: 0.2;
   }
   @media only screen and (min-width: 1200px) {
-    .arr-left {
-    left: 24px;
-  }
-  .arr-right {
-    right: 24px;
-  }
+    h2 {
+      margin-bottom: 55px;
+      text-align: center;
+    }
   }
 `
 export const SingleSliderBox = styled.div`
@@ -46,7 +44,7 @@ export const SingleSliderBox = styled.div`
   flex-flow: column;
   min-width: 80%;
   width: 80%;
-  margin: 010%;
+  margin: 0 10%;
   max-width: 460px;
   padding: 52px 30px 44px;
   height: 100%;
