@@ -46,8 +46,9 @@ export const SingleSliderBox = styled.div`
   width: 80%;
   margin: 0 10%;
   max-width: 460px;
-  padding: 52px 30px 44px;
-  height: 100%;
+  padding: 16px 24px 14px;
+  height: 440px;
+  max-height: 440px;
   background: #FFFFFF;
   box-shadow: 0px 0px 48px rgba(0, 0, 0, 0.1);
   transform: ${({ left }) => `translateX(${-left * 125}%)`};
