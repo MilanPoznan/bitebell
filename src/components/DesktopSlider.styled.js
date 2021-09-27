@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 
 export const DesktopSliderWrapper = styled.div`
-  max-width: 1200px;
+  max-width: 1200px !important;
   margin: 0 auto;
   svg {
     position: absolute;
