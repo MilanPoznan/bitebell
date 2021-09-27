@@ -37,6 +37,10 @@ export const SliderBox = styled.div`
       margin-bottom: 55px;
       text-align: center;
     }
+    .slick-list {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
 `
 export const SingleSliderBox = styled.div`

@@ -65,6 +65,7 @@ export default function DesktopSlider({ testemonialsTitle, testemonialsRepeater 
 
 
   return (
+
     <DesktopSliderWrapper>
       <SliderTitle>{testemonialsTitle}</SliderTitle>
       <Slider {...settings} >
