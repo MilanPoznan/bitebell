@@ -64,8 +64,8 @@ export const ActiveSingleSlide = styled.div`
   }
 
   @media only screen and (min-width: 1200px) {
-    max-width: 400px;
-    min-width: 400px;
+    max-width: 380px;
+    min-width: 380px;
     height: 458px;
     margin: 0 40px 40px;
   }
@@ -73,4 +73,10 @@ export const ActiveSingleSlide = styled.div`
 
 export const NonActiveSingleSlide = styled(ActiveSingleSlide)`
   opacity: 0.3;
+`
+
+export const SliderTitle = styled.h2`
+  max-width: 60%;
+  margin: 0 auto 50px;
+  text-align: center;
 `

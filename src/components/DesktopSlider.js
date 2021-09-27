@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react'
-import { DesSlider, DesktopSliderWrapper, ActiveSingleSlide, NonActiveSingleSlide } from './DesktopSlider.styled'
+import { SliderTitle, DesSlider, DesktopSliderWrapper, ActiveSingleSlide, NonActiveSingleSlide } from './DesktopSlider.styled'
 import styled from '@emotion/styled';
 import { SingleContent, SingleSliderBox, SingleRole, SingleName } from './SingleSlider.styled'
 import Img from 'gatsby-image'
@@ -66,7 +66,7 @@ export default function DesktopSlider({ testemonialsTitle, testemonialsRepeater 
 
   return (
     <DesktopSliderWrapper>
-      <h2>{testemonialsTitle}</h2>
+      <SliderTitle>{testemonialsTitle}</SliderTitle>
       <Slider {...settings} >
         {testemonialsRepeater.map((item, index) =>
           <ActiveSingleSlide key={index}>
