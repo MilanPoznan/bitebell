@@ -48,6 +48,7 @@ html {
   }
   ol {
     display: list-item;
+    list-style: none;
   }
   ol li {
     padding-left: 20px;
@@ -68,7 +69,7 @@ html {
     padding: 15px 15px 20px 35px;
     margin: 30px 0px;
     border-radius: 4px;
-    background-color: $dark-white;
+    background-color: transparent;
   }
   p span {
     width: 100% !important;

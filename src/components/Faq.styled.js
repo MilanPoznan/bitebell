@@ -10,12 +10,13 @@ export const FaqHeader = styled.div`
   padding: 40px 0 40px;
 `
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   margin: 0 auto 40px;
   width: 80%;
   display: flex;
   justify-content: center;
   text-align: center;
+
 
 `
 export const Subtitle = styled.h3`
