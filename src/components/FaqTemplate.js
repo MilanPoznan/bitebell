@@ -15,6 +15,7 @@ export default function FaqTemplate({ title, subtitle, accordionArray, demoSecti
 
 
   function setCategories() {
+
     const categories = accordionArray.reduce((acc, curr) => {
       let allCategories = curr.category.split(',')
       allCategories.forEach((item, index) => {
@@ -26,6 +27,7 @@ export default function FaqTemplate({ title, subtitle, accordionArray, demoSecti
     }, [])
 
     let categoryName = language === 'sr' ? 'sve' : 'all'
+
     categories.unshift(categoryName)
 
     return categories
@@ -38,7 +40,9 @@ export default function FaqTemplate({ title, subtitle, accordionArray, demoSecti
   }
 
   function filterArray() {
-    if (currCategory === 'all') return accordionArray
+    const arr = ['all', 'All', 'sve', 'Sve']
+    if (arr.includes(currCategory)) return accordionArray
+
     return accordionArray.filter(item => item.category.includes(currCategory))
   }
   function handleOnFiler(e, index) {
@@ -49,7 +53,6 @@ export default function FaqTemplate({ title, subtitle, accordionArray, demoSecti
   useEffect(() => {
     setaAcordionState(accordionArray)
     setOptions(setCategories())
-    console.log(setCategories())
   }, [])
 
   useEffect(() => {
