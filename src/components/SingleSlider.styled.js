@@ -114,4 +114,7 @@ export const SingleContent = styled.div`
   text-align: center;
 
   color: #2C4482;
+  p {
+    word-break: break-all;
+  }
 `
