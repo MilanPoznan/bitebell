@@ -103,6 +103,7 @@ export const SingleName = styled(SingleRole)`
 `
 
 export const SingleContent = styled.div`
+display: flex;
   width: 100%;
   margin-top: 24px;
   font-family: Encode Sans;
@@ -114,7 +115,7 @@ export const SingleContent = styled.div`
   text-align: center;
 
   color: #2C4482;
-  p {
-    word-break: break-all;
-  }
+  /* p { */
+    /* word-break: break-all; */
+  /* } */
 `
