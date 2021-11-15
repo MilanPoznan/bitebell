@@ -19,7 +19,6 @@ export default function MobileInfiniteSlider({ testemonialsTitle, testemonialsRe
   }, [])
 
   useEffect(() => {
-    console.log('123123 qfa sdasdas', activeSlide)
     let timer = null;
 
     if (activeSlide === 0) {

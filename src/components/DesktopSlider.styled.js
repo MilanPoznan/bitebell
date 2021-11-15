@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export const DesktopSliderWrapper = styled.div`
   max-width: 1200px !important;
-  margin: 0 auto;
+  margin: 20px auto;
   svg {
     position: absolute;
     top: calc(50% - 13px);
@@ -79,4 +79,5 @@ export const SliderTitle = styled.h2`
   max-width: 60%;
   margin: 0 auto 50px;
   text-align: center;
+  font-size: 40px;
 `

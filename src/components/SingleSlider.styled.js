@@ -5,12 +5,12 @@ export const MainSliderWrapper = styled.div`
 `
 export const SliderBox = styled.div`
   position: relative;
+  margin-bottom: 40px;
   h2 {
     margin-bottom: 40px;
     font-family: Encode Sans;
     font-style: normal;
     font-weight: 800;
-    font-size: 48px;
     line-height: 115.9%;
     text-align: center;
 
