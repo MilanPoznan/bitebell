@@ -13,7 +13,6 @@ export default function InfiniteSlider({ testimonials }) {
 
   const { testemonialsRepeater, testemonialsTitle } = testimonials
   const windowWidth = useCurrentWidth();
-  console.log(windowWidth)
 
 
   return (

@@ -27,6 +27,7 @@ export default function page({ data }) {
 
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
+  console.log(111111, testimonials)
 
   return (
     <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
@@ -35,6 +36,7 @@ export default function page({ data }) {
       <MapComponent mapSection={mapSection} language={language.slug} />
       <AboutComponent aboutSection={aboutSection} />
       <SponsorsComponent sponsorsSection={sponsorsSection} />
+      {testimonials.testemonialsRepeater !== null && <InfiniteSlider testimonials={testimonials} />}
       <DemoComponent demoSection={demoSection} language={language.slug} />
     </Layout>
   )
