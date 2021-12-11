@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {useCurrentWidth} from '../hooks/uzeResize'
+import { useCurrentWidth } from '../hooks/uzeResize'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import './SponsorsComponent.scss'
@@ -33,19 +33,19 @@ export default function SponsorsComponents({ sponsorsSection }) {
       <div className="container-big partners__container">
         <h4>{sponsorsTitle}</h4>
         <div className="partners-icon sponsors__wrapper" ref={ref}  >
-          {
+          {/* {
             sponsorsLogoRepeater.length > 7 &&
             <>
               <span role="button" className={counter === 0 ? "inactive" : "active"}
                 onClick={() => setCounter(counter + 1)} />
               <span role="button" className={Math.abs(counter) >= sponsorsLogoRepeater.length - 7 ? "inactive" : "active"} onClick={() => counter < (sponsorsLogoRepeater.length - 7) && setCounter(counter - 1)} />
             </>
-          }
+          } */}
           {
             sponsorsLogoRepeater.map((sponsor, index) => {
               return (
                 <div className={`${index % 2 === 0 ? 'top' : 'bottom'} sponsors__img-wrapper`} key={index} style={{ position: 'relative', transition: '0.5s', left: `${slide()}px` }}>
-                  <Img className="sponsors__img" fluid={sponsor.logoIcon.localFile.childImageSharp.fluid} />
+                  {sponsor.logoIcon && <Img className="sponsors__img" fluid={sponsor.logoIcon.localFile.childImageSharp.fluid} />}
                 </div>
               )
             })

@@ -1,19 +1,19 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 
 import './integrationsComponent.scss'
 
-export default function IntegrationsComponent({ integrationsFields, integrations, currLangIntegrationType, currLang }) {
+export default function IntegrationsComponent({ currCategory, integrationsFields, integrations, currLangIntegrationType, currLang }) {
 
+  console.log(currCategory)
   const [currIntegrations, setCurrIntegrations] = useState(integrations)
   const { title, subtitle } = integrationsFields
-
   const showAllRefTab = useRef(null)
   const otherTabsRef = useRef([])
 
   otherTabsRef.current = currLangIntegrationType.map(item => React.createRef())
-
+  console.log(currLangIntegrationType)
 
   //Filter integrations on click
   const filterIntegrations = (currValue) => {
@@ -41,6 +41,10 @@ export default function IntegrationsComponent({ integrationsFields, integrations
     }
   }
 
+  useEffect(() => {
+    currCategory && filterIntegrations(currCategory)
+
+  }, [])
 
   return (
 
@@ -61,31 +65,28 @@ export default function IntegrationsComponent({ integrationsFields, integrations
           <div className="integrations-tabs">
             <div className="integrations-tabs-wrapper">
               <div className="integrations-tabs-inner">
-                <div
-                  className="integrations-tabs__link integrations-tabs__link--active"
-                  onClick={() => {
-                    setCurrIntegrations(integrations)
-                    setActiveClassToTab(showAllRefTab, 'all')
-
-                  }}
+                <Link
+                  className={`integrations-tabs__link ${currCategory === undefined && 'integrations-tabs__link--active'}`}
+                  to={currLang === 'sr' ? '/sr/integracije' : '/integrations'}
                   ref={showAllRefTab}
                 >
                   {currLang === 'sr' ? 'Prikaži sve' : 'Show All'}
-                </div>
+                </Link>
 
                 {currLangIntegrationType.map((type, index) =>
-                  <div
+                  <Link
                     key={index}
-                    className="integrations-tabs__link"
+                    className={`integrations-tabs__link ${type.name === currCategory && 'integrations-tabs__link--active'}`}
                     value={type.name}
+                    to={`/integrations/${type.slug}`}
                     onClick={(e) => {
-                      filterIntegrations(e.target.innerHTML)
-                      setActiveClassToTab(otherTabsRef.current[index], 'allTabs')
+                      // filterIntegrations(e.target.innerHTML)
+                      // setActiveClassToTab(otherTabsRef.current[index], 'allTabs')
                     }}
                     ref={otherTabsRef.current[index]}
                   >
                     {type.name}
-                  </div>)}
+                  </Link>)}
               </div>
               <Link to={`${currLang === 'sr' ? '/sr/partnerstva' : '/partnerships'} `}>{currLang === 'sr' ? 'Postanite naš partner! →' : 'Partner with us!'}</Link>
             </div>
@@ -126,9 +127,9 @@ export default function IntegrationsComponent({ integrationsFields, integrations
 
           </div>
         </div>
-      </section>
+      </section >
 
 
-    </div>
+    </div >
   )
 }

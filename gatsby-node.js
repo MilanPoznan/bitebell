@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = await getPosts(graphql, reporter)
   const pages = await getPages(graphql, reporter)
+  const integrationTypes = await getIntegrationTypes(graphql, reporter)
 
   posts.edges.forEach(singlePost => {
     const postPath = singlePost.post.language.slug === 'en'
@@ -30,6 +31,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  //Create page for each Integration type
+  integrationTypes.forEach(singleType => {
+
+    const isEng = singleType.language.slug === 'en'
+
+    let postPath = `${isEng ? '/integrations/' : '/sr/integracije/'}${singleType.slug}`
+
+    return createPage({
+      path: postPath,
+      component: path.resolve('./src/templates/integracije-template.js'),
+      context: {
+        id: isEng ? "cG9zdDoyNg==" : "cG9zdDoyMg==",
+        currCategory: singleType.name
+      }
+    })
+  })
 
   pages.nodes.forEach(page => {
     switch (page.slug) {
@@ -156,6 +173,35 @@ async function getPages(graphql, reporter) {
     return
   }
   return pagesResult.data.allWpPage
+}
+
+
+async function getIntegrationTypes(graphql, reporter) {
+  const integrationTypesResult = await graphql(`
+    query IntegrationTypes {
+      allWpIntegrationType {
+        nodes {
+          name
+          slug
+          uri
+          language {
+            locale
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  if (integrationTypesResult.errors) {
+    reporter.panicOnBuild(
+      'There was an error loading your Work CPT',
+      integrationTypesResult.errors
+    )
+    return
+  }
+  console.log('======integrationTypesResult11111', integrationTypesResult)
+  return integrationTypesResult.data.allWpIntegrationType.nodes
 }
 
 //Get all Works CPT

@@ -6,7 +6,10 @@ import Layout from '../components/Layout'
 import IntegrationsComponent from '../components/IntegrationsComponent'
 
 
-export default function integracije({ data }) {
+export default function integracije({ data, pageContext }) {
+
+
+  const { currCategory } = pageContext
 
   const { allWpIntegration: { integrations },
     allWpPage: { nodes },
@@ -19,7 +22,6 @@ export default function integracije({ data }) {
   //Pick from 2 menus 
   const menuPosition = language.slug === 'en' ? "MENU_1" : "MENU_1___SR";
 
-
   //Filter by language 
   const currLangMenu = menus.filter(menu => menu.locations[0] === menuPosition)
 
@@ -30,10 +32,15 @@ export default function integracije({ data }) {
 
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
-
   return (
     <Layout title={title} language={language.slug} phoneNumber={phoneNumber} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
-      <IntegrationsComponent currLang={language.slug} currLangIntegrationType={currLangIntegrationType} integrationsFields={integrationsFields} integrations={currLangIntegrations} />
+      <IntegrationsComponent
+        currLang={language.slug}
+        currLangIntegrationType={currLangIntegrationType}
+        integrationsFields={integrationsFields}
+        integrations={currLangIntegrations}
+        currCategory={currCategory}
+      />
     </Layout>
   )
 }
