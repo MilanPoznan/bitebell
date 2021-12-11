@@ -27,8 +27,6 @@ export default function page({ data }) {
 
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
-  console.log(111111, testimonials)
-
   return (
     <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />

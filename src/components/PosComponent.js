@@ -41,7 +41,6 @@ export default function PosComponent({ posSection, language }) {
     }, 3000);
     return () => clearInterval(interval);
   });
-  console.log('object', language)
   return (
     <div className="container" ref={ref}>
       <div className="pos__container" id="pos">

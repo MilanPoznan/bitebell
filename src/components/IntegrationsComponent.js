@@ -6,14 +6,12 @@ import './integrationsComponent.scss'
 
 export default function IntegrationsComponent({ currCategory, integrationsFields, integrations, currLangIntegrationType, currLang }) {
 
-  console.log(currCategory)
   const [currIntegrations, setCurrIntegrations] = useState(integrations)
   const { title, subtitle } = integrationsFields
   const showAllRefTab = useRef(null)
   const otherTabsRef = useRef([])
 
   otherTabsRef.current = currLangIntegrationType.map(item => React.createRef())
-  console.log(currLangIntegrationType)
 
   //Filter integrations on click
   const filterIntegrations = (currValue) => {

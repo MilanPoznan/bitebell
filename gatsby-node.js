@@ -200,7 +200,6 @@ async function getIntegrationTypes(graphql, reporter) {
     )
     return
   }
-  console.log('======integrationTypesResult11111', integrationTypesResult)
   return integrationTypesResult.data.allWpIntegrationType.nodes
 }
 

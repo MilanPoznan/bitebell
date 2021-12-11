@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 export default function FeaturedPost({ title, minsOfread, content, language, authorName, image, link }) {
-  console.log(content)
   return (
     <Link to={`/${link}`} className="news-preview__first-link">
       <div className="news-preview__first">
