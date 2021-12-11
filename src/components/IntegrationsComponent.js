@@ -78,7 +78,7 @@ export default function IntegrationsComponent({ currCategory, integrationsFields
                     key={index}
                     className={`integrations-tabs__link ${type.name === currCategory && 'integrations-tabs__link--active'}`}
                     value={type.name}
-                    to={`/integrations/${type.slug}`}
+                    to={currLang === 'sr' ? `/sr/integracije/${type.slug}` : `/integrations/${type.slug}`}
                     onClick={(e) => {
                       // filterIntegrations(e.target.innerHTML)
                       // setActiveClassToTab(otherTabsRef.current[index], 'allTabs')
