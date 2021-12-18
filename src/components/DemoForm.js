@@ -78,6 +78,7 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
       fetchWithTimeout(
         sendFormData,
         {
+          full_name: nameField,
           email: emailField,
           phone: phoneField,
           phone_select: phoneSelect,
