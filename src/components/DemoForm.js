@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 //Components 
 import CountrySelect from './CountrySelect'
 //Hooks
@@ -11,6 +11,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 export default function DemoForm({ data, language, setIsFormSuccessfullySubmited }) {
 
+
   const {
     imeGrupa: { ime, imeObavezno, showIme },
     emailGroup: { email, emailRequired, showEmail },
@@ -19,8 +20,8 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
     posFieldGroup: { posFieldText, isPosRequired, showPosField },
     restaurant: { restaurantName, restaurantNameRequired, restaurantNameShow }
   } = data
-  const isLangEn = language === 'en';
 
+  const isLangEn = language === 'en';
 
   const [nameField, setNameField] = useState('')
   const [emailField, setEmailField] = useState('');
@@ -48,8 +49,12 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
-  }
-  )
+  })
+    .then(response => {
+      if (response.ok) {
+        setLeadsInPipedrive()
+      }
+    })
 
   /**
   * 
@@ -90,7 +95,6 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
         10000
       )
         .then(response => {
-          console.log('response', response)
           if (!response.ok) {
             throw new Error(`${response.statusText}`)
           } else {
@@ -104,6 +108,33 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
       console.log('Form empty')
     }
   }
+
+  function setLeadsInPipedrive() {
+    const apiToken = '1c7bcfcd5d12172ea7f5c197b710892467c5ff75';
+    const url = `https://bitebelltechnologies.pipedrive.com/v1/leads?api_token=${apiToken}`;
+
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const reqOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify({
+        "title": restaurantField,
+        "person_id": 294,
+        "3c18c603a16d5acd76d74104a91c1b83b557f6fa": "Website Form",
+        "5653204ac96307f1089222c580ba77ca2f9c0317": `${locationField}`,
+        "b793d01a66a599d6093fa5764f2f6d47224a739c": `${posSelect}`
+      }),
+    }
+    fetch(url, reqOptions)
+      .then(res => res.json())
+    // .then(results => console.log('pipedriveresult:', results))
+  }
+
+  // useEffect(() => getOrganiz(), [])
+
   return (
     <>
       <form className="partnership-form" id="demoPartnership">
