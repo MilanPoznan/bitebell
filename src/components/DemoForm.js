@@ -50,11 +50,6 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
-    .then(response => {
-      if (response.ok) {
-        setLeadsInPipedrive()
-      }
-    })
 
   /**
   * 
@@ -99,6 +94,7 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
             throw new Error(`${response.statusText}`)
           } else {
             setIsFormSuccessfullySubmited(true)
+            setLeadsInPipedrive()
           }
         })
         .catch(e => {
