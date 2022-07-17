@@ -14,7 +14,7 @@ body {
     font-weight: 500;
     position: relative;
     background: url("../../img/bitebellbg.svg") no-repeat;
-    
+
     background-size: cover;
     color: #000;
     min-height: 100vh;
@@ -197,7 +197,7 @@ p {
 
 @media (max-width: 991px) {
     .header {
-        padding: 150px 0 80px
+        padding: 150px 0 60px
     }
 }
 
@@ -315,20 +315,20 @@ p {
 }
 
 .nav-wrapper .nav-right .navlink {
-	color: #2C4482;
-	font-weight: 600;
+    color: #2C4482;
+    font-weight: 600;
 }
 
 .nav-wrapper .nav-right .navlink:hover {
-	color: #78226F;
-	text-decoration: underline;
+    color: #78226F;
+    text-decoration: underline;
 }
 
 .nav-wrapper .nav-right .navlink:focus,
-.nav-wrapper .nav-right .navlink:active
- {
- 	text-decoration: underline;
+.nav-wrapper .nav-right .navlink:active {
+    text-decoration: underline;
 }
+
 .nav-wrapper .nav-right .dropdown button:focus,
 .nav-wrapper .nav-right .dropdown button:active {
     background: none;
@@ -1160,6 +1160,7 @@ p {
 }
 
 @media (max-width: 480px) {
+
     .map-inner .location1 .map-location .map-icon,
     .map-inner .location2 .map-location .map-icon,
     .map-inner .location3 .map-location .map-icon {
@@ -1189,6 +1190,7 @@ p {
 }
 
 @media (max-width: 480px) {
+
     .map-inner .location1 .map-location .map-icon img,
     .map-inner .location2 .map-location .map-icon img,
     .map-inner .location3 .map-location .map-icon img {
@@ -1204,6 +1206,7 @@ p {
 }
 
 @media (max-width: 768px) {
+
     .map-inner .location1 .map-location .map-pin,
     .map-inner .location2 .map-location .map-pin,
     .map-inner .location3 .map-location .map-pin {
@@ -1473,10 +1476,12 @@ p {
         opacity: 0;
         border: 7px solid transparent;
     }
+
     50% {
         border: 7px solid transparent;
-        
+
     }
+
     100% {
         opacity: 1;
     }
@@ -1487,9 +1492,11 @@ p {
         opacity: 0;
         border: 7px solid transparent;
     }
+
     50% {
         border: 7px solid transparent;
     }
+
     100% {
         opacity: 1;
     }
@@ -1500,10 +1507,12 @@ p {
         -webkit-transform: scale(0.8);
         transform: scale(0.8)
     }
+
     50% {
         -webkit-transform: scale(1);
         transform: scale(1)
     }
+
     100% {
         -webkit-transform: scale(0.8);
         transform: scale(0.8)
@@ -1515,10 +1524,12 @@ p {
         -webkit-transform: scale(0.8);
         transform: scale(0.8)
     }
+
     50% {
         -webkit-transform: scale(1);
         transform: scale(1)
     }
+
     100% {
         -webkit-transform: scale(0.8);
         transform: scale(0.8)
@@ -1598,8 +1609,8 @@ p {
 }
 
 .footer .footer-nav .footer-nav-list a:hover {
-	color: #78226F;
-	text-decoration: underline;
+    color: #78226F;
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -1972,7 +1983,7 @@ p {
 }
 
 @media (max-width: 480px) {
-    .integrations .integrations-tabs-wrapper{
+    .integrations .integrations-tabs-wrapper {
         margin-bottom: 0;
     }
 }
@@ -2120,6 +2131,7 @@ p {
     from {
         background: #78226F
     }
+
     to {
         width: 0;
         background: transparent
@@ -2130,6 +2142,7 @@ p {
     from {
         background: #78226F
     }
+
     to {
         width: 0;
         background: transparent
@@ -2141,11 +2154,13 @@ p {
         display: inline-block
     }
 }
+
 @media (max-width: 991px) {
     .hidden-first-mobile {
         display: none;
     }
 }
+
 .inner-layout .inner-layout-wrapper {
     -webkit-box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
@@ -2193,6 +2208,7 @@ p {
     color: #2C4482;
     margin-bottom: 10px;
 }
+
 .inner-layout .inner-layout-text p {
     margin-bottom: 10px;
 }
@@ -2204,7 +2220,8 @@ p {
 .parsley-errors-list {
     color: red;
 }
-.request-form .label-primary{
+
+.request-form .label-primary {
     top: -10px;
     color: #999;
 }
@@ -2287,6 +2304,7 @@ p {
     -o-transform: translateY(-20px);
     transform: translateY(-20px);
 }
+
 @media (max-width: 991px) {
     .short-about-box {
         text-align: center;
