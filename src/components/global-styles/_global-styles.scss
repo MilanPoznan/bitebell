@@ -6,101 +6,132 @@ body {
   font: 16px "Encode Sans", sans-serif;
   font-weight: 500;
   position: relative;
-  background: url("../../img/bitebellbg.svg") top left  no-repeat;
+  background: url("../../img/bitebellbg.svg") top left no-repeat;
   background-color: rgba(0, 0, 0, 0);
   background-size: cover;
   color: #000;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 .main {
   padding-top: 100px;
 }
+
 .no-scroll {
   overflow: hidden;
 }
+
 // class for a page content site-wide for the purpose of WYSIWYG editor
 .content {
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $blue;
   }
+
   h1 {
     margin-bottom: 30px;
   }
+
   h2 {
     font-size: 21px;
     margin: 1.8em 0px 0.8em;
   }
+
   h3 {
     font-size: 18px;
     margin: 2em 0px 1em;
   }
+
   h4 {
     font-size: 16px;
     margin: 2em 0px 1em;
   }
+
   ul {
     list-style: disc;
   }
+
   li {
     margin-bottom: 20px;
   }
+
   ol {
     display: list-item;
     list-style: none;
   }
+
   ol li {
     padding-left: 20px;
     list-style-position: inside;
     list-style-type: decimal;
   }
+
   p {
     margin-bottom: 20px;
   }
-  p, ul, ol { 
+
+  p,
+  ul,
+  ol {
     font-size: 16px;
     line-height: 1.8;
     letter-spacing: -0.005em;
     color: $dark-blue;
     font-weight: 400;
   }
-  ul, ol {
+
+  ul,
+  ol {
     padding: 15px 15px 20px 35px;
     margin: 30px 0px;
     border-radius: 4px;
     background-color: transparent;
   }
+
   p span {
     width: 100% !important;
   }
+
   img {
     max-width: 100%;
     height: auto;
   }
+
   a {
     margin: 0px 0px 30px;
     line-height: 1.4;
     font-weight: 500;
     color: $light-blue;
   }
+
   blockquote {
     margin: 0 0 40px 0;
     padding-left: 20px;
-    quotes: "\201C" "\201D";
+    quotes: "\201C""\201D";
+
     p {
       font-style: italic;
       color: $dark-blue;
-  
+
       &::before {
         content: open-quote;
       }
+
       &::after {
         content: close-quote;
       }
     }
   }
 }
+
 .cookie-popup {
   position: fixed;
   width: 80% !important;
@@ -109,45 +140,50 @@ html {
   display: flex;
   flex-flow: column;
   padding: 24px 24px 36px;
-  background: $white !important;
-  color: $light-blue !important;
+  background: $white  !important;
+  color: $light-blue  !important;
   border: 1px solid #d8deed;
-    border-radius: 8px;
-    box-shadow: 0 8px 32px 0 rgb(98 155 249 / 20%);
-    z-index: 50;
-    .cookie-content {
-      flex: 1 0 140px !important;
-      width: 80% !important;
-      margin: 0 auto !important;
-      flex-flow: column;
-      text-align: center;
-      align-items: center;
-      svg {
-        margin-bottom: 20px;
-      }
-      
-    }
-    .cookie-popup-btn {
-      background: $purple !important;
-      color: $white !important;
-      padding: 12px 22px !important;
-      border-radius: 8px !important;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgb(98 155 249 / 20%);
+  z-index: 50;
 
-    }
-    #rcc-decline-button {
-      background-color: #ed2e2e !important;
-      color: $white;
-      padding: 12px 20px !important;
-      border-radius: 8px !important;
-      margin-right: 20px;
+  .cookie-content {
+    flex: 1 0 140px !important;
+    width: 80% !important;
+    margin: 0 auto !important;
+    flex-flow: column;
+    text-align: center;
+    align-items: center;
 
+    svg {
+      margin-bottom: 20px;
     }
-    div {
-      display: flex !important;
-      justify-content: center !important;
-      width: 80%;
-      margin: 0 auto;
-    }
+
+  }
+
+  .cookie-popup-btn {
+    background: $purple  !important;
+    color: $white  !important;
+    padding: 12px 22px !important;
+    border-radius: 8px !important;
+
+  }
+
+  #rcc-decline-button {
+    background-color: #ed2e2e !important;
+    color: $white;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    margin-right: 20px;
+
+  }
+
+  div {
+    display: flex !important;
+    justify-content: center !important;
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 @include desktop-lowres() {
@@ -155,10 +191,11 @@ html {
   .main {
     padding-top: 190px;
   }
-.cookie-popup {
-  width: 400px !important;
-  margin: 0 auto;
-  left: calc(50% - 200px) !important;
-}
+
+  .cookie-popup {
+    width: 400px !important;
+    margin: 0 auto;
+    left: calc(50% - 200px) !important;
+  }
 
 }
