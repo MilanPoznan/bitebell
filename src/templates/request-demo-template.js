@@ -22,6 +22,8 @@ export default function requestDemoTemplate({ data, pageContext }) {
 
   const currLangFooter = menus.filter(menu => menu.locations[0] === footerPosition)
 
+  console.log('nodes[0]', nodes[0].demoCf.requestDemoCf)
+
   return (
     <Layout phoneNumber={phoneNumber} language={language.slug} title={title} translations={translations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <ContactPageLayout

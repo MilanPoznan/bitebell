@@ -17,7 +17,6 @@ export default function ContactPageLayout({ title, content, apiContent, partnerL
     threshold: 0
   })
 
-  //
   const logosRef = useRef(null)
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export default function ContactPageLayout({ title, content, apiContent, partnerL
       logosRef.current.classList.add('shown')
     }
   }, [entry.isIntersecting])
-
 
   return (
     isFormSuccessfullySubmited
@@ -50,8 +48,8 @@ export default function ContactPageLayout({ title, content, apiContent, partnerL
               <div key={index} className={`${index % 2 === 0 ? 'logos top' : 'logos bottom'} `}>
                 {
                   item.logo
-                    ? <BackgroundImage className="logos__bg" fluid={item.logo.file.image.fluid} />
-                    : <BackgroundImage bgclassName="logos__bg" fluid={item.logoImage.file.image.fluid} />
+                  && <BackgroundImage className="logos__bg" fluid={item.logo.file.image.fluid} />
+                  // : <BackgroundImage bgclassName="logos__bg" fluid={item.logoImage.file.image.fluid} />
                 }
               </div>
             )}
