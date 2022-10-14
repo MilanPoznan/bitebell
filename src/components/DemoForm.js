@@ -106,7 +106,8 @@ export default function DemoForm({ data, language, setIsFormSuccessfullySubmited
   }
 
   function setLeadsInPipedrive() {
-    const apiToken = '1c7bcfcd5d12172ea7f5c197b710892467c5ff75';
+
+    const apiToken = process.env.GATSBY_API_TOKEN;
     const url = `https://bitebelltechnologies.pipedrive.com/v1/leads?api_token=${apiToken}`;
 
 
