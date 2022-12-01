@@ -33,7 +33,7 @@ const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
   const metaDescription = description || wp.generalSettings?.description
   const defaultTitle = wp.generalSettings?.title
   const currPageTitle = pageTitle || title
-  const metaImage = image ? image.src : shareImage
+  const metaImage = 'http://dev.bitebell.com/wp-content/uploads/2022/12/bitebelllogo.png'
 
   return (
     <Helmet
