@@ -64,6 +64,10 @@ const SEO = ({ description, lang, meta, title, pageTitle, image }) => {
           content: `website`,
         },
         {
+          property: `og:url`,
+          content: `https://bitebell.com/`,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
