@@ -28,7 +28,7 @@ export default function page({ data }) {
     <Layout phoneNumber={phoneNumber} seoTitle={pageTitle} metaDesc={metaDescription} language={language.slug} title={title} translations={currTranslations} currLangMenu={currLangMenu[0]} logo={logo} currLangFooter={currLangFooter[0]}>
       <Hero heroSection={heroSection} />
       <InfiniteSlider testimonials={testimonials} />
-      <NewsSection newsData={news} />
+      <NewsSection newsData={news} language={language.slug} />
     </Layout>
   )
 }
