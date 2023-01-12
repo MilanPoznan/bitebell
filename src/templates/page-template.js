@@ -9,12 +9,14 @@ import AboutComponent from '../components/AboutComponent'
 import SponsorsComponent from '../components/SponsorsComponent'
 import DemoComponent from '../components/DemoComponent'
 import InfiniteSlider from '../components/InfiniteSlider'
+import NewsSection from '../components/NewsSection'
+
 
 export default function page({ data }) {
 
   const { allWpPage: { nodes }, allWpMenu: { menus }, wp: { optionsPage: { options: { logo, phoneNumber } } } } = data;
   const { title, language, translations,
-    homepage_sections: { aboutSection, demoSection, testimonials, heroSection, mapSection, posSection, sponsorsSection },
+    homepage_sections: { aboutSection, demoSection, testimonials, heroSection, mapSection, posSection, sponsorsSection, news },
     seoFields: { metaDescription, pageTitle } } = nodes[0];
 
   const menuPosition = language.slug === 'en' ? "MENU_1" : "MENU_1___SR";
@@ -35,6 +37,8 @@ export default function page({ data }) {
       <AboutComponent aboutSection={aboutSection} />
       <SponsorsComponent sponsorsSection={sponsorsSection} />
       {testimonials.testemonialsRepeater !== null && <InfiniteSlider testimonials={testimonials} />}
+      {news && <NewsSection newsData={news} language={language.slug} />}
+
       <DemoComponent demoSection={demoSection} language={language.slug} />
     </Layout>
   )
@@ -91,6 +95,22 @@ export const query = graphql`
               }
             }
             testemonialsTitle
+          }
+          news {
+            newsUrl
+            newsImage {
+              srcSet
+              link
+              uri
+              localFile {
+                url
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+            }
           }
           aboutSection {
             fieldGroupName

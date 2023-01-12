@@ -5,7 +5,6 @@ import './NewsSection.scss'
 
 export default function NewsSection({ newsData, language }) {
 
-  console.log(language)
   const title = language === 'en' ? 'Featured on' : 'Objavili su nas'
 
   return (
