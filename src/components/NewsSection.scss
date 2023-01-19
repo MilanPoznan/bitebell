@@ -3,17 +3,17 @@
   height: 100%;
   padding: 0 20px;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   overflow-y: scroll;
   justify-content: center;
 
 
   a {
-    width: 24%;
-    min-width: 24%;
+    width: 23%;
+    min-width: 23%;
     height: 100%;
     display: flex;
-    margin: 20px;
+    margin: 15px;
   }
 
   &__img {
